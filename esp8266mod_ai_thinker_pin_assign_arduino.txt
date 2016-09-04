@@ -2,16 +2,15 @@ esp8266mod ai-thinker nodemcu test board
 
 pin assign
 
-D1
-D2
-D3
-D4 digital 2
-D5
-D6
-D7 digital 13
-D8
-D9
-D0
+D1 gpio 5
+D2 gpio 4
+D3 gpio 0
+D4 gpio 2
+D5 gpio 14
+D6 gpio 12
+D7 gpio 13
+D8 gpio 15
+D0 gpio 16
 A0
 
 TX uart
