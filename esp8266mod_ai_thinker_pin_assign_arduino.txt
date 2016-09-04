@@ -1,0 +1,23 @@
+esp8266mod ai-thinker nodemcu test board
+
+pin assign
+
+D1
+D2
+D3
+D4 digital 2
+D5
+D6
+D7 digital 13
+D8
+D9
+D0
+A0
+
+TX uart
+RX uart
+
+3V3 3.3V DCinput(VCC)
+GND
+VIN ????
+
