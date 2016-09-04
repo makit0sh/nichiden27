@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ESP8266Test</title>
+<script language="javascript" type="text/javascript">
+function GETRequest(url){
+    var xhr= new XMLHttpRequest();
+    xhr.open("GET",url);
+    xhr.send();
+}
+</script>
+</head>
+<body>
+<input type="button" value="LED1ON" onclick="GETRequest('http://192.168.0.199/gpio/1');"/>
+<input type="button" value="LED1OFF" onclick="GETRequest('http://192.168.0.199/gpio/0');"/>
+<input type="button" value="LED2ON" onclick="GETRequest('http://192.168.0.200/gpio/1');"/>
+<input type="button" value="LED2OFF" onclick="GETRequest('http://192.168.0.200/gpio/0');"/>
+</body>
+</html>
