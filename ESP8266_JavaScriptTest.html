@@ -1,20 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>ESP8266Test</title>
-<script language="javascript" type="text/javascript">
-function GETRequest(url){
-    var xhr= new XMLHttpRequest();
-    xhr.open("GET",url);
-    xhr.send();
-}
-</script>
+  <meta charset="utf-8" />
+  <title>ESP8266Test</title>
+  <style type="text/css">
+    body {color:#ddd; background-color:#202020;}
+    button.constellation {
+      display: block;
+      width: 150px;
+      height: 50px;
+      font-size:1.4em;
+      color: #aaa;
+      background-color: #444;
+      border-style: none;
+      outline: solid;
+      outline-color: #030;
+      outline-size: 2px;
+      outline-offset: 2px;
+      margin: 15px 6px;
+    }
+    button.off {
+      display: none;
+      color:#ccc;
+      background-color: #633;
+      outline-color: #311;
+    }
+  </style>
+  <script language="javascript" type="text/javascript">
+    function GETRequest(url){
+      var xhr= new XMLHttpRequest();
+      xhr.open("GET",url);
+      xhr.send();
+    }
+    function Switch(a,b){
+      document.getElementById(b).style.display = "none";
+      document.getElementById(a).style.display = "block";
+    }
+  </script>
 </head>
 <body>
-<input type="button" value="LED1ON" onclick="GETRequest('http://192.168.0.199/gpio/1');"/>
-<input type="button" value="LED1OFF" onclick="GETRequest('http://192.168.0.199/gpio/0');"/>
-<input type="button" value="LED2ON" onclick="GETRequest('http://192.168.0.200/gpio/1');"/>
-<input type="button" value="LED2OFF" onclick="GETRequest('http://192.168.0.200/gpio/0');"/>
+  <h1>Seizae Controller 2016</h1>
+  <hr>
+  <button class="constellation" id="LED1ON" onclick="Switch('LED1OFF','LED1ON');GETRequest('http://192.168.0.199/gpio/1');"/>LED1</button>
+  <button class="constellation off" id="LED1OFF" onclick="Switch('LED1ON','LED1OFF');GETRequest('http://192.168.0.199/gpio/0');"/>LED1</button>
+  <button class="constellation" id="LED2ON" onclick="Switch('LED2OFF','LED2ON');GETRequest('http://192.168.0.200/gpio/1');"/>LED2</button>
+  <button class="constellation off" id="LED2OFF" onclick="Switch('LED2ON','LED2OFF');GETRequest('http://192.168.0.200/gpio/0');"/>LED2</button>
 </body>
 </html>
