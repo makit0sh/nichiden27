@@ -29,8 +29,13 @@
   <script language="javascript" type="text/javascript">
     function GETRequest(url){
       var xhr= new XMLHttpRequest();
-      xhr.open("GET",url);
+      xhr.open("GET", url);
       xhr.send();
+      xhr.onload = function(){
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById('debug').innerHTML = xhr.responseText;
+        }
+      };
     }
     function Switch(a,b){
       document.getElementById(b).style.display = "none";
@@ -45,5 +50,6 @@
   <button class="constellation off" id="LED1OFF" onclick="Switch('LED1ON','LED1OFF');GETRequest('http://192.168.0.199/gpio/0');"/>LED1</button>
   <button class="constellation" id="LED2ON" onclick="Switch('LED2OFF','LED2ON');GETRequest('http://192.168.0.200/gpio/1');"/>LED2</button>
   <button class="constellation off" id="LED2OFF" onclick="Switch('LED2ON','LED2OFF');GETRequest('http://192.168.0.200/gpio/0');"/>LED2</button>
+  <div id="debug"></div>
 </body>
 </html>
