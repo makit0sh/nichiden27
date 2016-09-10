@@ -50,6 +50,15 @@ void NSProtocol::setConstellationName(String p01, String p02,String p03,String p
     constellationName[19] = p20;
 }
 
+boolean NSProtocol::getConstellationName(int pinNo, String* s)
+{
+  if ( 1 <= pinNo && pinNo <= 20){
+    *s = constellationName[pinNo-1];
+    return true;
+  }
+  return false;
+}
+
 boolean NSProtocol::setPort(int pinNo)
 {
     if ( 1 <= pinNo && pinNo <= 20){
