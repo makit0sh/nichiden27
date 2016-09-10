@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <title>ESP8266Test</title>
-  <style type="text/css">
+  <script src = "acrab_main.js"></script>
+  <style>
     body {color:#ddd; background-color:#202020;}
     button.constellation {
       display: block;
@@ -19,22 +20,18 @@
       outline-offset: 2px;
       margin: 15px 6px;
     }
-    button.off {
-      display: none;
+    button.on {
       color:#ccc;
       background-color: #633;
       outline-color: #311;
     }
   </style>
-  <script src = "acrab_main.js"></script>
 </head>
 <body onload="pageInit()">
   <h1>Seizae Controller 2016</h1>
   <hr>
-  <button class="constellation" id="LED1ON" onclick="Switch('LED1OFF','LED1ON');GETRequest(ip[0] + 'gpio/1');"/>LED1</button>
-  <button class="constellation off" id="LED1OFF" onclick="Switch('LED1ON','LED1OFF');GETRequest(ip[0] + 'gpio/0');"/>LED1</button>
-  <button class="constellation" id="LED2ON" onclick="Switch('LED2OFF','LED2ON');GETRequest(ip[1] + 'gpio/1');")>LED2</button>
-  <button class="constellation off" id="LED2OFF" onclick="Switch('LED2ON','LED2OFF');GETRequest(ip[1] + 'gpio/0');"/>LED2</button>
+  <button class="constellation" id="LED1" onclick="GETRequest(GETAddress(this, ip[0]));"/>LED1</button>
+  <button class="constellation" id="LED2" onclick="GETRequest(GETAddress(this, ip[1]));"/>LED2</button>
   <div id="debug"></div>
 </body>
 </html>
