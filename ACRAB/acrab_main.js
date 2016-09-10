@@ -53,8 +53,3 @@ function checkStatus(stat){
     }
   });
 }
-
-function Switch(a,b){
-  document.getElementById(b).style.display = "none";
-  document.getElementById(a).style.display = "block";
-}
