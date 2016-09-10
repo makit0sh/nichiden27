@@ -26,30 +26,15 @@
       outline-color: #311;
     }
   </style>
-  <script language="javascript" type="text/javascript">
-    function GETRequest(url){
-      var xhr= new XMLHttpRequest();
-      xhr.open("GET", url);
-      xhr.send();
-      xhr.onload = function(){
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById('debug').innerHTML = xhr.responseText;
-        }
-      };
-    }
-    function Switch(a,b){
-      document.getElementById(b).style.display = "none";
-      document.getElementById(a).style.display = "block";
-    }
-  </script>
+  <script src = "acrab_main.js"></script>
 </head>
-<body>
+<body onload="pageInit()">
   <h1>Seizae Controller 2016</h1>
   <hr>
-  <button class="constellation" id="LED1ON" onclick="Switch('LED1OFF','LED1ON');GETRequest('http://192.168.0.199/gpio/1');"/>LED1</button>
-  <button class="constellation off" id="LED1OFF" onclick="Switch('LED1ON','LED1OFF');GETRequest('http://192.168.0.199/gpio/0');"/>LED1</button>
-  <button class="constellation" id="LED2ON" onclick="Switch('LED2OFF','LED2ON');GETRequest('http://192.168.0.200/gpio/1');"/>LED2</button>
-  <button class="constellation off" id="LED2OFF" onclick="Switch('LED2ON','LED2OFF');GETRequest('http://192.168.0.200/gpio/0');"/>LED2</button>
+  <button class="constellation" id="LED1ON" onclick="Switch('LED1OFF','LED1ON');GETRequest(ip[0] + 'gpio/1');"/>LED1</button>
+  <button class="constellation off" id="LED1OFF" onclick="Switch('LED1ON','LED1OFF');GETRequest(ip[0] + 'gpio/0');"/>LED1</button>
+  <button class="constellation" id="LED2ON" onclick="Switch('LED2OFF','LED2ON');GETRequest(ip[1] + 'gpio/1');")>LED2</button>
+  <button class="constellation off" id="LED2OFF" onclick="Switch('LED2ON','LED2OFF');GETRequest(ip[1] + 'gpio/0');"/>LED2</button>
   <div id="debug"></div>
 </body>
 </html>
