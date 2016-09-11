@@ -68,7 +68,7 @@ void setup() {
   Serial.println("WiFi connected");
 
   //get static ip
-  //WiFi.config(ip, gateway, subnet); // itoの環境で接続できず
+  WiFi.config(ip, gateway, subnet);
   
   // Start the server
   server.begin();
