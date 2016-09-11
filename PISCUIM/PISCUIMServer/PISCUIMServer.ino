@@ -55,17 +55,17 @@ void setup() {
   // Connect to WiFi network
   //Serial.println();
   //Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+  //Serial.print("Connecting to ");
+  //Serial.println(ssid);
   
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    //Serial.print(".");
   }
-  Serial.println("");
-  Serial.println("WiFi connected");
+  //Serial.println("");
+  //Serial.println("WiFi connected");
 
   //get static ip
   WiFi.config(ip, gateway, subnet);
@@ -75,7 +75,7 @@ void setup() {
   //Serial.println("Server started");
 
   // Print the IP address
-  Serial.println(WiFi.localIP());
+  //Serial.println(WiFi.localIP());
 }
 
 void loop() {
@@ -87,8 +87,15 @@ void loop() {
   
   // Wait until the client sends some data
   //Serial.println("new client");
-  while(!client.available()){
+  unsigned int timeCount = 0;
+  while (!client.available()){
     delay(1);
+    timeCount++;
+    if (timeCount >= 500){
+      Serial.println("Connection Timeout");
+      client.stop();
+      return;
+    }
   }
   
   // Read the first line of the request
