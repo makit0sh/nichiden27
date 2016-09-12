@@ -3,7 +3,7 @@
   (general
     (links 156)
     (no_connects 156)
-    (area 60.804379 35.404379 190.655621 123.015)
+    (area 65.964999 40.564999 185.495001 119.455001)
     (thickness 1.6)
     (drawings 6)
     (tracks 0)
@@ -1204,7 +1204,7 @@
     (pad 4 thru_hole oval (at 0 7.62 90) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 78 3.3V_LOGIC))
     (pad 5 thru_hole oval (at 0 10.16 90) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
-      (net 53 +12V))
+      (net 1 12V_SEIZAE1))
     (pad 6 thru_hole oval (at 0 12.7 90) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)
       (net 53 +12V))
     (pad 7 thru_hole oval (at 0 15.24 90) (size 2.032 1.7272) (drill 1.016) (layers *.Cu *.Mask F.SilkS)

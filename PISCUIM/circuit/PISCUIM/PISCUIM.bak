@@ -944,7 +944,6 @@ F 3 "" H 6400 7200 50  0000 C CNN
 	1    6400 7200
 	1    0    0    -1  
 $EndComp
-NoConn ~ 5800 7050
 $Comp
 L +3.3V #PWR011
 U 1 1 57D2F47E
@@ -1364,8 +1363,6 @@ Wire Wire Line
 	3450 1300 3450 1550
 Wire Wire Line
 	2950 1300 2950 1550
-Wire Wire Line
-	5700 5750 5700 7050
 Wire Notes Line
 	800  1200 1850 1200
 Wire Notes Line
@@ -1642,25 +1639,25 @@ Wire Wire Line
 Wire Wire Line
 	8400 5250 8400 2550
 Wire Wire Line
-	8400 2550 7300 2550
+	7300 2550 8400 2550
 Wire Wire Line
-	7300 2550 7300 2050
+	7300 2050 7300 2550
 Wire Wire Line
 	8300 5150 8450 5150
 Wire Wire Line
 	8450 5150 8450 2600
 Wire Wire Line
-	8450 2600 7800 2600
+	7800 2600 8450 2600
 Wire Wire Line
-	7800 2600 7800 2050
+	7800 2050 7800 2600
 Wire Wire Line
 	8300 5050 8500 5050
 Wire Wire Line
 	8500 5050 8500 2650
 Wire Wire Line
-	8500 2650 8300 2650
+	8300 2650 8500 2650
 Wire Wire Line
-	8300 2650 8300 2050
+	8300 2050 8300 2650
 Wire Wire Line
 	8600 4950 8300 4950
 Wire Wire Line
@@ -1682,9 +1679,9 @@ Wire Wire Line
 Wire Wire Line
 	8650 4750 8650 2650
 Wire Wire Line
-	8650 2650 9600 2650
+	9600 2650 8650 2650
 Wire Wire Line
-	9600 2650 9600 2150
+	9600 2150 9600 2650
 Wire Wire Line
 	9600 2150 9800 2150
 Wire Wire Line
@@ -1737,10 +1734,6 @@ Wire Wire Line
 	10250 4150 10250 4000
 Wire Wire Line
 	10250 4000 10450 4000
-Wire Wire Line
-	6100 7050 6100 6950
-Wire Wire Line
-	6100 6950 6400 6950
 Wire Wire Line
 	6400 6950 6400 7200
 Wire Wire Line
@@ -1878,7 +1871,7 @@ Connection ~ 4300 4900
 Wire Wire Line
 	2650 1350 2750 1350
 Wire Wire Line
-	2750 1350 2750 1500
+	2750 1350 2750 1650
 Connection ~ 2750 1500
 Wire Wire Line
 	10050 4250 10500 4250
@@ -1905,7 +1898,6 @@ Connection ~ 10500 2750
 Wire Wire Line
 	5700 5800 5250 5800
 Connection ~ 5700 5800
-Connection ~ 5400 4850
 Wire Wire Line
 	1750 4550 1550 4550
 Wire Wire Line
@@ -1935,8 +1927,6 @@ Wire Wire Line
 Wire Wire Line
 	2500 4250 2500 4800
 Connection ~ 1750 6100
-Wire Wire Line
-	1550 6100 2050 6100
 $Comp
 L GND #PWR036
 U 1 1 57D3920E
@@ -1954,14 +1944,9 @@ Wire Wire Line
 Wire Wire Line
 	1150 6150 1150 6000
 Wire Wire Line
-	1550 6000 1550 6100
-Wire Wire Line
 	1650 6000 1650 6100
-Connection ~ 1650 6100
 NoConn ~ 10700 5300
 NoConn ~ 10700 5400
-NoConn ~ 5500 7050
-NoConn ~ 5600 7050
 Wire Wire Line
 	1400 6400 1400 6250
 Wire Wire Line
@@ -1974,23 +1959,52 @@ Wire Wire Line
 	1450 6200 1550 6200
 Wire Wire Line
 	1550 6200 1550 6400
-NoConn ~ 5400 7050
 Wire Wire Line
-	5250 6700 5800 6700
-Wire Wire Line
-	5300 6700 5300 7050
+	5250 6700 5900 6700
 Connection ~ 5300 6700
 Wire Wire Line
-	5400 4850 5400 6500
+	6100 7050 6100 6950
 Wire Wire Line
-	5400 6500 5900 6500
+	6100 6950 6400 6950
 Wire Wire Line
-	5900 6500 5900 7050
+	5900 6700 5900 7050
+Connection ~ 5800 6700
 Wire Wire Line
-	5550 3950 5550 6400
+	5800 7050 5800 6750
 Wire Wire Line
-	5550 6400 6000 6400
+	5700 6750 5800 6750
 Wire Wire Line
-	6000 6400 6000 7050
-Connection ~ 5550 3950
+	5700 5750 5700 6750
+Wire Wire Line
+	5700 7050 5700 6800
+Wire Wire Line
+	5700 6800 5600 6800
+Wire Wire Line
+	5600 6800 5600 4850
+Wire Wire Line
+	5600 7050 5600 6900
+Wire Wire Line
+	5600 6900 5500 6900
+Wire Wire Line
+	5500 6900 5500 3950
+Connection ~ 5500 3950
+Connection ~ 5600 4850
+NoConn ~ 5300 7050
+NoConn ~ 5400 7050
+NoConn ~ 5500 7050
+NoConn ~ 6000 7050
+Wire Wire Line
+	1650 6100 2050 6100
+Text GLabel 1700 6400 3    60   Input ~ 0
+12V_SEIZAE3
+Wire Wire Line
+	1550 6000 1550 6150
+Wire Wire Line
+	1550 6150 1700 6150
+Wire Wire Line
+	1700 6150 1700 6400
+Text GLabel 2650 1650 0    60   Input ~ 0
+12V_SEIZAE3
+Wire Wire Line
+	2750 1650 2650 1650
 $EndSCHEMATC

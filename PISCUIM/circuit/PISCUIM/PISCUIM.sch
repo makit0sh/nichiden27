@@ -1871,7 +1871,7 @@ Connection ~ 4300 4900
 Wire Wire Line
 	2650 1350 2750 1350
 Wire Wire Line
-	2750 1350 2750 1500
+	2750 1350 2750 1650
 Connection ~ 2750 1500
 Wire Wire Line
 	10050 4250 10500 4250
@@ -1927,8 +1927,6 @@ Wire Wire Line
 Wire Wire Line
 	2500 4250 2500 4800
 Connection ~ 1750 6100
-Wire Wire Line
-	1550 6100 2050 6100
 $Comp
 L GND #PWR036
 U 1 1 57D3920E
@@ -1946,10 +1944,7 @@ Wire Wire Line
 Wire Wire Line
 	1150 6150 1150 6000
 Wire Wire Line
-	1550 6000 1550 6100
-Wire Wire Line
 	1650 6000 1650 6100
-Connection ~ 1650 6100
 NoConn ~ 10700 5300
 NoConn ~ 10700 5400
 Wire Wire Line
@@ -1998,4 +1993,18 @@ NoConn ~ 5300 7050
 NoConn ~ 5400 7050
 NoConn ~ 5500 7050
 NoConn ~ 6000 7050
+Wire Wire Line
+	1650 6100 2050 6100
+Text GLabel 1700 6400 3    60   Input ~ 0
+12V_SEIZAE3
+Wire Wire Line
+	1550 6000 1550 6150
+Wire Wire Line
+	1550 6150 1700 6150
+Wire Wire Line
+	1700 6150 1700 6400
+Text GLabel 2650 1650 0    60   Input ~ 0
+12V_SEIZAE3
+Wire Wire Line
+	2750 1650 2650 1650
 $EndSCHEMATC
