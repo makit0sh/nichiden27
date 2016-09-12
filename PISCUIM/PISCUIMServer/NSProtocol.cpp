@@ -26,34 +26,19 @@ NSProtocol::NSProtocol()
     constellationName[19] = "P20";
 }
 
-void NSProtocol::setConstellationName(String p01, String p02,String p03,String p04,String p05,String p06,String p07,String p08,String p09,String p10,String p11,String p12,String p13,String p14,String p15,String p16,String p17,String p18,String p19,String p20)
+boolean NSProtocol::setConstellationName(int pinNo, String s)
 {
-    constellationName[0] = p01;
-    constellationName[1] = p02;
-    constellationName[2] = p03;
-    constellationName[3] = p04;
-    constellationName[4] = p05;
-    constellationName[5] = p06;
-    constellationName[6] = p07;
-    constellationName[7] = p08;
-    constellationName[8] = p09;
-    constellationName[9] = p10;
-    constellationName[10] = p11;
-    constellationName[11] = p12;
-    constellationName[12] = p13;
-    constellationName[13] = p14;
-    constellationName[14] = p15;
-    constellationName[15] = p16;
-    constellationName[16] = p17;
-    constellationName[17] = p18;
-    constellationName[18] = p19;
-    constellationName[19] = p20;
+    if ( 1 <= pinNo && pinNo <=20){
+      constellationName[pinNo-1] = s;
+      return true;
+    }
+    return false;
 }
 
-boolean NSProtocol::getConstellationName(int pinNo, String* s)
+boolean NSProtocol::getConstellationName(int pinNo, String& s)
 {
   if ( 1 <= pinNo && pinNo <= 20){
-    *s = constellationName[pinNo-1];
+    s = constellationName[pinNo-1];
     return true;
   }
   return false;

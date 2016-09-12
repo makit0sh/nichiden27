@@ -13,8 +13,8 @@ class NSProtocol
     public:
         NSProtocol();
         
-        void setConstellationName(String p01, String p02,String p03,String p04,String p05,String p06,String p07,String p08,String p09,String p10,String p11,String p12,String p13,String p14,String p15,String p16,String p17,String p18,String p19,String p20);
-        boolean getConstellationName(int pinNo, String* s);
+        boolean setConstellationName(int pinNo, String s);
+        boolean getConstellationName(int pinNo, String& s);
         
         boolean setPort(int pinNo);
         boolean setPort(String name);
