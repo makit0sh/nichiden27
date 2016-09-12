@@ -9,7 +9,7 @@
 <body onload="pageInit()">
   <h1>投影機無線制御ページ: Acrab 2016</h1>
   <hr>
-  <button class="constellation" id="And" onclick="GETRequest(GETAddress(this, ip[0]));"/>アンドロメダ</button>
-  <button class="constellation" id="Aur" onclick="GETRequest(GETAddress(this, ip[1]));"/>ぎょしゃ</button>
+  <button class="constellation" id="Aur" onclick="getRequest(getAddressFromButton(this));"/>ぎょしゃ</button>
+  <button class="constellation" id="And" onclick="getRequest(getAddressFromButton(this));"/>アンドロメダ</button>
 </body>
 </html>

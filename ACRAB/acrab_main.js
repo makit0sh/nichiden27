@@ -1,21 +1,38 @@
-var ip, constellation = [];
+var ip, constellation,projector = {};
 
-function pageInit(){
+function getIpByConstellation(name){return ip[constellation[name].box];} // target ip address
+
+function pageInit(){ // 読み込み時実行
+  /*** 設定ファイル読み込み ***/
   xhr = new XMLHttpRequest();
   xhr.addEventListener('loadend', function(){ // xhr.readyStateが4になったら実行される
     if(xhr.status === 200){
       var conf = JSON.parse(xhr.response);
       ip = conf.ip;
-      constellation = Object.keys(conf.constellation);
-      ip.forEach(function(value){GETRequest(value + 'gpio/0');}); // 点灯状況を読み込む
-    }
-    else console.error(xhr.status+' '+xhr.statusText);
+      constellation = conf.constellation;
+      projector = conf.projector;
+      Object.keys(ip).forEach(function(ipKey){ // モジュールごとに初期設定(pinと星座/投影機の対応)を送信
+        var address = ip[ipKey];
+        address += 'setConstellationName/status.json?'
+        Object.keys(constellation).forEach(function(consKey){ // 星座ごとにpin番号とか見に行く
+          if(this[consKey].box != ipKey){return;} // 別のBOX管轄の星座は関係ないので捨てる(高々数十個だし)
+          address += this[consKey].pin + '=' + consKey + '&'; // 'p** = ***&'を追加
+        },constellation);
+        Object.keys(projector).forEach(function(projKey,i){ // 投影機ごとにpin番号とか見に行く
+          address += this[projKey].pin + '=' + projKey; // 'p** = ***'を追加
+          address += (i===(Object.keys(this).length-1) ? '' : '&'); // 一番最後以外は'&'つける
+        },projector);
+        console.log('sending initial setting: ' + address);
+        getRequest(address);
+      });
+    }else console.error(xhr.status+' '+xhr.statusText);
   });
   xhr.open("GET", "./acrab_conf.json", true); // 設定ファイルを読み込む
   xhr.send();
 }
 
-function GETAddress(obj, address){
+function getAddressFromButton(obj){
+  var address = getIpByConstellation(obj.id);
   if(obj.classList.contains("on")){
     address += 'gpio/0';
   }
@@ -25,7 +42,7 @@ function GETAddress(obj, address){
   return address;
 }
 
-function GETRequest(address){
+function getRequest(address){
   var xhr= new XMLHttpRequest(); // XMLHTTPRequestのインスタンス
   xhr.addEventListener('loadend', function(){ // xhr.readyStateが4になったら実行される
     if(xhr.status === 200){
@@ -34,13 +51,13 @@ function GETRequest(address){
     }
     else console.error(xhr.status+' '+xhr.statusText);
   });
-  xhr.timeout = 5000; // 5秒でタイムアウト
+  xhr.timeout = 1000; // 1秒でタイムアウト
   xhr.open("GET", address);
   xhr.send();
 }
 
 function checkStatus(stat){
-  constellation.forEach(function(value){
+  Object.keys(constellation).forEach(function(value){
     switch(stat[value]){
       case 1:
         console.log(value + " is on");
