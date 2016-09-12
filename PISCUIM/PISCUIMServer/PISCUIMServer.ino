@@ -156,6 +156,10 @@ void loop() {
         return;
       }
     }
+  } else if (req.indexOf("/allSet/status.json") != -1){
+    nsprotocol.allSet();
+  } else if (req.indexOf("/allClear/status.json") != -1){
+    nsprotocol.allClear();
   } else 
   
   #ifdef ACRAB_DEBUG
