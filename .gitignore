@@ -5,3 +5,5 @@
 .DS_Store
 *~
 *.swp
+
+personal_wifi_setting.h

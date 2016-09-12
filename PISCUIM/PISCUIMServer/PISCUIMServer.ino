@@ -8,38 +8,48 @@
 
 #include <ESP8266WiFi.h>
 #include "NSProtocol.h"
+#include "personal_wifi_setting.h"
 
-/**
-    define NORTH_HEMISPHERE or SOUTH_HEMISPHER
-    use for static IP
-*/
+/** 
+ *  define NORTH_HEMISPHERE or SOUTH_HEMISPHER
+ *  use for static IP
+ */
 #define NORTH_HEMISPHERE
+#define ACRAB_DEBUG
 
 #ifdef NORTH_HEMISPHERE
-IPAddress ip = (192, 168, 11, 100);
+IPAddress ip(192, 168, 11, 100);
 #endif
 #ifdef SOUTH_HEMISPHERE
-IPAddress ip = (192, 168, 11, 101);
+IPAddress ip(192, 168, 11, 101);
 #endif
 
 IPAddress gateway(192, 168, 11, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 /**
-   set your ssid & password
-*/
-const char* ssid = "your-ssid";
-const char* password = "your-password";
+ * set your ssid & password
+ */
+const char* ssid = SSID;
+const char* password = PASS;
 
 // Create an instance of the server
 // specify the port to listen on as an argument
 WiFiServer server(80);
+#ifdef ACRAB_DEBUG
+const int led = 13;
+#endif
 
 NSProtocol nsprotocol;
 
 void setup() {
   Serial.begin(9600);
   delay(10);
+
+  #ifdef ACRAB_DEBUG
+  pinMode(led, OUTPUT);
+  digitalWrite(led, 0);
+  #endif
 
   // Connect to WiFi network
   //Serial.println();
@@ -76,8 +86,15 @@ void loop() {
 
   // Wait until the client sends some data
   //Serial.println("new client");
-  while (!client.available()) {
+  unsigned int timeCount = 0;
+  while (!client.available()){
     delay(1);
+    timeCount++;
+    if (timeCount >= 500){
+      Serial.println("Connection Timeout");
+      client.stop();
+      return;
+    }
   }
 
   // Read the first line of the request
@@ -140,6 +157,22 @@ void loop() {
     client.stop();
     return;
   }
+  #ifdef ACRAB_DEBUG
+  int val;
+  if (req.indexOf("/gpio/0") != -1)
+    val = 0;
+  else if (req.indexOf("/gpio/1") != -1)
+    val = 1;
+  #endif
+  else {
+    //Serial.println("invalid request");
+    client.stop();
+    return;
+  }
+
+  #ifdef ACRAB_DEBUG
+  digitalWrite(led, val);
+  #endif
 
   client.flush();
 
@@ -153,6 +186,11 @@ void loop() {
   // Prepare the response
   String json;
   String s = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
+  #ifdef ACRAB_DEBUG
+  s += "{\"And\": ";
+  s += String(val);
+  s += ", \"Aql\": -1}";
+  #endif
   s += nsprotocol.getJsonStatus();
   s += "\n";
   
