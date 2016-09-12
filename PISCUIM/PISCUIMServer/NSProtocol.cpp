@@ -123,13 +123,13 @@ String NSProtocol::getJsonStatus()
     s += "\"";
     s += constellationName[i];
     s += "\":";
-    s += pinStatus[i];
+    s += (pinStatus[i])?"1":"0";
     s += ",";
   }
   s += "\"";
   s += constellationName[i];
   s += "\":";
-  s += pinStatus[i];
+  s += (pinStatus[i])?"1":"0";
   s += "}";
   return s;
 }
