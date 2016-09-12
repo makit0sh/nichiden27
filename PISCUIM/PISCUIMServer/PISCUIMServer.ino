@@ -30,8 +30,8 @@ IPAddress subnet(255, 255, 255, 0);
 /**
  * set your ssid & password
  */
-const char* ssid = SSID;
-const char* password = PASS;
+const char* ssid = MY_SSID;
+const char* password = MY_PASS;
 
 // Create an instance of the server
 // specify the port to listen on as an argument
@@ -102,6 +102,10 @@ void loop() {
   //Serial.println(req);
   client.flush();
 
+  #ifdef ACRAB_DEBUG
+  int val;
+  #endif
+  
   // Match the request
   if (req.indexOf("/setPin/status.json?") != -1) {
     int i = req.indexOf("/setPin/status.json") + static_cast<String>("/setPin/status.json?").length() + 1;
@@ -152,19 +156,16 @@ void loop() {
         return;
       }
     }
-  } else {
-    //Serial.println("invalid request");
-    client.stop();
-    return;
-  }
+  } else 
+  
   #ifdef ACRAB_DEBUG
-  int val;
   if (req.indexOf("/gpio/0") != -1)
     val = 0;
   else if (req.indexOf("/gpio/1") != -1)
     val = 1;
   #endif
-  else {
+  
+  {
     //Serial.println("invalid request");
     client.stop();
     return;
