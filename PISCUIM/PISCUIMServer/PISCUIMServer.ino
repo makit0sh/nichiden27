@@ -13,15 +13,15 @@
 /*
    for debug
 */
-#define ACRAB_DEBUG
-#define PISCUIM_DEBUG
+//#define ACRAB_DEBUG
+//#define PISCUIM_DEBUG
 
 
 /**
     define NORTH_HEMISPHERE or SOUTH_HEMISPHER
     use for static IP
 */
-#define SOUTH_HEMISPHERE
+#define NORTH_HEMISPHERE
 
 #ifdef NORTH_HEMISPHERE
 IPAddress ip(192, 168, 11, 100);
@@ -124,12 +124,19 @@ void loop() {
   client.flush();
 
 #ifdef ACRAB_DEBUG
-  int val;
+#ifdef NORTH_HEMISPHERE
+  if (req.indexOf("Aur=1") != -1) digitalWrite(led, 1);
+  else if (req.indexOf("Aur=0") != -1) digitalWrite(led, 0);
+#endif
+#ifdef SOUTH_HEMISPHERE
+  if (req.indexOf("And=1") != -1) digitalWrite(led, 1);
+  else if (req.indexOf("And=0") != -1) digitalWrite(led, 0);
+#endif
 #endif
 
   // Match the request
 
-
+  
   if (req.indexOf("/refresh_confirm/status.json") != -1) {
   } else if (req.indexOf("/setPort/status.json?") != -1) {
     int i = req.indexOf("/setPort/status.json?") + 21;
@@ -195,17 +202,7 @@ void loop() {
     nsprotocol.allSet();
   } else if (req.indexOf("/allClear/status.json") != -1) {
     nsprotocol.allClear();
-    
-#ifdef ACRAB_DEBUG
-  }else if (req.indexOf("/gpio/0") != -1){
-    val = 0;
-    digitalWrite(led, val);
-  }else if (req.indexOf("/gpio/1") != -1){
-    val = 1;
-    digitalWrite(led, val);
-#endif
-
-  }else{
+  } else{
 #ifdef PISCUIM_DEBUG
     Serial.println("invalid request");
 #endif
@@ -226,18 +223,7 @@ void loop() {
   String json;
   String s = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
 
-#ifdef ACRAB_DEBUG
-#ifdef NORTH_HEMISPHERE
-  s += "{\"Aur\": ";
-#endif
-#ifdef SOUTH_HEMISPHERE
-  s += "{\"And\": ";
-#endif
-  s += String(val);
-  s += "}";
-#endif
-
-  //s += nsprotocol.getJsonStatus();
+  s += nsprotocol.getJsonStatus();
   s += "\n";
 
   // Send the response to the client
