@@ -17,7 +17,7 @@
       "CMa": {"name": "おおいぬ", "box": "N", "pin": "p05"},
       "CMi": {"name": "こいぬ", "box": "N", "pin": "p06"},
       "Cnc": {"name": "かに", "box": "N", "pin": "p07"},
-      "Cyg": {"name": "はくちょ ", "box": "S", "pin": "p07"},
+      "Cyg": {"name": "はくちょう", "box": "S", "pin": "p07"},
       "Gem": {"name": "ふたご", "box": "N", "pin": "p08"},
       "Leo": {"name": "しし", "box": "N", "pin": "p09"},
       "Lep": {"name": "うさぎ", "box": "S", "pin": "p08"},
