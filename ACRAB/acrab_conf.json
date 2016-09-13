@@ -3,7 +3,7 @@
       "N": "http://192.168.11.100/",
       "S": "http://192.168.11.101/"
   },
-  "constellation": {
+  "port": {
       "And": {"name": "アンドロメダ", "box": "S", "pin": "p01"},
       "Aql": {"name": "わし", "box": "S", "pin": "p02"},
       "Aqr": {"name": "みずがめ", "box": "S", "pin": "p03"},
@@ -31,9 +31,7 @@
       "Tau": {"name": "おうし", "box": "S", "pin": "p13"},
       "UMa": {"name": "おおぐま", "box": "N", "pin": "p13"},
       "Vir": {"name": "おとめ", "box": "N", "pin": "p14"},
-      "Lib": {"name": "てんびん", "box": "S", "pin": "p14"}
-  },
-  "projector": {
+      "Lib": {"name": "てんびん", "box": "S", "pin": "p14"},
       "St1": {"name": "恒星(1)", "pin": "p17"},
       "St2": {"name": "恒星(2)", "pin": "p18"},
       "Fst": {"name": "一等星", "pin": "p19"},

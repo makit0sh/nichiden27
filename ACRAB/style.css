@@ -3,7 +3,7 @@ body {
   background-color: #202020;
 }
 
-button.constellation {
+button {
   display: block;
   width: 150px;
   height: 50px;
@@ -18,11 +18,11 @@ button.constellation {
   margin: 15px 6px;
 }
 
-button.constellation:hover {
+button:hover {
   outline-color: #363;
 }
 
-button.constellation:active {
+button:active {
   background-color: #666;
 }
 

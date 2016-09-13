@@ -1,6 +1,4 @@
-var ip, constellation,projector = {};
-
-function getIpByConstellation(name){return ip[constellation[name].box];} // target ip address
+var ip, port = {};
 
 function pageInit(){ // 読み込み時実行
   /*** 設定ファイル読み込み ***/
@@ -9,12 +7,11 @@ function pageInit(){ // 読み込み時実行
     if(xhr.status === 200){
       var conf = JSON.parse(xhr.response);
       ip = conf.ip;
-      constellation = conf.constellation;
-      projector = conf.projector;
-      pinSettingSend();
+      port = conf.port;
+      pinSettingSend(); // pin設定
     }else console.error(xhr.status+' '+xhr.statusText);
   });
-  xhr.open("GET", "./acrab_conf.json", true); // 設定ファイルを読み込む
+  xhr.open("GET", "./acrab_conf.json", true); // 設定ファイルを読み込むリクエスト
   xhr.send();
 }
 
@@ -22,26 +19,36 @@ function pinSettingSend(){
   Object.keys(ip).forEach(function(ipKey){ // モジュールごとに初期設定(pinと星座/投影機の対応)を送信
     var address = ip[ipKey] + 'setConstellationName/status.json?';
 
-    Object.keys(constellation).forEach(function(consKey){ // 星座ごとにpin番号とか見に行く
-      if(this[consKey].box != ipKey){return;} // 別のBOX管轄の星座は関係ないので捨てる(高々数十個だし)
-      address += this[consKey].pin + '=' + consKey + '&'; // 'p** = ***&'を追加
-    },constellation);
+    Object.keys(port).forEach(function(portKey){ // 星座/投影機ごとにpin番号とか見に行く
+      if(this[portKey].box != null && this[portKey].box != ipKey){return;} // 別のBOX管轄の星座は関係ないので捨てる
+      address += this[portKey].pin + '=' + portKey + '&'; // 'p** = ***&'を追加
+      document.getElementById(portKey).innerText = this[portKey].name; // ついでにボタンに名前をつける
+    },port);
+    address = address.substr(0,address.length - 1); // 末尾の'&'を削る
 
-    Object.keys(projector).forEach(function(projKey,i){ // 投影機ごとにpin番号とか見に行く
-      address += this[projKey].pin + '=' + projKey; // 'p** = ***'を追加
-      address += (i===(Object.keys(this).length-1) ? '' : '&'); // 一番最後以外は'&'つける
-    },projector);
     console.info('sending initial setting: ' + address);
     getRequest(address);
   });
 }
 
-function getAddressFromButton(obj){
-  var address = getIpByConstellation(obj.id) + 'setPort/status.json?' + obj.id + '=';
+function requestFromConstellation(obj){
+  var address = ip[port[obj.id].box] + 'setPort/status.json?' + obj.id + '=';
   if(obj.classList.contains("on")) address += 0;
   else address += 1;
   console.debug(address);
-  return address;
+  getRequest(address);
+  return;
+}
+
+function requestFromProjector(obj){
+  Object.keys(ip).forEach(function(key){
+    var address = ip[key] + 'setPort/status.json?' + obj.id + '=';
+    if(obj.classList.contains("on")) address += 0;
+    else address += 1;
+    console.debug(address);
+    getRequest(address);
+  });
+  return;
 }
 
 function getRequest(address){
@@ -59,15 +66,15 @@ function getRequest(address){
 }
 
 function checkStatus(stat){
-  Object.keys(constellation).forEach(function(value){
-    switch(stat[value]){
+  Object.keys(port).forEach(function(key){
+    switch(stat[key]){
       case 1:
-        console.info(value + " is on");
-        document.getElementById(value).classList.add("on");
+        //console.info(key + " is on");
+        document.getElementById(key).classList.add("on");
         break;
       case 0:
-        console.info(value + " is off");
-        document.getElementById(value).classList.remove("on");
+        //console.info(key + " is off");
+        document.getElementById(key).classList.remove("on");
         break;
     }
   });
