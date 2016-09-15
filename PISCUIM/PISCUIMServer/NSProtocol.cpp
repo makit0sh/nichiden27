@@ -108,9 +108,14 @@ char* NSProtocol::getPacket(char* c)
 {
   c[0] = 'N';
   c[1] = 'S';
-  c[2] = pinStatus[0] + pinStatus[1] * 2 + pinStatus[2] * 4 + pinStatus[3] * 8 + pinStatus[4] * 16 + pinStatus[5] * 32 + pinStatus[6] * 64 + pinStatus[7] * 128;
-  c[3] = pinStatus[8] + pinStatus[9] * 2 + pinStatus[10] * 4 + pinStatus[11] * 8 + pinStatus[12] * 16 + pinStatus[13] * 32 + pinStatus[14] * 64 + pinStatus[15] * 128;
-  c[4] = pinStatus[16] * 128 + pinStatus[17] * 64 + pinStatus[18] * 32 + pinStatus[19] * 16 + 5;
+  //c[2] = pinStatus[0] + pinStatus[1] * 2 + pinStatus[2] * 4 + pinStatus[3] * 8 + pinStatus[4] * 16 + pinStatus[5] * 32 + pinStatus[6] * 64 + pinStatus[7] * 128;
+  //c[3] = pinStatus[8] + pinStatus[9] * 2 + pinStatus[10] * 4 + pinStatus[11] * 8 + pinStatus[12] * 16 + pinStatus[13] * 32 + pinStatus[14] * 64 + pinStatus[15] * 128;
+  //c[4] = pinStatus[16] * 128 + pinStatus[17] * 64 + pinStatus[18] * 32 + pinStatus[19] * 16 + 5;
+  int i;
+  for (i=2;i<22;i++){
+    c[i] = pinStatus[i-2]?'1':'0';
+  }
+  c[22] = '\n';
   return c;
 }
 

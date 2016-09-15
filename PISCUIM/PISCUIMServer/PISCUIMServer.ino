@@ -1,5 +1,5 @@
 /*
-    PISCUIM Server with ESP8266
+    PISCIUM Server with ESP8266
     based on "WiFiWebServer"
     (https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WiFi/examples/WiFiWebServer)
 
@@ -218,10 +218,10 @@ void loop() {
 
   client.flush();
 
-  char packet[5];
+  char packet[23];
   nsprotocol.getPacket(packet);
   int i;
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < 23; i++) {
     Serial.write(packet[i]);
   }
 
