@@ -1,0 +1,47 @@
+body {
+  color: #ddd;
+  background-color: #202020;
+}
+
+ul{
+  display: table;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  display: table-cell;
+  width: 150px;
+  height: 50px;
+  font-size:1.2em;
+  color: #aaa;
+  background-color: #444;
+  border-style: none;
+  outline: solid;
+  outline-color: #030;
+  outline-size: 2px;
+  outline-offset: 2px;
+  margin: 15px 12px;
+}
+
+button:hover {
+  outline-color: #363;
+}
+
+button:active {
+  background-color: #666;
+}
+
+button.on {
+  color: #ccc;
+  background-color: #633;
+  outline-color: #311;
+}
+
+button.on:hover {
+  outline-color: #611;
+}
+
+button.on:active {
+  background-color: #655;
+}

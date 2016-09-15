@@ -124,12 +124,19 @@ void loop() {
   client.flush();
 
 #ifdef ACRAB_DEBUG
-  int val;
+#ifdef NORTH_HEMISPHERE
+  if (req.indexOf("Aur=1") != -1) digitalWrite(led, 1);
+  else if (req.indexOf("Aur=0") != -1) digitalWrite(led, 0);
+#endif
+#ifdef SOUTH_HEMISPHERE
+  if (req.indexOf("And=1") != -1) digitalWrite(led, 1);
+  else if (req.indexOf("And=0") != -1) digitalWrite(led, 0);
+#endif
 #endif
 
   // Match the request
 
-
+  
   if (req.indexOf("/refresh_confirm/status.json") != -1) {
   } else if (req.indexOf("/setPort/status.json?") != -1) {
     int i = req.indexOf("/setPort/status.json?") + 21;
@@ -195,26 +202,13 @@ void loop() {
     nsprotocol.allSet();
   } else if (req.indexOf("/allClear/status.json") != -1) {
     nsprotocol.allClear();
-  } else
-
-#ifdef ACRAB_DEBUG
-    if (req.indexOf("/gpio/0") != -1)
-      val = 0;
-    else if (req.indexOf("/gpio/1") != -1)
-      val = 1;
-#endif
-
-  {
+  } else{
 #ifdef PISCUIM_DEBUG
     Serial.println("invalid request");
 #endif
     client.stop();
     return;
   }
-
-#ifdef ACRAB_DEBUG
-  digitalWrite(led, val);
-#endif
 
   client.flush();
 
@@ -228,12 +222,6 @@ void loop() {
   // Prepare the response
   String json;
   String s = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nAccess-Control-Allow-Origin: *\r\n\r\n";
-
-#ifdef ACRAB_DEBUG
-  s += "{\"And\": ";
-  s += String(val);
-  s += ", \"Aql\": -1}";
-#endif
 
   s += nsprotocol.getJsonStatus();
   s += "\n";
