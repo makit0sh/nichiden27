@@ -31,7 +31,7 @@ function pinSettingSend(){
     var address = ip[ipKey] + 'setConstellationName/status.json?';
 
     Object.keys(port).forEach(function(portKey){ // 星座|投影機ごとにpin番号見に行く
-      if(this[portKey].box != null && this[portKey].box != ipKey){return;} // 別のBOX管轄の星座は関係ないので捨てる
+      if(this[portKey].box != 'NS' && this[portKey].box != ipKey){return;} // 別のBOX管轄の星座は関係ないので捨てる
       address += this[portKey].pin + '=' + portKey + '&'; // 'p** = ***&'を追加
     },port);
     address = address.substr(0,address.length - 1); // 末尾の'&'を削る
@@ -100,8 +100,8 @@ function getRequest(address){
 
 function checkStatus(stat){
   Object.keys(port).forEach(function(key){ // 星座|投影機ごと
-    if(stat[key] && document.getElementById(key)) document.getElementById(key).classList.add('on');
-    else if(document.getElementById(key)) document.getElementById(key).classList.remove('on');
+    if(stat[key] === 1 && document.getElementById(key)) document.getElementById(key).classList.add('on');
+    else if(stat[key] === 0 && document.getElementById(key)) document.getElementById(key).classList.remove('on');
   });
   Object.keys(group).forEach(function(groupKey){ // 星座グループごと
     if(!group[groupKey].value) return;
