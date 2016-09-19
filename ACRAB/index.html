@@ -46,14 +46,21 @@
   <button id="Lib" onclick="requestFromConstellation(this);"/></button>
   </ul>
   <ul>
-  <button id="St1" onclick="requestFromProjector(this);"/></button>
-  <button id="St2" onclick="requestFromProjector(this);"/></button>
-  <button id="Fst" onclick="requestFromProjector(this);"/></button>
-  <button id="Gxy" onclick="requestFromProjector(this);"/></button>
+  <button class="big" id="Spc" onclick="requestFromGroup(this);"/></button>
+  <button class="big" id="Spt" onclick="requestFromGroup(this);"/></button>
+  <button class="big" id="Smt" onclick="requestFromGroup(this);"/></button>
+  <button class="big" id="Wnt" onclick="requestFromGroup(this);"/></button>
+  <button class="big" id="Wnd" onclick="requestFromGroup(this);"/></button>
+  <button class="big all" id="Set" onclick="requestFromAll(this);"/></button>
+  <button class="big all" id="Cle" onclick="requestFromAll(this);"/></button>
   </ul>
   <ul>
-  <button onclick="getRequest("http://192.168.0.100/allSet/status.json/");"/>allSet</button>
-  <button onclick="getRequest("http://192.168.0.100/allClear/status.json/");"/>allClear</button>
+  <button class="projector" id="Sta" onclick="requestFromGroup(this);"/></button>
+  <!--(FOR DEBUG)
+  <button class="projector" id="St1" onclick="requestFromProjector(this);"/></button>
+  <button class="projector" id="St2" onclick="requestFromProjector(this);"/></button>-->
+  <button class="projector" id="Fst" onclick="requestFromProjector(this);"/></button>
+  <button class="projector" id="Gxy" onclick="requestFromProjector(this);"/></button>
   </ul>
 </body>
 </html>
