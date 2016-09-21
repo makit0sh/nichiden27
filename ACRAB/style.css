@@ -1,6 +1,7 @@
 body {
   color: #ddd;
   background-color: #000;
+  font-family: Arial,“ヒラギノ角ゴ ProN W3″,“Hiragino Kaku Gothic ProN”,“メイリオ”,Meiryo,sans-serif;
 }
 
 ul{
@@ -16,6 +17,7 @@ button {
   height: 50px;
   clear: both;
   font-size: 18px;
+  text-align: center;
   vertical-align: middle;
   white-space: nowrap;
   overflow : hidden;
@@ -29,9 +31,10 @@ button {
   margin: 15px 12px;
   box-shadow: 0 0 10px 8px #111;
   transition: .5s;
+  transform: scaleX(1.001); /* for windows antialias */
 }
 button:hover {
-  font-size: 22px;
+  font-size: 20px;
   outline-color: #474;
   box-shadow: 0 0 10px 10px #222;
 }
