@@ -1,6 +1,6 @@
 var ip, port, group = {};
 
-function pageInit(){ // 読み込み時実行
+(function(){ // 読み込み時実行
   /*** 設定ファイル ***/
   $.getJSON("acrab_conf.json", function(data){
     ip = data.ip;
@@ -11,7 +11,7 @@ function pageInit(){ // 読み込み時実行
     });
     pinSettingSend(); // pin設定
   });
-}
+}());
 
 function pinSettingSend(){
   $.each(ip, function(ipKey){ // モジュールごとに初期設定(pinと星座/投影機の対応)を送信
@@ -22,62 +22,24 @@ function pinSettingSend(){
     });
     address = address.substr(0,address.length - 1); // 末尾の'&'を削る
     console.info('sending initial setting: ' + address);
-    getRequest(address);
-  });
-}
-
-function portStat(obj){return '=' + ($(obj).hasClass('on') ? 0 : 1);}
-
-function requestFromConstellation(obj){
-  var address = ip[port[obj.id].box] + 'setPort/status.json?' + obj.id + portStat(obj);
-  console.debug(address);
-  getRequest(address);
-  return;
-}
-
-function requestFromProjector(obj){
-  $.each(ip, function(){
-    var address = this + 'setPort/status.json?' + obj.id + portStat(obj);
-    console.debug(address);
-    getRequest(address);
+    getRequest(address).done(function(res){checkStatus(res)});
   });
   return;
-}
-
-function requestFromAll(obj){
-  $.each(ip, function(){
-    var address = this + (obj.id==='Set' ? 'allSet' : 'allClear') + '/status.json';
-    console.debug(address);
-    getRequest(address);
-  });
-  return;
-}
-
-function requestFromGroup(obj){
-  var address = {}
-  $.map(ip, function(value, key){
-   address[key] = value + 'setPort/status.json?';
-  })
-  $.each(group[obj.id].value, function(){ // 各星座ごとに設定を足していく
-    if(port[this].box.match('N')) address.N += this + portStat(obj) + '&';
-    if(port[this].box.match('S')) address.S += this + portStat(obj) + '&';
-  });
-  $.each(address, function(key){ // 南北それぞれ送信
-    if(this.slice(-1) === '&') address[key] = this.substr(0,this.length - 1); // 末尾が'&'なら削る
-    console.debug(address[key]);
-    getRequest(address[key]);
-  });
 }
 
 function getRequest(address){
+  console.debug(address);
+  var deferred = $.Deferred(); // 非同期通信なので完了時にデータを渡す処理
   $.get({
     url: address, dataType: 'json', timeout: 1000
-  }).done(function(data) {
-    console.debug(data);
-    checkStatus(data); // checkStatusでボタンのスタイル変更
+  }).done(function(res) {
+    console.debug(res);
+    deferred.resolve(res);
   }).fail(function(xhr) {
     console.error(xhr.status+' '+xhr.statusText);
+    deferred.reject;
   });
+  return deferred;
 }
 
 function checkStatus(stat){
@@ -88,8 +50,48 @@ function checkStatus(stat){
   $.each(group, function(key){ // 星座グループごと
     if(!this.value) return;
     var isOn = true;
-    $.each(this.value, function(){isOn &= stat[this];}); // 各星座がONかどうかのANDをとる
+    $.each(this.value, function(){isOn &= $('#'+this).hasClass('on');}); // 各星座がオンかどうかのANDをとる
     if(isOn) $('#'+key).addClass('on');
     else $('#'+key).removeClass('on');
   });
+  return;
+}
+
+
+var button = {
+  constellation: function(obj){
+    var address = ip[port[obj.id].box] + 'setPort/status.json?' + obj.id + button.stat(obj);
+    getRequest(address).done(function(res){checkStatus(res)});
+    return;
+  },
+  projector: function(obj){
+    $.each(ip, function(){
+      var address = this + 'setPort/status.json?' + obj.id + button.stat(obj);
+      getRequest(address).done(function(res){checkStatus(res)});
+    });
+    return;
+  },
+  all: function(obj){
+    $.each(ip, function(){
+      var address = this + (obj.id==='Set' ? 'allSet' : 'allClear') + '/status.json';
+      getRequest(address).done(function(res){checkStatus(res)});
+    });
+    return;
+  },
+  group: function(obj){
+    var address = {};
+    $.map(ip, function(value, key){
+     address[key] = value + 'setPort/status.json?';
+    })
+    $.each(group[obj.id].value, function(){ // 各(星座|投影機)ごとに設定を足していく
+      if(port[this].box.match('N')) address.N += this + button.stat(obj) + '&';
+      if(port[this].box.match('S')) address.S += this + button.stat(obj) + '&';
+    });
+    $.each(address, function(key){ // 南北それぞれ送信
+      if(this.slice(-1) === '&') address[key] = this.substr(0,this.length - 1); // 末尾が'&'なら削る
+      getRequest(address[key]).done(function(res){checkStatus(res)});
+    });
+    return;
+  },
+  stat: function(obj){return '=' + ($(obj).hasClass('on') ? 0 : 1);}
 }

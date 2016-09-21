@@ -7,61 +7,60 @@
   <script src = "acrab_main.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css"></style>
 </head>
-<body onload="pageInit()">
+<body>
   <h1>投影機無線制御ページ: Acrab 2016</h1>
   <hr>
   <ul>
-    <button id="And" onclick="requestFromConstellation(this);"/></button>
-    <button id="Aql" onclick="requestFromConstellation(this);"/></button>
-    <button id="Aqr" onclick="requestFromConstellation(this);"/></button>
-    <button id="Ari" onclick="requestFromConstellation(this);"/></button>
-    <button id="Aur" onclick="requestFromConstellation(this);"/></button>
-    <button id="Boo" onclick="requestFromConstellation(this);"/></button>
-    <button id="Cap" onclick="requestFromConstellation(this);"/></button>
+    <button id="And" onclick="button.constellation(this);"/></button>
+    <button id="Aql" onclick="button.constellation(this);"/></button>
+    <button id="Aqr" onclick="button.constellation(this);"/></button>
+    <button id="Ari" onclick="button.constellation(this);"/></button>
+    <button id="Aur" onclick="button.constellation(this);"/></button>
+    <button id="Boo" onclick="button.constellation(this);"/></button>
+    <button id="Cap" onclick="button.constellation(this);"/></button>
   </ul>
   <ul>
-  <button id="Cas" onclick="requestFromConstellation(this);"/></button>
-  <button id="Cep" onclick="requestFromConstellation(this);"/></button>
-  <button id="Cet" onclick="requestFromConstellation(this);"/></button>
-  <button id="CMa" onclick="requestFromConstellation(this);"/></button>
-  <button id="CMi" onclick="requestFromConstellation(this);"/></button>
-  <button id="Cnc" onclick="requestFromConstellation(this);"/></button>
-  <button id="Cyg" onclick="requestFromConstellation(this);"/></button>
+  <button id="Cas" onclick="button.constellation(this);"/></button>
+  <button id="Cep" onclick="button.constellation(this);"/></button>
+  <button id="Cet" onclick="button.constellation(this);"/></button>
+  <button id="CMa" onclick="button.constellation(this);"/></button>
+  <button id="CMi" onclick="button.constellation(this);"/></button>
+  <button id="Cnc" onclick="button.constellation(this);"/></button>
+  <button id="Cyg" onclick="button.constellation(this);"/></button>
   </ul>
   <ul>
-  <button id="Gem" onclick="requestFromConstellation(this);"/></button>
-  <button id="Leo" onclick="requestFromConstellation(this);"/></button>
-  <button id="Lep" onclick="requestFromConstellation(this);"/></button>
-  <button id="Lyr" onclick="requestFromConstellation(this);"/></button>
-  <button id="Ori" onclick="requestFromConstellation(this);"/></button>
-  <button id="Peg" onclick="requestFromConstellation(this);"/></button>
-  <button id="Per" onclick="requestFromConstellation(this);"/></button>
+  <button id="Gem" onclick="button.constellation(this);"/></button>
+  <button id="Leo" onclick="button.constellation(this);"/></button>
+  <button id="Lep" onclick="button.constellation(this);"/></button>
+  <button id="Lyr" onclick="button.constellation(this);"/></button>
+  <button id="Ori" onclick="button.constellation(this);"/></button>
+  <button id="Peg" onclick="button.constellation(this);"/></button>
+  <button id="Per" onclick="button.constellation(this);"/></button>
   </ul>
   <ul>
-  <button id="Psc" onclick="requestFromConstellation(this);"/></button>
-  <button id="Sco" onclick="requestFromConstellation(this);"/></button>
-  <button id="Sgr" onclick="requestFromConstellation(this);"/></button>
-  <button id="Tau" onclick="requestFromConstellation(this);"/></button>
-  <button id="UMa" onclick="requestFromConstellation(this);"/></button>
-  <button id="Vir" onclick="requestFromConstellation(this);"/></button>
-  <button id="Lib" onclick="requestFromConstellation(this);"/></button>
+  <button id="Psc" onclick="button.constellation(this);"/></button>
+  <button id="Sco" onclick="button.constellation(this);"/></button>
+  <button id="Sgr" onclick="button.constellation(this);"/></button>
+  <button id="Tau" onclick="button.constellation(this);"/></button>
+  <button id="UMa" onclick="button.constellation(this);"/></button>
+  <button id="Vir" onclick="button.constellation(this);"/></button>
+  <button id="Lib" onclick="button.constellation(this);"/></button>
   </ul>
   <ul>
-  <button class="big" id="Spc" onclick="requestFromGroup(this);"/></button>
-  <button class="big" id="Spt" onclick="requestFromGroup(this);"/></button>
-  <button class="big" id="Smt" onclick="requestFromGroup(this);"/></button>
-  <button class="big" id="Wnt" onclick="requestFromGroup(this);"/></button>
-  <button class="big" id="Wnd" onclick="requestFromGroup(this);"/></button>
-  <button class="big all" id="Set" onclick="requestFromAll(this);"/></button>
-  <button class="big all" id="Cle" onclick="requestFromAll(this);"/></button>
+  <button class="big" id="Spc" onclick="button.group(this);"/></button>
+  <button class="big" id="Spt" onclick="button.group(this);"/></button>
+  <button class="big" id="Smt" onclick="button.group(this);"/></button>
+  <button class="big" id="Wnt" onclick="button.group(this);"/></button>
+  <button class="big" id="Wnd" onclick="button.group(this);"/></button>
+  <button class="big all" id="Set" onclick="button.all(this);"/></button>
+  <button class="big all" id="Cle" onclick="button.all(this);"/></button>
   </ul>
   <ul>
-  <button class="projector" id="Sta" onclick="requestFromGroup(this);"/></button>
-  <!--(FOR DEBUG)
-  <button class="projector" id="St1" onclick="requestFromProjector(this);"/></button>
-  <button class="projector" id="St2" onclick="requestFromProjector(this);"/></button>-->
-  <button class="projector" id="Fst" onclick="requestFromProjector(this);"/></button>
-  <button class="projector" id="Gxy" onclick="requestFromProjector(this);"/></button>
+  <button class="projector" id="Sta" onclick="button.group(this);"/></button>
+  <button class="projector debug" id="St1" onclick="button.projector(this);"/></button>
+  <button class="projector debug" id="St2" onclick="button.projector(this);"/></button>
+  <button class="projector" id="Fst" onclick="button.projector(this);"/></button>
+  <button class="projector" id="Gxy" onclick="button.projector(this);"/></button>
   </ul>
 </body>
 </html>
