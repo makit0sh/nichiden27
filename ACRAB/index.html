@@ -1,67 +1,77 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Acrab main</title>
   <script src = "js/jquery-3.1.0.js"></script>
-  <script src = "acrab_main.js"></script>
+  <script src = "js/acrab_main.js"></script>
+  <script src = "js/acrab_script.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css"></style>
 </head>
 <body>
   <h1>投影機無線制御ページ: Acrab 2016</h1>
+  <ul class="tab_area">
+    <li>メイン</li>
+    <li>公演用画面</li>
+  </ul>
   <hr>
-  <ul>
-    <button id="And" onclick="button.constellation(this);"/></button>
-    <button id="Aql" onclick="button.constellation(this);"/></button>
-    <button id="Aqr" onclick="button.constellation(this);"/></button>
-    <button id="Ari" onclick="button.constellation(this);"/></button>
-    <button id="Aur" onclick="button.constellation(this);"/></button>
-    <button id="Boo" onclick="button.constellation(this);"/></button>
-    <button id="Cap" onclick="button.constellation(this);"/></button>
-  </ul>
-  <ul>
-  <button id="Cas" onclick="button.constellation(this);"/></button>
-  <button id="Cep" onclick="button.constellation(this);"/></button>
-  <button id="Cet" onclick="button.constellation(this);"/></button>
-  <button id="CMa" onclick="button.constellation(this);"/></button>
-  <button id="CMi" onclick="button.constellation(this);"/></button>
-  <button id="Cnc" onclick="button.constellation(this);"/></button>
-  <button id="Cyg" onclick="button.constellation(this);"/></button>
-  </ul>
-  <ul>
-  <button id="Gem" onclick="button.constellation(this);"/></button>
-  <button id="Leo" onclick="button.constellation(this);"/></button>
-  <button id="Lep" onclick="button.constellation(this);"/></button>
-  <button id="Lyr" onclick="button.constellation(this);"/></button>
-  <button id="Ori" onclick="button.constellation(this);"/></button>
-  <button id="Peg" onclick="button.constellation(this);"/></button>
-  <button id="Per" onclick="button.constellation(this);"/></button>
-  </ul>
-  <ul>
-  <button id="Psc" onclick="button.constellation(this);"/></button>
-  <button id="Sco" onclick="button.constellation(this);"/></button>
-  <button id="Sgr" onclick="button.constellation(this);"/></button>
-  <button id="Tau" onclick="button.constellation(this);"/></button>
-  <button id="UMa" onclick="button.constellation(this);"/></button>
-  <button id="Vir" onclick="button.constellation(this);"/></button>
-  <button id="Lib" onclick="button.constellation(this);"/></button>
-  </ul>
-  <ul>
-  <button class="big" id="Spc" onclick="button.group(this);"/></button>
-  <button class="big" id="Spt" onclick="button.group(this);"/></button>
-  <button class="big" id="Smt" onclick="button.group(this);"/></button>
-  <button class="big" id="Wnt" onclick="button.group(this);"/></button>
-  <button class="big" id="Wnd" onclick="button.group(this);"/></button>
-  <button class="big all" id="Set" onclick="button.all(this);"/></button>
-  <button class="big all" id="Cle" onclick="button.all(this);"/></button>
-  </ul>
-  <ul>
-  <button class="projector" id="Sta" onclick="button.group(this);"/></button>
-  <button class="projector debug" id="St1" onclick="button.projector(this);"/></button>
-  <button class="projector debug" id="St2" onclick="button.projector(this);"/></button>
-  <button class="projector" id="Fst" onclick="button.projector(this);"/></button>
-  <button class="projector" id="Gxy" onclick="button.projector(this);"/></button>
-  </ul>
+  <div class="content" style="display:block"><!-- Tab 1 -->
+    <ul>
+      <button class="main_button constellation" id="And">And</button>
+      <button class="main_button constellation" id="Aql">Aql</button>
+      <button class="main_button constellation" id="Aqr">Aqr</button>
+      <button class="main_button constellation" id="Ari">Ari</button>
+      <button class="main_button constellation" id="Aur">Aur</button>
+      <button class="main_button constellation" id="Boo">Boo</button>
+      <button class="main_button constellation" id="Cap">Cap</button>
+    </ul>
+    <ul>
+      <button class="main_button constellation" id="Cas">Cas</button>
+      <button class="main_button constellation" id="Cep">Cep</button>
+      <button class="main_button constellation" id="Cet">Cet</button>
+      <button class="main_button constellation" id="CMa">CMa</button>
+      <button class="main_button constellation" id="CMi">CMi</button>
+      <button class="main_button constellation" id="Cnc">Cnc</button>
+      <button class="main_button constellation" id="Cyg">Cyg</button>
+    </ul>
+    <ul>
+      <button class="main_button constellation" id="Gem">Gem</button>
+      <button class="main_button constellation" id="Leo">Leo</button>
+      <button class="main_button constellation" id="Lep">Lep</button>
+      <button class="main_button constellation" id="Lyr">Lyr</button>
+      <button class="main_button constellation" id="Ori">Ori</button>
+      <button class="main_button constellation" id="Peg">Peg</button>
+      <button class="main_button constellation" id="Per">Per</button>
+    </ul>
+    <ul>
+      <button class="main_button constellation" id="Psc">Psc</button>
+      <button class="main_button constellation" id="Sco">Sco</button>
+      <button class="main_button constellation" id="Sgr">Sgr</button>
+      <button class="main_button constellation" id="Tau">Tau</button>
+      <button class="main_button constellation" id="UMa">UMa</button>
+      <button class="main_button constellation" id="Vir">Vir</button>
+      <button class="main_button constellation" id="Lib">Lib</button>
+    </ul>
+    <ul>
+      <button class="big main_button group" id="Spc"></button>
+      <button class="big main_button group" id="Spt"></button>
+      <button class="big main_button group" id="Smt"></button>
+      <button class="big main_button group" id="Wnt"></button>
+      <button class="big main_button group" id="Wnd"></button>
+      <button class="big main_button all" id="Set"></button>
+      <button class="big main_button all" id="Cle"></button>
+    </ul>
+    <ul>
+      <button class="main_button group" id="Sta"></button>
+      <button class="debug main_button projector" id="St1"></button>
+      <button class="debug main_button projector" id="St2"></button>
+      <button class="main_button projector" id="Fst"></button>
+      <button class="main_button projector" id="Gxy"></button>
+    </ul>
+  </div>
+  <div class="content" style="display:none"><!-- Tab 2 -->
+  ここはタブ2をクリックした時に表示されます。
+  </div>
 </body>
 </html>
 

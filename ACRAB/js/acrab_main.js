@@ -13,6 +13,25 @@ var ip, port, group = {};
   });
 }());
 
+$(function() { // ボタンにclickイベントを追加
+  $.each($('.main_button'), function(){
+      $(this).click(this, function(e){
+        if($(e.data).hasClass('constellation')) button.constellation(e.data);
+        else if($(e.data).hasClass('projector')) button.projector(e.data);
+        else if($(e.data).hasClass('group')) button.group(e.data);
+        else if($(e.data).hasClass('all')) button.all(e.data);
+      });
+  });
+});
+
+$(function() { //タブの実装
+  $('.tab_area li').click(function() {
+    var index = $('.tab_area li').index(this);
+    $('.content').css('display','none');
+    $('.content').eq(index).css('display','block');
+  });
+});
+
 function pinSettingSend(){
   $.each(ip, function(ipKey){ // モジュールごとに初期設定(pinと星座/投影機の対応)を送信
     var address = this + 'setConstellationName/status.json?';
