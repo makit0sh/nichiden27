@@ -73,3 +73,24 @@ button.on {
 }
 button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
+
+#prev_next_link {display: flex;}
+#prev_next_link span {
+  border-bottom: 1px #ddd;
+  display: block;
+  flex: 1;
+  padding: 14px 40px;
+}
+#prev_next_link span:hover {
+  background-color: #555;
+}
+
+#script_now{
+  border-top: 1px #ddd;
+  font-size: 200%;
+  text-align: center;
+}
+#script_next{
+  text-align: right;
+}
+

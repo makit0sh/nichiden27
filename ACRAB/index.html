@@ -15,7 +15,7 @@
     <li>公演用画面</li>
   </ul>
   <hr>
-  <div class="content" style="display:block"><!-- Tab 1 -->
+  <div class="content" style="display:none"><!-- Tab 1 -->
     <ul>
       <button class="main_button constellation" id="And">And</button>
       <button class="main_button constellation" id="Aql">Aql</button>
@@ -69,8 +69,13 @@
       <button class="main_button projector" id="Gxy"></button>
     </ul>
   </div>
-  <div class="content" style="display:none"><!-- Tab 2 -->
-  ここはタブ2をクリックした時に表示されます。
+  <div class="content" style="display:block"><!-- Tab 2 -->
+  <p id="script_title"></p>
+  <p id="script_now"></p><hr>
+  <div id="prev_next_link">
+    <span id="script_prev"></span><hr>
+    <span id="script_next"></span>
+  </div>
   </div>
 </body>
 </html>
