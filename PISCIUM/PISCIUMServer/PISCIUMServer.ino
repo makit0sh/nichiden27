@@ -154,15 +154,17 @@ void loop() {
 #endif
         i++;
         if ( req[i] == '0' ) {
-          if (nsprotocol.clearPort(tmp) != true) {
-            client.stop();
-            return;
-          }
+          nsprotocol.clearPort(tmp);
+//          if (nsprotocol.clearPort(tmp) != true) {
+//            client.stop();
+//            return;
+//          }
         } else if ( req[i] == '1' ) {
-          if (nsprotocol.setPort(tmp) != true) {
-            client.stop();
-            return;
-          }
+          nsprotocol.setPort(tmp);
+//          if (nsprotocol.setPort(tmp) != true) {
+//            client.stop();
+//            return;
+//          }
         } else {
           client.stop();
           return;
