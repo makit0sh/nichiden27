@@ -1,47 +1,75 @@
 body {
   color: #ddd;
-  background-color: #202020;
+  background-color: #000;
+  font-family: Arial,“ヒラギノ角ゴ ProN W3″,“Hiragino Kaku Gothic ProN”,“メイリオ”,Meiryo,sans-serif;
 }
+
+.debug{display: none;}
 
 ul{
   display: table;
+  overflow : hidden;
   padding: 0;
   margin: 0;
 }
+
+.tab_area li{
+  display:block;
+  float:left;
+  background:#333;
+  width: 100px;
+  margin: 0;
+  text-align:center;
+  color:#aaa;
+}
+
+.tab_area li:hover {
+  background:#555;
+}
+
+hr {margin: 0; border-color: #333;}
 
 button {
   display: table-cell;
   width: 150px;
   height: 50px;
-  font-size:1.2em;
+  clear: both;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow : hidden;
   color: #aaa;
   background-color: #444;
   border-style: none;
   outline: solid;
   outline-color: #030;
-  outline-size: 2px;
+  outline-width: 2px;
   outline-offset: 2px;
   margin: 15px 12px;
+  box-shadow: 0 0 10px 8px #111;
+  transition: .5s;
+  transform: scaleX(1.001); /* for windows antialias */
 }
-
 button:hover {
-  outline-color: #363;
+  font-size: 20px;
+  outline-color: #474;
+  box-shadow: 0 0 10px 10px #222;
 }
+button:active {background-color: #666;}
 
-button:active {
-  background-color: #666;
-}
+button.big {height: 100px}
+
+button.projector {outline-color: #116;}
+button.projector:hover {outline-color: #33c;}
+
+button.all {outline-color: #330;}
+button.all:hover {outline-color: #880;}
 
 button.on {
   color: #ccc;
   background-color: #633;
   outline-color: #311;
 }
-
-button.on:hover {
-  outline-color: #611;
-}
-
-button.on:active {
-  background-color: #655;
-}
+button.on:hover {outline-color: #611;}
+button.on:active {background-color: #655;}

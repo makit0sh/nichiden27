@@ -1,0 +1,32 @@
+{
+  "info": {
+    "title": "とてもわかりやすい星座解説",
+    "name": "星見太郎"
+  },
+  "script": [
+    {
+      "ports":{
+        "": 0
+      },
+      "trigger":{
+        "word": "",
+        "timing": ""
+    },
+    {
+      "ports":{
+        "": 0
+      },
+      "trigger":{
+        "word": "",
+        "timing": ""
+    },
+    {
+      "ports":{
+        "": 0
+      },
+      "trigger":{
+        "word": "",
+        "timing": ""
+    }
+  ]
+}
