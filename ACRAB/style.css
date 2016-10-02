@@ -6,14 +6,21 @@ body {
 
 .debug{display: none;}
 
-ul{
+header h1 {
+  display: block;
+  float: left;
+}
+
+ul {
   display: table;
   overflow : hidden;
   padding: 0;
   margin: 0;
 }
 
-.tab_area li{
+.tab_area {clear: both;}
+
+.tab_area li {
   display:block;
   float:left;
   background:#333;
@@ -60,8 +67,8 @@ button:active {background-color: #666;}
 
 button.big {height: 100px}
 
-button.projector {outline-color: #116;}
-button.projector:hover {outline-color: #33c;}
+button.projector, .group {outline-color: #116;}
+button.projector:hover, .group:hover {outline-color: #33c;}
 
 button.all {outline-color: #330;}
 button.all:hover {outline-color: #880;}
@@ -74,23 +81,44 @@ button.on {
 button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
 
-#prev_next_link {display: flex;}
+#prev_next_link {
+  display: flex;
+  clear: both;
+}
+
 #prev_next_link span {
   border-bottom: 1px #ddd;
   display: block;
+  height: 100px;
   flex: 1;
   padding: 14px 40px;
+  transition: .5s;
 }
-#prev_next_link span:hover {
-  background-color: #555;
-}
+#prev_next_link span:hover {background-color: #555;}
 
 #script_now{
+  display: block;
+  float: left;
+  height: 200px;
+  width: 600px;
   border-top: 1px #ddd;
   font-size: 200%;
   text-align: center;
 }
-#script_next{
-  text-align: right;
-}
+#script_next{text-align: right;}
 
+#script_constellation p{
+  display: block;
+  float: left;
+  width: 120px;
+  height: 32px;
+  font-size: 18px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow: hidden;
+  color: #aaa;
+  background-color: #444;
+  margin: 2px;
+  padding: 2px;
+}

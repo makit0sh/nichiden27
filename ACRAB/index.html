@@ -9,13 +9,18 @@
   <link rel="stylesheet" type="text/css" href="style.css"></style>
 </head>
 <body>
-  <h1>投影機無線制御ページ: Acrab 2016</h1>
-  <ul class="tab_area">
-    <li>メイン</li>
-    <li>公演用画面</li>
-  </ul>
+  <header>
+    <h1>投影機無線制御ページ: Acrab 2016</h1>
+    <p>北天側受信機<br>
+    南天側受信機
+    </p>
+    <ul class="tab_area">
+      <li>メイン</li>
+      <li>公演用画面</li>
+    </ul>
+  </header>
   <hr>
-  <div class="content" style="display:none"><!-- Tab 1 -->
+  <div class="content" style="display:block"><!-- Tab 1(default) -->
     <ul>
       <button class="main_button constellation" id="And">And</button>
       <button class="main_button constellation" id="Aql">Aql</button>
@@ -53,25 +58,71 @@
       <button class="main_button constellation" id="Lib">Lib</button>
     </ul>
     <ul>
-      <button class="big main_button group" id="Spc"></button>
-      <button class="big main_button group" id="Spt"></button>
-      <button class="big main_button group" id="Smt"></button>
-      <button class="big main_button group" id="Wnt"></button>
-      <button class="big main_button group" id="Wnd"></button>
-      <button class="big main_button all" id="Set"></button>
-      <button class="big main_button all" id="Cle"></button>
+      <button class="big main_button group" id="Spc">Spc</button>
+      <button class="big main_button group" id="Spt">Spt</button>
+      <button class="big main_button group" id="Smt">Smt</button>
+      <button class="big main_button group" id="Wnt">Wnt</button>
+      <button class="big main_button group" id="Wnd">Wnd</button>
+      <button class="big main_button all" id="Set">Set</button>
+      <button class="big main_button all" id="Cle">Cle</button>
     </ul>
     <ul>
-      <button class="main_button group" id="Sta"></button>
-      <button class="debug main_button projector" id="St1"></button>
-      <button class="debug main_button projector" id="St2"></button>
-      <button class="main_button projector" id="Fst"></button>
-      <button class="main_button projector" id="Gxy"></button>
+      <button class="main_button group" id="Sta">Sta</button>
+      <button class="debug main_button projector" id="St1">St1</button>
+      <button class="debug main_button projector" id="St2">St2</button>
+      <button class="main_button projector" id="Fst">Fst</button>
+      <button class="main_button projector" id="Gxy">Gxy</button>
     </ul>
   </div>
-  <div class="content" style="display:block"><!-- Tab 2 -->
-  <p id="script_title"></p>
+  <div class="content" style="display:none"><!-- Tab 2 -->
+  <h2 id="script_title"></h2>
+  <p id="script_number"></p>
   <p id="script_now"></p><hr>
+  <div id="script_constellation">
+    <ul>
+      <p id="And">And</p>
+      <p id="Aql">Aql</p>
+      <p id="Aqr">Aqr</p>
+      <p id="Ari">Ari</p>
+      <p id="Aur">Aur</p>
+      <p id="Boo">Boo</p>
+    </ul>
+    <ul>
+      <p id="Cap">Cap</p>
+      <p id="Cas">Cas</p>
+      <p id="Cep">Cep</p>
+      <p id="Cet">Cet</p>
+      <p id="CMa">CMa</p>
+      <p id="CMi">CMi</p>
+    </ul>
+    <ul>
+      <p id="Cnc">Cnc</p>
+      <p id="Cyg">Cyg</p>
+      <p id="Gem">Gem</p>
+      <p id="Leo">Leo</p>
+      <p id="Lep">Lep</p>
+      <p id="Lyr">Lyr</p>
+    </ul>
+    <ul>
+      <p id="Ori">Ori</p>
+      <p id="Peg">Peg</p>
+      <p id="Per">Per</p>
+      <p id="Psc">Psc</p>
+      <p id="Sco">Sco</p>
+      <p id="Sgr">Sgr</p>
+    </ul>
+    <ul>
+      <p id="Tau">Tau</p>
+      <p id="UMa">UMa</p>
+      <p id="Vir">Vir</p>
+      <p id="Lib">Lib</p>
+      <p id="Sta">Sta</p>
+      <p id="Fst">Fst</p>
+    </ul>
+    <ul>
+      <p id="Gxy">Gxy</p>
+    </ul>
+  </div>
   <div id="prev_next_link">
     <span id="script_prev"></span><hr>
     <span id="script_next"></span>
@@ -79,31 +130,4 @@
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
