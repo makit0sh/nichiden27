@@ -10,10 +10,12 @@
 </head>
 <body>
   <header>
-    <h1>投影機無線制御ページ: Acrab 2016</h1>
-    <p>北天側受信機<br>
-    南天側受信機
-    </p>
+    <img src="img/acrab-banner.svg" height=110>
+    <div id="wifi-icons">
+      <p style="text-decoration:underline;"><b>受信状況</b></p>
+      <p>北天BOX: <span id="north">正常受信中</span></p>
+      <p>南天BOX: <span id="south">正常受信中</span></p>
+    </div>
     <ul class="tab_area">
       <li>メイン</li>
       <li>公演用画面</li>
@@ -77,7 +79,7 @@
   <div class="content" style="display:none"><!-- Tab 2 -->
   <h2 id="script_title"></h2>
   <p id="script_number"></p>
-  <p id="script_now"></p><hr>
+  <p id="script_now"></p>
   <div id="script_constellation">
     <ul>
       <p id="And">And</p>

@@ -6,19 +6,35 @@ body {
 
 .debug{display: none;}
 
-header h1 {
+header img {
   display: block;
   float: left;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
-ul {
-  display: table;
-  overflow : hidden;
-  padding: 0;
-  margin: 0;
+#wifi-icons {
+  position: relative;
+  float: left;
+  top: 10px;
+  left: 20px;
+  display: block;
 }
 
-.tab_area {clear: both;}
+#wifi-icons p {
+  margin: 4px;
+}
+
+#wifi-icons span {
+  padding-left: 18px;
+  background: url("/img/wifi-icon-01") no-repeat left center;
+  background-size: 17px;
+}
+
+#wifi-icons span.error {
+  background: url("/img/wifi-icon-02") no-repeat left center;
+  background-size: 17px;
+}
 
 .tab_area li {
   display:block;
@@ -34,7 +50,18 @@ ul {
   background:#555;
 }
 
-hr {margin: 0; border-color: #333;}
+ul {
+  display: table;
+  overflow : hidden;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  clear:both;
+  margin: 0;
+  border-color: #333;
+}
 
 button {
   display: table-cell;
@@ -101,7 +128,6 @@ button.on:active {background-color: #655;}
   float: left;
   height: 200px;
   width: 600px;
-  border-top: 1px #ddd;
   font-size: 200%;
   text-align: center;
 }
@@ -118,7 +144,10 @@ button.on:active {background-color: #655;}
   vertical-align: middle;
   overflow: hidden;
   color: #aaa;
-  background-color: #444;
+  background-color: #222;
   margin: 2px;
   padding: 2px;
+  transition: .5s;
 }
+
+#script_constellation p.on{background-color: #422;}

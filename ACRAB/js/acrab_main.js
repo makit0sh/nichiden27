@@ -53,9 +53,13 @@ function getRequest(address, data){
     url: address, dataType: 'json', timeout: 1000, data: data
   }).done(function(res) {
     console.debug(res);
+    if(address.match(ip.N)) $('#wifi-icons #north').text('正常受信中').removeClass('error');
+    else if(address.match(ip.S)) $('#wifi-icons #south').text('正常受信中').removeClass('error');
     deferred.resolve(res);
   }).fail(function(xhr) {
     console.error(xhr.status+' '+xhr.statusText);
+    if(address.match(ip.N)) $('#wifi-icons #north').text('接続なし').addClass('error');
+    else if(address.match(ip.S)) $('#wifi-icons #south').text('接続なし').addClass('error');
     deferred.reject;
   });
   return deferred;
