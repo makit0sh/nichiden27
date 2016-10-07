@@ -24,10 +24,10 @@
 #define NORTH_HEMISPHERE
 
 #ifdef NORTH_HEMISPHERE
-IPAddress ip(192, 168, 11, 100);
+IPAddress ip(192, 168, 0, 100);
 #endif
 #ifdef SOUTH_HEMISPHERE
-IPAddress ip(192, 168, 11, 101);
+IPAddress ip(192, 168, 0, 101);
 #endif
 
 IPAddress gateway(192, 168, 11, 1);
