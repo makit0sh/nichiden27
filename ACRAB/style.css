@@ -6,17 +6,48 @@ body {
 
 .debug{display: none;}
 
-ul{
-  display: table;
-  overflow : hidden;
-  padding: 0;
-  margin: 0;
+header img {
+  display: block;
+  float: left;
+  margin-bottom: 8px;
+  margin-right: 8px;
 }
 
-.tab_area li{
+#wifi-icons {
+  position: relative;
+  float: left;
+  top: 10px;
+  left: 20px;
+  display: block;
+}
+
+#wifi-icons p {
+  width: 190px;
+  margin: 4px;
+}
+
+#wifi-icons span {
+  padding-left: 18px;
+  background: url("/img/wifi-icon-01") no-repeat left center;
+  background-size: 17px;
+}
+
+#wifi-icons span.error {
+  background: url("/img/wifi-icon-02") no-repeat left center;
+  background-size: 17px;
+}
+
+.tab_area {
+  position: relative;
+  top: 10px;
+  left: 20px;
+}
+
+.tab_area li {
   display:block;
   float:left;
   background:#333;
+  height: 100px;
   width: 100px;
   margin: 0;
   text-align:center;
@@ -27,7 +58,18 @@ ul{
   background:#555;
 }
 
-hr {margin: 0; border-color: #333;}
+ul {
+  display: table;
+  overflow : hidden;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  clear:both;
+  margin: 0;
+  border-color: #333;
+}
 
 button {
   display: table-cell;
@@ -60,8 +102,8 @@ button:active {background-color: #666;}
 
 button.big {height: 100px}
 
-button.projector {outline-color: #116;}
-button.projector:hover {outline-color: #33c;}
+button.projector, .group {outline-color: #116;}
+button.projector:hover, .group:hover {outline-color: #33c;}
 
 button.all {outline-color: #330;}
 button.all:hover {outline-color: #880;}
@@ -73,3 +115,60 @@ button.on {
 }
 button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
+
+button.timer_button {
+  width: 100px;
+  height: 30px;
+  outline: none;
+  box-shadow: 0 0 5px 4px #111;
+}
+button.timer_button:hover {
+  font-size: 18px;
+  background-color: #666;
+  box-shadow: 0 0 5px 4px #222;
+}
+button.timer_button:active {background-color: #888;}
+
+#prev_next_link {
+  display: flex;
+  clear: both;
+}
+
+#prev_next_link span {
+  border-bottom: 1px #ddd;
+  display: block;
+  height: 100px;
+  flex: 1;
+  padding: 14px 40px;
+  transition: .5s;
+}
+#prev_next_link span:hover {background-color: #555;}
+
+#script_now{
+  display: block;
+  float: left;
+  height: 200px;
+  width: 600px;
+  font-size: 200%;
+  text-align: center;
+}
+#script_next{text-align: right;}
+
+#script_constellation p{
+  display: block;
+  float: left;
+  width: 90px;
+  height: 25px;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow: hidden;
+  color: #aaa;
+  background-color: #222;
+  margin: 2px;
+  padding: 2px;
+  transition: .5s;
+}
+
+#script_constellation p.on{background-color: #422;}
