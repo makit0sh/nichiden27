@@ -22,7 +22,7 @@
     </ul>
   </header>
   <hr>
-  <div class="content" style="display:block"><!-- Tab 1(default) -->
+  <div class="content" style="display:none"><!-- Tab 1(default) -->
     <ul>
       <button class="main_button constellation" id="And">And</button>
       <button class="main_button constellation" id="Aql">Aql</button>
@@ -76,9 +76,14 @@
       <button class="main_button projector" id="Gxy">Gxy</button>
     </ul>
   </div>
-  <div class="content" style="display:none"><!-- Tab 2 -->
+  <div class="content" style="display:block"><!-- Tab 2 -->
   <h2 id="script_title"></h2>
-  <p id="script_number"></p>
+  <p>
+    <span id="script_number">1/1</span>
+    経過時間 <span id="script_timecount">00:00:00</span>
+  </p>
+  <button id="count_start" class="timer_button">Start</button>
+  <button id="count_stop" class="timer_button">Stop</button>
   <p id="script_now"></p>
   <div id="script_constellation">
     <ul>
