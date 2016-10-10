@@ -5,8 +5,8 @@
   },
   "script": [
     {
-      "word": "(開始前)",
-      "timing": "post",
+      "word": "",
+      "timing": "",
       "projector":{"Fst": 1, "Gxy": 1}
     },
     {

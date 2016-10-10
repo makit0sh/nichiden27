@@ -12,7 +12,7 @@
   <header>
     <img src="img/acrab-banner.svg" height=110>
     <div id="wifi-icons">
-      <p style="text-decoration:underline;"><b>受信状況</b></p>
+      <p style="text-decoration:underline"><b>受信状況</b></p>
       <p>北天BOX: <span id="north">正常受信中</span></p>
       <p>南天BOX: <span id="south">正常受信中</span></p>
     </div>
@@ -82,57 +82,39 @@
     <span id="script_number">1/1</span>
     経過時間 <span id="script_timecount">00:00:00</span>
   </p>
-  <button id="count_start" class="timer_button">Start</button>
-  <button id="count_stop" class="timer_button">Stop</button>
+  <button id="timer_start" class="timer_button" onclick="timer_button.start()">開始</button>
+  <button id="timer_stop" class="timer_button" onclick="timer_button.stop()" style="display:none">停止</button>
+  <button id="timer_restart" class="timer_button" onclick="timer_button.restart()" style="display:none">再開</button>
+  <button id="timer_reset" class="timer_button" onclick="timer_button.reset()" disabled>リセット</button>
   <p id="script_now"></p>
   <div id="script_constellation">
     <ul>
-      <p id="And">And</p>
-      <p id="Aql">Aql</p>
-      <p id="Aqr">Aqr</p>
-      <p id="Ari">Ari</p>
-      <p id="Aur">Aur</p>
-      <p id="Boo">Boo</p>
+      <p id="And">And</p><p id="Aql">Aql</p><p id="Aqr">Aqr</p>
+      <p id="Ari">Ari</p><p id="Aur">Aur</p><p id="Boo">Boo</p>
     </ul>
     <ul>
-      <p id="Cap">Cap</p>
-      <p id="Cas">Cas</p>
-      <p id="Cep">Cep</p>
-      <p id="Cet">Cet</p>
-      <p id="CMa">CMa</p>
-      <p id="CMi">CMi</p>
+      <p id="Cap">Cap</p><p id="Cas">Cas</p><p id="Cep">Cep</p>
+      <p id="Cet">Cet</p><p id="CMa">CMa</p><p id="CMi">CMi</p>
     </ul>
     <ul>
-      <p id="Cnc">Cnc</p>
-      <p id="Cyg">Cyg</p>
-      <p id="Gem">Gem</p>
-      <p id="Leo">Leo</p>
-      <p id="Lep">Lep</p>
-      <p id="Lyr">Lyr</p>
+      <p id="Cnc">Cnc</p><p id="Cyg">Cyg</p><p id="Gem">Gem</p>
+      <p id="Leo">Leo</p><p id="Lep">Lep</p><p id="Lyr">Lyr</p>
     </ul>
     <ul>
-      <p id="Ori">Ori</p>
-      <p id="Peg">Peg</p>
-      <p id="Per">Per</p>
-      <p id="Psc">Psc</p>
-      <p id="Sco">Sco</p>
-      <p id="Sgr">Sgr</p>
+      <p id="Ori">Ori</p><p id="Peg">Peg</p><p id="Per">Per</p>
+      <p id="Psc">Psc</p><p id="Sco">Sco</p><p id="Sgr">Sgr</p>
     </ul>
     <ul>
-      <p id="Tau">Tau</p>
-      <p id="UMa">UMa</p>
-      <p id="Vir">Vir</p>
-      <p id="Lib">Lib</p>
-      <p id="Sta">Sta</p>
-      <p id="Fst">Fst</p>
+      <p id="Tau">Tau</p><p id="UMa">UMa</p><p id="Vir">Vir</p>
+      <p id="Lib">Lib</p><p id="Sta">Sta</p><p id="Fst">Fst</p>
     </ul>
     <ul>
       <p id="Gxy">Gxy</p>
     </ul>
   </div>
   <div id="prev_next_link">
-    <span id="script_prev"></span><hr>
-    <span id="script_next"></span>
+    <button id="script_prev"></button><hr>
+    <button id="script_next"></button>
   </div>
   </div>
 </body>
