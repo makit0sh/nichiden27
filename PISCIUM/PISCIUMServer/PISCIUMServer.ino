@@ -14,7 +14,7 @@
    for debug
 */
 //#define ACRAB_DEBUG
-//#define PISCUIM_DEBUG
+//#define PISCIUM_DEBUG
 
 
 /**
@@ -59,7 +59,7 @@ void setup() {
 #endif
 
   // Connect to WiFi network
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -70,11 +70,11 @@ void setup() {
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
     Serial.print(".");
 #endif
   }
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println("");
   Serial.println("WiFi connected");
 #endif
@@ -84,12 +84,12 @@ void setup() {
 
   // Start the server
   server.begin();
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println("Server started");
 #endif
 
   // Print the IP address
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println(WiFi.localIP());
 #endif
 }
@@ -108,7 +108,7 @@ void loop() {
     delay(1);
     timeCount++;
     if (timeCount >= 500) {
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
       Serial.println("Connection Timeout");
 #endif
       client.stop();
@@ -118,7 +118,7 @@ void loop() {
 
   // Read the first line of the request
   String req = client.readStringUntil('\r');
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println(req);
 #endif
   client.flush();
@@ -149,7 +149,7 @@ void loop() {
           i++;
         }
         tmp = req.substring(j, i);
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
         Serial.println(tmp);
 #endif
         i++;
@@ -205,7 +205,7 @@ void loop() {
   } else if (req.indexOf("/allClear/status.json") != -1) {
     nsprotocol.allClear();
   } else{
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
     Serial.println("invalid request");
 #endif
     client.stop();
@@ -231,7 +231,7 @@ void loop() {
   // Send the response to the client
   client.print(s);
   delay(1);
-#ifdef PISCUIM_DEBUG
+#ifdef PISCIUM_DEBUG
   Serial.println("Client disonnected");
 #endif
 
