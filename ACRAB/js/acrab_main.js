@@ -22,6 +22,12 @@ $(function() { // ボタンにclickイベントを追加
         else if($(e.data).hasClass('all')) button.all(e.data);
       });
   });
+  $('#refresh_north').click(this, function(){
+    getRequest(ip.N + 'refresh_confirm/status.json').done(function(res){checkStatus(res)});
+  });
+  $('#refresh_south').click(this, function(){
+    getRequest(ip.S + 'refresh_confirm/status.json').done(function(res){checkStatus(res)});
+  });
 });
 
 $(function() { //タブの実装
