@@ -19,12 +19,10 @@ header img {
   top: 10px;
   left: 20px;
   display: block;
+  width: 225px;
 }
 
-#wifi-icons p {
-  width: 190px;
-  margin: 4px;
-}
+#wifi-icons p {margin: 4px;}
 
 #wifi-icons span {
   padding-left: 18px;
@@ -37,10 +35,21 @@ header img {
   background-size: 17px;
 }
 
+[id*="refresh"] {
+  font-size: 14px;
+  text-align: center;
+  color: #aaa;
+  background-color: #444;
+  padding: 4px;
+  transition: .5s;
+  transform: scaleX(1.001); /* for windows antialias */
+}
+
 .tab_area {
   position: relative;
   top: 10px;
   left: 20px;
+  line-height: 100px;
 }
 
 .tab_area li {
@@ -81,6 +90,7 @@ button {
   color: #aaa;
   background-color: #444;
   border-style: none;
+  outline: none;
   transition: .5s;
   transform: scaleX(1.001); /* for windows antialias */
 }
@@ -122,7 +132,7 @@ button.on:active {background-color: #655;}
 button.timer_button {
   width: 100px;
   height: 30px;
-  outline: none;
+  margin-left: 10px;
 }
 button.timer_button:hover {
   font-size: 18px;
@@ -156,14 +166,23 @@ button.timer_button:disabled {
 }
 
 #script_now{
-  display: block;
+  display: flex;
+  clear: both;
   float: left;
   height: 200px;
   width: 600px;
-  font-size: 200%;
+  margin: 2px 0px;
+  font-size: 180%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 #script_next{text-align: right;}
+
+#script_constellation{
+  float:right;
+  margin: 0px 20px;
+}
 
 #script_constellation p{
   display: block;

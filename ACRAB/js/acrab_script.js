@@ -98,10 +98,10 @@ function sendComm(index, reverse){
 function viewScript(id, index){
   if($(id).is(':disabled'))console.log(id); $(id).prop('disabled', false);
   $(id).html(function(){
-    var res = '<b>'
+    var res = ''
     if(!script[index].word) res += '開始直後'
     else {
-      res += '「'+script[index].word+'」</b>の';
+      res += '「'+script[index].word+'」の';
       switch(script[index].timing){
         case 'pre': res += '前'; break;
         case 'post': res += '後'; break;
