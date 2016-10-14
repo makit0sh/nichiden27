@@ -19,12 +19,10 @@ header img {
   top: 10px;
   left: 20px;
   display: block;
+  width: 225px;
 }
 
-#wifi-icons p {
-  width: 190px;
-  margin: 4px;
-}
+#wifi-icons p {margin: 4px;}
 
 #wifi-icons span {
   padding-left: 18px;
@@ -37,10 +35,21 @@ header img {
   background-size: 17px;
 }
 
+[id*="refresh"] {
+  font-size: 14px;
+  text-align: center;
+  color: #aaa;
+  background-color: #444;
+  padding: 4px;
+  transition: .5s;
+  transform: scaleX(1.001); /* for windows antialias */
+}
+
 .tab_area {
   position: relative;
   top: 10px;
   left: 20px;
+  line-height: 100px;
 }
 
 .tab_area li {
@@ -73,9 +82,6 @@ hr {
 
 button {
   display: table-cell;
-  width: 150px;
-  height: 50px;
-  clear: both;
   font-size: 18px;
   text-align: center;
   vertical-align: middle;
@@ -84,21 +90,28 @@ button {
   color: #aaa;
   background-color: #444;
   border-style: none;
+  outline: none;
+  transition: .5s;
+  transform: scaleX(1.001); /* for windows antialias */
+}
+
+button.main_button {
+  width: 150px;
+  height: 50px;
+  clear: both;
   outline: solid;
   outline-color: #030;
   outline-width: 2px;
   outline-offset: 2px;
   margin: 15px 12px;
   box-shadow: 0 0 10px 8px #111;
-  transition: .5s;
-  transform: scaleX(1.001); /* for windows antialias */
 }
-button:hover {
+button.main_button:hover {
   font-size: 20px;
   outline-color: #474;
   box-shadow: 0 0 10px 10px #222;
 }
-button:active {background-color: #666;}
+button.main_button:active {background-color: #666;}
 
 button.big {height: 100px}
 
@@ -119,40 +132,57 @@ button.on:active {background-color: #655;}
 button.timer_button {
   width: 100px;
   height: 30px;
-  outline: none;
-  box-shadow: 0 0 5px 4px #111;
+  margin-left: 10px;
 }
 button.timer_button:hover {
   font-size: 18px;
   background-color: #666;
-  box-shadow: 0 0 5px 4px #222;
 }
 button.timer_button:active {background-color: #888;}
+button.timer_button:disabled {
+  background-color: #444;
+  color: #666;
+}
 
 #prev_next_link {
   display: flex;
   clear: both;
 }
 
-#prev_next_link span {
+#prev_next_link button {
   border-bottom: 1px #ddd;
   display: block;
   height: 100px;
+  background-color: #222;
   flex: 1;
+  outline: none;
   padding: 14px 40px;
   transition: .5s;
 }
-#prev_next_link span:hover {background-color: #555;}
+#prev_next_link button:hover {background-color: #555;}
+#prev_next_link button:disabled {
+  background-color: #222;
+  color: #555;
+}
 
 #script_now{
-  display: block;
+  display: flex;
+  clear: both;
   float: left;
   height: 200px;
   width: 600px;
-  font-size: 200%;
+  margin: 2px 0px;
+  font-size: 180%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 #script_next{text-align: right;}
+
+#script_constellation{
+  float:right;
+  margin: 0px 20px;
+}
 
 #script_constellation p{
   display: block;
@@ -172,3 +202,4 @@ button.timer_button:active {background-color: #888;}
 }
 
 #script_constellation p.on{background-color: #422;}
+
