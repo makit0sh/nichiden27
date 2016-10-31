@@ -20,6 +20,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#include <math.h>
 
 #define F_CPU 8000000UL
 #define twinkle_patterns 12
@@ -30,86 +31,50 @@
 #define min_weak 90
 #define twinkle_shift 100
 
+#define FOR(i,k,n) for(int (i)=(k);(i)<(n);(i)++)
+#define REP(i,n) FOR(i,0,n)
+
 extern "C" void INT0_vect(void) __attribute__ ((signal));
 extern "C" void TIMER0_COMPA_vect(void) __attribute__ ((signal));
 
 class Twinkle {
-  private:
   public:
-    Twinkle();
+    int bit_num[6] = {0,1,2,3,4,5};
+    unsigned long shift_chaos = 28000;
+    unsigned long chaos[12] = {512,844,1020,1024,2020,2048,2424,3624,4824,8224,8884,11024};
+    unsigned int led_int[12] = {160,160,160,160,160,160,160,160,160,160,160,160};
     friend void INT0_vect(void);
     friend void TIMER0_COMPA_vect(void);
+    unsigned long chaos_gen(unsigned long y);
+    void chaos_renew(void);
+  private:
+    void port_shift(void);
 };
+Twinkle twinkle;
 
-unsigned long chaos[12] = {512,844,1020,1024,2020,2048,2424,3624,4824,8224,8884,11024};
-unsigned long shift_chaos = 28000;
-unsigned int led_int[12] = {160,160,160,160,160,160,160,160,160,160,160,160};
-int  bit_num[6] = {0,1,2,3,4,5};
-unsigned int tr = twinkle_rate;
-unsigned int ts = twinkle_shift;
-unsigned int left_shift(unsigned int i, unsigned int a)//6個の数字の並んでいる数列を左にaシフトしたとき、右からi番目に並んでいる数を与える。
-{
-  i = i + a;
-  if(i > 5){
-    i = i - 6;
-  }
-  return i;
+void Twinkle::port_shift(void){ // 疑似周期性を目立たなくするために乱数値とその対応ビットを変更する。所要時間は6数の数列で100us
+  shift_chaos = chaos_gen(shift_chaos);
+  REP(i,6) bit_num[i] = (bit_num[i] + (shift_chaos >= 12000 ? 1 : 4)) % 6; // 6要素の数列を左に回転シフト
 }
 
-unsigned long chaos_gen(unsigned long y)//Max == 32768までの整数値を返す疑似乱数（1/fゆらぎ）。
-{
-  if(y < 1638){
-    y = y + ((2 * y * y)/32768) + 1966;
-  }else{
-    if(y < 16384){
-      y = y + ((2 * y * y)/32768);
-    }else{
-      if(y > 31129){
-        y = y - ((2 * (32768 - y) * (32768 - y))/32768) - 1310;
-      }else{
-        y = y - ((2 * (32768 - y) * (32768 - y))/32768);
-      }
-
-    }
-  }
+unsigned long Twinkle::chaos_gen(unsigned long y){ // Max == 32768までの整数値を返す疑似乱数(1/fゆらぎ)
+  if(y < 1638) y += 2 * pow(y, 2) / 32768 + 1966;
+  else if(y < 16384) y += 2 * pow(y, 2) / 32768;
+  else if(y > 31129) y -= 2 * pow(32768 - y, 2) / 32768 + 1310;
+  else y -= 2 * pow(32768 - y, 2) / 32768;
   return y;
 }
 
-void port_shift(void)//疑似周期性を目立たなくするために乱数値とその対応ビットを変更する。所要時間は6数の数列で100us。
-{
-  int i;
-  shift_chaos = chaos_gen(shift_chaos);
-  if(shift_chaos >= 12000){
-    for(i = 0;i <= 5;i++){
-      bit_num[i] = left_shift(bit_num[i],1);
-    }
-  }else{
-    for(i = 0;i <= 5;i++){
-      bit_num[i] = left_shift(bit_num[i],4);
-    }
+void Twinkle::chaos_renew(void){ // 乱数値を更新する。所要時間は12変数で1ms
+  REP(i,12){
+    chaos[i] = chaos_gen(chaos[i]);
+    led_int[i] = min((int)(chaos[i] / chaos_div + i<6 ? min_strong : min_weak), led_int_max);
   }
 }
 
-void chaos_renew(void)//乱数値を更新する。所要時間は12変数で1ms。
-{
-  int i;
-  for(i = 0;i <= 5;i++){
-    chaos[i] = chaos_gen(chaos[i]);
-    led_int[i] =(int)(chaos[i]/chaos_div + min_strong);
-    if(led_int[i] >= led_int_max){
-      led_int[i] = led_int_max;
-    }
-  }
-  for(i = 6;i <= 11;i++){
-    chaos[i] = chaos_gen(chaos[i]);
-    led_int[i] =(int)(chaos[i]/chaos_div + min_weak);
-    if(led_int[i] >= led_int_max){
-      led_int[i] = led_int_max;
-    }
-  }
-  return;
-}
-
+/********/
+unsigned int tr = twinkle_rate;
+unsigned int ts = twinkle_shift;
 
 void INT0_vect(void){ //またたきOFF（スイッチで切り替え）
   PORTA = 0xFF;
@@ -117,7 +82,6 @@ void INT0_vect(void){ //またたきOFF（スイッチで切り替え）
 }
 
 void TIMER0_COMPA_vect(void) { //またたきをつかさどる部分。PORTAがまたたき強い、PORTBがまたたき弱い。
-  int i;
   unsigned int c_up = 0;
   unsigned int x = twinkle_patterns;
   PORTA = 0xFF;
@@ -126,33 +90,25 @@ void TIMER0_COMPA_vect(void) { //またたきをつかさどる部分。PORTAが
   if(tr == 0){
     (ts)--;            //ビットシフト更新時期の判定と実行をする。
     if(ts == 0){
-      port_shift();
+      twinkle.port_shift();
       ts = twinkle_shift;
-    }else{
-      _delay_us(100);
     }
-    chaos_renew();
+    else _delay_us(100);
+    twinkle.chaos_renew();
     tr = twinkle_rate;
-  }else{
-    _delay_us(1100);      //それらの操作をしない場合でも、同じだけの時間waitして調整する。
   }
-  while (x) {            //led_intの値とc_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。
+  else _delay_us(1100); //それらの操作をしない場合でも、同じだけの時間waitして調整する。
+  while(x){ //led_intの値とc_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。
     (c_up)++;
-    for(i = 0;i <= 5;i++){
-      if(led_int[i] == c_up){
-        PORTA ^= 1<<bit_num[i];
-        x--;
-      }
-    }
-    for(i = 6;i <= 11;i++){
-      if(led_int[i] == c_up){
-        PORTB ^= 1<<bit_num[i - 6];
+    REP(i,12){
+      if(twinkle.led_int[i] == c_up){
+        if(i<6) PORTA ^= 1 << twinkle.bit_num[i];
+        else PORTB ^= 1 << twinkle.bit_num[i-6];
         x--;
       }
     }
     _delay_us(7);
   }
-  return;
 }
 
 int main(void){
@@ -175,7 +131,6 @@ int main(void){
   PORTA  = 0x00;
   PORTB  = 0x00;
 
-  Twinkle twinkle();
   sei();
   for(;;){}
 }
