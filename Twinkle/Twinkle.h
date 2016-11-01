@@ -11,6 +11,7 @@ class Twinkle {
   private:
     unsigned long shift_chaos = 28000;
     unsigned long chaos[12] = {512,844,1020,1024,2020,2048,2424,3624,4824,8224,8884,11024};
+                      //south {12404,14884,18200,18402,20442,21488,24242,28004,28824,30224,32008,32024};
     unsigned int refresh_rate;
     unsigned int rr_count;
     unsigned int shift_rate;
