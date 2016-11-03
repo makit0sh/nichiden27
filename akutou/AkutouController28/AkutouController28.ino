@@ -19,7 +19,7 @@
 /* Interrupt pin */
 #define INT_SW 2
 /* East-West switch */
-#define DIR_SW 19 // LOW for East, HIGH for West
+#define DIR_SW 19 // LOW for West, HIGH for East
 /* for 7 segment driver 74HC4511 */
 #define SEG0 18
 #define SEG1 4
@@ -43,11 +43,11 @@
 /************************************/
 
 const int PWM_Pins[8] = {PWM_W1, PWM_W2, PWM_W3, PWM_W4, PWM_E1, PWM_E2, PWM_E3, PWM_E4};
-const int VolumeToPin[4][3] = {\
-  {VR2, PWM_W1, PWM_E1},\
-  {VR3, PWM_W2, PWM_E2},\
-  {VR4, PWM_W3, PWM_E3},\
-  {VR5, PWM_W4, PWM_E4},\
+const int VolumeToPin[4][3] = {
+  {VR2, PWM_W1, PWM_E1},
+  {VR3, PWM_W2, PWM_E2},
+  {VR4, PWM_W3, PWM_E3},
+  {VR5, PWM_W4, PWM_E4},
 };
 const int FadeTime = 100; // Time in milliseconds of 0 -> 255 or 255 -> 0
 const int LightPattern[4][60] = {\
@@ -75,13 +75,14 @@ struct HC4511{
   HC4511& operator = (int value){write(value);return *this;}
 };
 
-void modeChange(){mode_flag = !mode_flag;}
+HC4511 segLED(SEG0, SEG1, SEG2, SEG3);
+
+void modeSelect(){mode_flag = (mode_flag + 1) % SIZE_OF(LightPattern);} // mode_flag = (0, 1, .. , n) < LightPattern
 
 void setup(){
   pinMode(INT_SW, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(INT_SW), modeChange, FALLING);
+  attachInterrupt(digitalPinToInterrupt(INT_SW), modeSelect, FALLING);
   pinMode(DIR_SW, INPUT_PULLUP);
-  HC4511 segLED(SEG0, SEG1, SEG2, SEG3);
   segLED = mode_flag;
   /* Initialize SoftPWM library */
   SoftPWMBegin();
@@ -93,6 +94,7 @@ void setup(){
 
 void loop(){
   segLED = mode_flag;
+  int direction = digitalRead(DIR_SW) + 1; // West: 1, East: 2
   if(!mode_flag){ // Manual mode
     REP(i,4){
       int input = analogRead(VolumeToPin[i][0]);
