@@ -56,7 +56,8 @@ int LightPattern[2][4][60] = { // put user setting pattern here
     {0,0,0,255,0,13,26,38,51,64,77,90,102,115,128,125,122,119,116,114,111,108,105,102,99,96,93,90,87,84,82,79,76,73,70,67,64,61,58,55,53,50,47,44,41,38,35,32,29,27,24,21,18,15,12,9,6,3,0,0}
   }
 }; // light controll pattern(max 255)
-volatile bool mode_flag = 0;
+volatile int mode_flag = 0; // save current mode number
+volatile unsigned long time_pre = 0, time_cur; // avoid chattering
 
 struct HC4511{
   int pin[4];
@@ -77,9 +78,20 @@ struct HC4511{
 
 HC4511 segLED(SEG0, SEG1, SEG2, SEG3);
 
-void modeSelect(){mode_flag = (mode_flag + 1) % SIZE_OF(LightPattern);} // mode_flag = (0, 1, .. , n) < LightPattern
+void modeSelect(){
+  time_cur = millis();
+  Serial.print("time_cur - time_pre: ");
+  Serial.println(time_cur - time_pre);
+  if(time_cur - time_pre <= 200) return;
+  mode_flag = (mode_flag + 1) % 10; // mode_flag = (0, 1, .. , 10) < LightPattern
+  Serial.print("mode ");
+  Serial.println(mode_flag);
+  time_pre = time_cur;
+}
 
 void setup(){
+  Serial.begin(9600);
+  Serial.println("setup begin");
   pinMode(INT_SW, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(INT_SW), modeSelect, FALLING);
   pinMode(DIR_SW, INPUT_PULLUP);
@@ -90,15 +102,18 @@ void setup(){
     SoftPWMSet(PWM_Pins[i], 0);
     SoftPWMSetFadeTime(PWM_Pins[i], FadeTime, FadeTime);
   }
+  Serial.println("setup end");
 }
 
 void loop(){
+  pinMode(INT_SW, INPUT_PULLUP);
   segLED = mode_flag;
-  int direction = digitalRead(DIR_SW) + 1; // West: 1, East: 2
+  int direction = digitalRead(DIR_SW); // West: 0, East: 1
   if(!mode_flag){ // Manual mode
     REP(i,4){
       int input = analogRead(VolumeToPin[i][0]);
-      SoftPWMSet(VolumeToPin[i][direction], map(input, 0, 1023, 0, 255));
+      SoftPWMSet(VolumeToPin[i][direction + 1], map(input, 0, 1023, 0, 255));
+      SoftPWMSet(VolumeToPin[i][!direction + 1], 0);
       delayMicroseconds(100);
     }
   }
