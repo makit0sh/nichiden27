@@ -8,15 +8,15 @@ const SCENARIO_COUNT = 2;
     });
   }
   getScenarioData(0);
-  scenarioInit();
 }());
 
 
 function getScenarioData(num){
-    $.when($.getJSON('scenario/'+ num +'.json')).done(function(data){
-      info = data.info;
-      scenario = data.scenario;
-    });
+  $.when($.getJSON('scenario/'+ num +'.json')).done(function(data){
+    info = data.info;
+    scenario = data.scenario;
+    scenarioInit();
+  });
 }
 
 function scenarioInit(){
