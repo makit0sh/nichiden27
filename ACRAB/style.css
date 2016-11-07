@@ -26,12 +26,12 @@ header img {
 
 #wifi-icons span {
   padding-left: 18px;
-  background: url("/img/wifi-icon-01") no-repeat left center;
+  background: url("img/wifi-icon-01.svg") no-repeat left center;
   background-size: 17px;
 }
 
 #wifi-icons span.error {
-  background: url("/img/wifi-icon-02") no-repeat left center;
+  background: url("img/wifi-icon-02.svg") no-repeat left center;
   background-size: 17px;
 }
 
