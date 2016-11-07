@@ -165,7 +165,7 @@ button.timer_button:disabled {
   color: #555;
 }
 
-#script_now{
+#scenario_now{
   display: flex;
   clear: both;
   float: left;
@@ -177,14 +177,14 @@ button.timer_button:disabled {
   align-items: center;
   justify-content: center;
 }
-#script_next{text-align: right;}
+#scenario_next{text-align: right;}
 
-#script_constellation{
+#scenario_constellation{
   float:right;
   margin: 0px 20px;
 }
 
-#script_constellation p{
+#scenario_constellation p{
   display: block;
   float: left;
   width: 90px;
@@ -201,5 +201,5 @@ button.timer_button:disabled {
   transition: .5s;
 }
 
-#script_constellation p.on{background-color: #422;}
+#scenario_constellation p.on{background-color: #422;}
 
