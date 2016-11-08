@@ -2,12 +2,18 @@ var info, scenario = {};
 const SCENARIO_COUNT = 2;
 
 (function(){
-  for(var i=0;i<SCENARIO_COUNT;i++){ // Initialize select box
-    $.when($.getJSON('scenario/'+ i +'.json')).done(function(data){
-      info = data.info;
-    });
-  }
-  getScenarioData(0);
+  var scenario_file = [];
+  /*** Initialize select box ***/
+  for(var i=0;i<SCENARIO_COUNT;i++)
+    scenario_file[i] = $.getJSON('scenario/'+ i +'.json');
+  $.when.apply($, scenario_file).done(function(){
+    for(var i=0;i<SCENARIO_COUNT;i++){
+      var init_info = arguments[i][0].info;
+      if(!$('#select > optgroup.' + init_info.day)[0])
+        $('#select').append('<optgroup label="' + init_info.day + '">');
+    }
+  }).fail(function(xhr){console.error(xhr.status+' '+xhr.statusText);});
+    getScenarioData(0);
 }());
 
 
