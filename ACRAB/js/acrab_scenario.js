@@ -1,23 +1,32 @@
 var info, scenario = {};
-const SCENARIO_COUNT = 2;
+const SCENARIO_COUNT = 3; // ファイルの数はブラウザからじゃわからないので必ずここで指定!!!
 
 (function(){
   var scenario_file = [];
   /*** Initialize select box ***/
-  for(var i=0;i<SCENARIO_COUNT;i++)
-    scenario_file[i] = $.getJSON('scenario/'+ i +'.json');
-  $.when.apply($, scenario_file).done(function(){
-    for(var i=0;i<SCENARIO_COUNT;i++){
-      var init_info = arguments[i][0].info;
-      if(!$('#select > optgroup.' + init_info.day)[0])
-        $('#select').append('<optgroup label="' + init_info.day + '">');
-    }
+  for(var i=0;i<SCENARIO_COUNT;i++) scenario_file[i] = $.getJSON('scenario/'+ i +'.json');
+  $.when.apply($, scenario_file).done(function(){ // シナリオファイルが全部取得できたら<option>と<optgroup>追加
+    $.each(arguments, function(index){ // argumentsに取得したjsonが全部入ってるのでそれぞれ読む
+      var init_info = this[0].info;
+      var $dayGroup = $('#select > optgroup[label='+init_info.day+']'); // <option>を入れる<optgroup>
+      if(!$dayGroup[0]){
+        $('#select').append($('<optgroup>', {label: init_info.day}));
+        $dayGroup = $('#select > optgroup[label='+init_info.day+']');
+      }
+      $dayGroup.append($('<option>', {
+        value: index,
+        text: init_info.name + ' -  ' + init_info.title
+      }));
+    });
+    $('select#select').change(function(){
+      getScenarioData($(this).val());
+    });
   }).fail(function(xhr){console.error(xhr.status+' '+xhr.statusText);});
-    getScenarioData(0);
+  getScenarioData(0);
 }());
 
-
 function getScenarioData(num){
+  console.debug('getScenarioData called. num: '+num);
   $.when($.getJSON('scenario/'+ num +'.json')).done(function(data){
     info = data.info;
     scenario = data.scenario;
@@ -26,7 +35,6 @@ function getScenarioData(num){
 }
 
 function scenarioInit(){
-  $('#scenario_title').html('<b>'+info.title+'</b> by'+info.name);
   $('#scenario_prev').html('(前のシーンが表示されます)').addClass('scenario0').attr('onclick', 'goPrev();').prop('disabled', true);
   viewScript('#scenario_now', 0);
   $('#scenario_now').addClass('scenario1').prop('disabled', true);
