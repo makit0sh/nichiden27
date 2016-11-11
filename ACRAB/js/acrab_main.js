@@ -35,6 +35,8 @@ $(function() { //タブの実装
     var index = $('.tab_area li').index(this);
     $('.content').css('display','none');
     $('.content').eq(index).css('display','block');
+    $('.tab_area li').removeClass('active');
+    $(this).addClass('active');
   });
 });
 

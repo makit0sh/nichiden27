@@ -46,6 +46,7 @@ function scenarioInit(){
 var timer_button = new function(){
   this.start = function(){
     sendComm(0, 0);
+    $('#select').prop('disabled', true);
     $('#scenario_next').prop('disabled', false);
     timer = setInterval(function(){pass_time++; readTime();}, 1000);
     $('#timer_start').hide();
@@ -68,6 +69,7 @@ var timer_button = new function(){
     pass_time = 0;
     readTime();
     scenarioInit();
+    $('#select').prop('disabled', false);
     $('#timer_restart').hide();
     $('#timer_start').show();
     $('#timer_reset').prop('disabled', true);
