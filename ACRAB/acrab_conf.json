@@ -56,9 +56,9 @@
       "name": "冬の大三角",
       "value": ["CMa", "CMi", "Ori"]
     },
-    "Wnd": {
-      "name": "ダイヤモンド",
-      "value": ["Aur", "CMa", "CMi", "Gem", "Ori", "Tau"]
+    "Twv": {
+      "name": "黄道十二星座",
+      "value": ["Aqr", "Ari", "Cap", "Cnc", "Gem", "Leo", "Psc", "Sco", "Sgr", "Tau", "Vir", "Lib"]
     },
     "Sta": {
       "name": "恒星",
