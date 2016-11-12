@@ -1,0 +1,39 @@
+{
+  "info": {
+    "day": "一日目",
+    "title": "なんらかの解説",
+    "name": "星見太郎"
+  },
+  "scenario": [
+    {
+      "word": "",
+      "timing": "",
+      "projector":{"Fst": 1, "Gxy": 1}
+    },
+    {
+      "word": "Lorem ipsum dolor sit amet,",
+      "timing": "post",
+      "projector":{"St1": 1, "St2": 1}
+    },
+    {
+      "word": "consectetur adipiscing elit,",
+      "timing": "pre",
+      "projector":{"And": 1}
+    },
+    {
+      "word": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "timing": "post",
+      "projector":{"And": 0}
+    },
+    {
+      "word": "Ut enim ad minim veniam, ",
+      "timing": "「minim」と同時",
+      "projector":{"And": 1, "Aur": 1}
+    },
+    {
+      "word": "nisi ut aliquip ex ea commodo consequat.",
+      "timing": "post",
+      "projector":{"And": 0, "Aur": 0}
+    }
+  ]
+}
