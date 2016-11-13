@@ -16,7 +16,7 @@ header img {
 #wifi-icons {
   position: relative;
   float: left;
-  top: 10px;
+  top: 26px;
   left: 20px;
   display: block;
   width: 225px;
@@ -47,7 +47,7 @@ header img {
 
 .tab_area {
   position: relative;
-  top: 10px;
+  top: 18px;
   left: 20px;
   line-height: 100px;
 }
@@ -56,16 +56,19 @@ header img {
   display:block;
   float:left;
   background:#333;
+  background-size: contain;
   height: 100px;
   width: 100px;
   margin: 0;
   text-align:center;
   color:#aaa;
 }
-.tab_area li.active{background-color: #666;}
-.tab_area li:hover {
-  background:#555;
-}
+#main_tab{background-image:url("img/main_01.png")}
+#main_tab:hover{background-image:url("img/main_02.png")}
+#main_tab.active{background-image:url("img/main_03.png")}
+#scenario_tab{background-image:url("img/scenario_01.png")}
+#scenario_tab:hover{background-image:url("img/scenario_02.png")}
+#scenario_tab.active{background-image:url("img/scenario_03.png")}
 
 ul {
   display: table;
@@ -77,7 +80,7 @@ ul {
 hr {
   clear:both;
   margin: 0;
-  border-color: #333;
+  border:1px solid #999;
 }
 
 button {
