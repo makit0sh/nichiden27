@@ -41,6 +41,7 @@ function scenarioInit(){
   viewScript('#scenario_next', 1);
   $('#scenario_next').addClass('scenario2').attr('onclick', 'goNext();').prop('disabled', true);
   $('#scenario_number').html('1/' + scenario.length);
+  $('#progress_bar').attr('pass_time', '00:00:00');
 }
 
 var timer_button = new function(){
@@ -79,7 +80,9 @@ var timer_button = new function(){
     var hour     = toDoubleDigits(Math.floor(pass_time / 3600));
     var minute   = toDoubleDigits(Math.floor((pass_time - 3600*hour) / 60));
     var second   = toDoubleDigits((pass_time - 3600*hour - 60*minute));
-    $('#scenario_timecount').html(hour + ':' + minute + ':' + second);
+    $('#progress_bar').attr('pass_time', hour + ':' + minute + ':' + second);
+    var progress = Math.min(pass_time / 1500.0, 1); // 25 minutes
+    $('#progress_bar').attr('value', progress);
     return;
   };
   var toDoubleDigits = function(num){return ('0' + num).slice(-2);}; // sliceで時刻要素の0埋め

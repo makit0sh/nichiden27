@@ -62,6 +62,7 @@ header img {
   margin: 0;
   text-align:center;
   color:#aaa;
+  opacity: 0.75;
 }
 #main_tab{background-image:url("img/main_01.png")}
 #main_tab:hover{background-image:url("img/main_02.png")}
@@ -133,18 +134,49 @@ button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
 
 button.timer_button {
+  float: left;
   width: 100px;
-  height: 30px;
+  height: 40px;
   margin-left: 10px;
+  border-radius: 4px;
 }
-button.timer_button:hover {
-  font-size: 18px;
-  background-color: #666;
-}
-button.timer_button:active {background-color: #888;}
+button.timer_button:hover {background-color: #666;}
+button#timer_start {background-color: #600;}
+button#timer_start:hover {background-color: #800;}
+button#timer_stop {background-color: #660;}
+button#timer_stop:hover {background-color: #880;}
+button#timer_restart {background-color: #060;}
+button#timer_restart:hover {background-color: #080;}
 button.timer_button:disabled {
   background-color: #444;
   color: #666;
+}
+
+progress#progress_bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 400px;
+  height: 40px;
+}
+progress#progress_bar::-webkit-progress-bar {
+  background-image:
+    -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0,0, 0, .1) 66%, transparent 66%),
+    -webkit-linear-gradient(left, #333, #555);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) inset;
+  background-size: 75px 40px, 100% 100%, 100% 100%;
+}
+progress#progress_bar::-webkit-progress-value {
+  background-color: transparent;
+  border-right: 2px #be1 solid;
+}
+progress#progress_bar:before {
+  content: attr(pass_time);
+  position: absolute;
+  padding: 9px;
+  color: #9a1;
+  text-shadow: 1px 1px 3px #000;
 }
 
 #scenario_select{
@@ -239,7 +271,7 @@ button.timer_button:disabled {
 
 #scenario_constellation{
   float:right;
-  margin: 0px 20px;
+  margin: 10px 20px;
   border: 1px solid #888;
 }
 

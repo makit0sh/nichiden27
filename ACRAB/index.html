@@ -85,14 +85,14 @@
           </select>
         </label>
       </p>
-      <p style="float: left; font-size:20px ;margin: 1px 10px;">
-        <span id="scenario_number">1/1</span>
-        経過時間 <span id="scenario_timecount">00:00:00</span>
-      </p>
       <button id="timer_start" class="timer_button" onclick="timer_button.start()">開始</button>
       <button id="timer_stop" class="timer_button" onclick="timer_button.stop()" style="display:none">停止</button>
       <button id="timer_restart" class="timer_button" onclick="timer_button.restart()" style="display:none">再開</button>
       <button id="timer_reset" class="timer_button" onclick="timer_button.reset()" disabled>リセット</button>
+      <p style="float: left; font-size:20px ;margin: 0px 10px;">
+        <progress id="progress_bar"></progress>
+        <span id="scenario_number">1/1</span>
+      </p>
     </div>
     <p id="scenario_now"></p>
     <div id="scenario_constellation">
