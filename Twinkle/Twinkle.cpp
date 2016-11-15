@@ -4,8 +4,6 @@
 
 #define CHAOS_DIV 256 // chaos_gen()で生成される乱数は1~32768の幅であるが、このままではタイマ0割込に使用できないので適当な2の乗数で割る
 #define ON_DURATION_MAX 160 // LEDの点灯時間の最大値を決定するパラメーター(タイマ割込の間隔によって決まっているのでオシロスコープで波形を見ながら調整のこと)
-#define MIN_STRONG 30 // 点灯時間の最小値を決定するパラメーター。小さいほどまたたきの度合いが強い
-#define MIN_WEAK 90
 #define TWINKLE_RATE 2 // またたき用の乱数値の更新レート、nを設定するとn回のタイマ割込に1回の割合で値が更新する
 #define TWINKLE_SHIFT 100 // 乱数の周期性問題を解決するために、乱数とそれに対応する信号出力ビットをport_shift()で変更している。nを設定するとn回の乱数更新に1回の割合で出力がビットシフトする
 
@@ -21,7 +19,7 @@ void Twinkle::port_shift(void){ // 疑似周期性を目立たなくするため
 void Twinkle::refresh(void){ // 乱数値を更新する。所要時間は12変数で1ms
   for(int i=0;i<12;i++){
     chaos[i] = chaos_gen(chaos[i]);
-    on_duration[i] = min((int)(chaos[i] / CHAOS_DIV + (i<6 ? MIN_STRONG : MIN_WEAK)), ON_DURATION_MAX);
+    on_duration[i] = min((int)(chaos[i] / CHAOS_DIV + min_duration[i]), ON_DURATION_MAX);
   }
 }
 
