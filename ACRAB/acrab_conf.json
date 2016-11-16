@@ -60,6 +60,11 @@
       "name": "黄道十二星座",
       "value": ["Aqr", "Ari", "Cap", "Cnc", "Gem", "Leo", "Psc", "Sco", "Sgr", "Tau", "Vir", "Lib"]
     },
+    "All": {
+      "name": "全星座絵",
+      "value": ["And", "Aql", "Aqr", "Ari", "Aur", "Boo", "Cap", "Cas", "Cep", "Cet", "CMa", "CMi", "Cnc", "Cyg",
+                "Gem", "Leo", "Lep", "Lyr", "Ori", "Peg", "Per", "Psc", "Sco", "Sgr", "Tau", "UMa", "Vir", "Lib"]
+    },
     "Sta": {
       "name": "恒星",
       "value": ["St1", "St2"]

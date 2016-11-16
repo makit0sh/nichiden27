@@ -88,7 +88,6 @@ function checkStatus(stat){
   return;
 }
 
-
 var button = {
   constellation: function(obj){
     var address = ip[port[obj.id].box] + 'setPort/status.json';
@@ -123,9 +122,37 @@ var button = {
       if(port[this].box.match('S')) req.S.data[this] = button.stat(obj);
     });
     $.each(req, function(key){ // 南北それぞれ送信
-      getRequest(this.address, this.data).done(function(res){checkStatus(res)});
+      sliced_data = each_slice(this.data, 5);
+      $.each(sliced_data, function(){
+        getRequest(req[key].address, this).done(function(res){checkStatus(res)});
+        sleep_ms(100);
+      });
     });
     return;
   },
   stat: function(obj){return ($(obj).hasClass('on') ? 0 : 1);}
+}
+
+function each_slice(obj, n){ // オブジェクトを長さnのオブジェクトに分割
+  var ret = [];
+  for(var i=0;i<Math.ceil(Object.keys(obj).length/n, 10);i++){
+    sliced_data = Object.keys(obj).slice(i*n, i*n+n);
+    var ret_sub = {};
+    for(var d of sliced_data){
+      if(d === "St1" || d == "St2"){
+        var o = {};
+        o[d] = obj[d];
+        ret.push(o);
+      }
+      else ret_sub[d] = obj[d];
+    }
+    if(Object.keys(ret_sub).length) ret.push(ret_sub);
+  }
+  return ret;
+}
+
+function sleep_ms(T){ // T[ms]処理を遅らせる
+  var d = new Date().getTime();
+  var dd = new Date().getTime();
+  while(dd < d+T) dd = new Date().getTime();
 }
