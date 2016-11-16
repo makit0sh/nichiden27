@@ -24,6 +24,8 @@ header img {
 
 #wifi-icons p {margin: 4px;}
 
+#wifi-icons a {box-shadow: 0 0 8px rgba(0, 0, 0, 0.75) inset;}
+
 #wifi-icons span {
   padding-left: 18px;
   background: url("img/wifi-icon-01.svg") no-repeat left center;
@@ -105,7 +107,7 @@ button.main_button {
   clear: both;
   outline: solid;
   outline-color: #030;
-  outline-width: 2px;
+  outline-width: 3px;
   outline-offset: 2px;
   margin: 15px 12px;
   box-shadow: 0 0 10px 8px #111;
@@ -139,6 +141,7 @@ button.timer_button {
   height: 40px;
   margin-left: 10px;
   border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
 button.timer_button:hover {background-color: #666;}
 button#timer_start {background-color: #600;}
@@ -192,6 +195,7 @@ progress#progress_bar:before {
   height: 40px;
   vertical-align: middle;
   background-color: #777;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
 #select{
   z-index: 1;
@@ -289,6 +293,7 @@ progress#progress_bar:before {
   margin: 2px;
   padding: 2px;
   transition: .5s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
 
 #scenario_constellation p.on{background-color: #422;}
