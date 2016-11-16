@@ -160,12 +160,9 @@ progress#progress_bar {
   height: 40px;
 }
 progress#progress_bar::-webkit-progress-bar {
-  background-image:
-    -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0,0, 0, .1) 66%, transparent 66%),
-    -webkit-linear-gradient(left, #333, #555);
+  background-image: -webkit-linear-gradient(left, #333, #555);
   border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) inset;
-  background-size: 75px 40px, 100% 100%, 100% 100%;
 }
 progress#progress_bar::-webkit-progress-value {
   background-color: transparent;
@@ -184,6 +181,8 @@ progress#progress_bar:before {
   width: 500px;
   margin: 0px;
 }
+#scenario_number{font-size: 40px;}
+
 #select-group{
   z-index: 0;
   position: relative;
