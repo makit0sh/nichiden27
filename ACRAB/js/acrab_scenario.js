@@ -118,10 +118,14 @@ function sendComm(index, reverse){
   var data = $.extend(true, {}, scenario[index].projector);
   if(reverse) $.each(data, function(key){
     data[key] = this == 1 ? 0 : 1;
-    });
+  });
   $.each(ip, function(){
     address = this + 'setPort/status.json';
-    getRequest(address, data).done(function(res){checkStatus(res)});
+    sliced_data = each_slice(data, 5);
+    $.each(sliced_data, function(){
+      getRequest(address, this).done(function(res){checkStatus(res)});
+      sleep_ms(100);
+    });
   });
 }
 
