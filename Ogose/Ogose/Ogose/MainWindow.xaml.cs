@@ -23,6 +23,20 @@ namespace Ogose
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+        private void checkBox1_Checked(object sender, RoutedEventArgs e)
+        {
+            this.window1.WindowStyle = WindowStyle.None;
+            this.window1.WindowState = WindowState.Maximized;
+            this.window1.Topmost = true;
+        }
+        private void checkBox1_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.window1.WindowStyle = WindowStyle.SingleBorderWindow;
+            this.window1.WindowState = WindowState.Normal;
+            this.window1.Topmost = false;
         }
     }
 }
