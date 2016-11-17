@@ -12,3 +12,17 @@ D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\Ogos
 D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\Ogose\obj\Debug\Ogose.csproj.GenerateResource.Cache
 D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\Ogose\obj\Debug\Ogose.exe
 D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\Ogose\obj\Debug\Ogose.pdb
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\bin\Debug\Ogose.exe.config
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.exe
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.pdb
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.csprojResolveAssemblyReference.cache
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\MainWindow.g.cs
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\App.g.cs
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose_MarkupCompile.cache
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose_MarkupCompile.lref
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\bin\Debug\Ogose.exe
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\bin\Debug\Ogose.pdb
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\MainWindow.baml
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.g.resources
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.Properties.Resources.resources
+D:\C7V70316\Documents\UT\UTenmon\UTenmon_Nichiden_27\nichiden27\Ogose\Ogose\obj\Debug\Ogose.csproj.GenerateResource.Cache
