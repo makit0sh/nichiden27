@@ -1,5 +1,5 @@
 var info, scenario = {};
-const SCENARIO_COUNT = 3; // ファイルの数はブラウザからじゃわからないので必ずここで指定!!!
+const SCENARIO_COUNT = 4; // ファイルの数はブラウザからじゃわからないので必ずここで指定!!!
 
 (function(){
   var scenario_file = [];
