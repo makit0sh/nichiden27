@@ -114,6 +114,7 @@ namespace Ogose
                     serialPort.PortName = item.Name;
                     try
                     {
+                        serialPort.WriteTimeout = 500;
                         serialPort.Open();
                     }
                     catch (IOException ex)
