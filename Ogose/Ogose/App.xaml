@@ -108,40 +108,6 @@
             </Setter>
         </Style>
 
-        <Style x:Key="ToggleButton" TargetType="ToggleButton">
-            <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
-            <Setter Property="Template" Value="{DynamicResource NormalToggleButton}" />
-        </Style>
-
-        <Style x:Key="ConnectButton" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButton}">
-            <Setter Property="Content" Value="コントローラと接続" />
-            <Style.Triggers>
-                <Trigger Property="IsChecked" Value="true">
-                    <Setter Property="Content" Value="コントローラから切断" />
-                    <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
-                    <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
-                    <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="DiurnalPlusButton" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButton}">
-            <Setter Property="Content" Value="日周+" />
-            <Setter Property="FontSize" Value="18" />
-        </Style>
-
-        <Style x:Key="DiurnalMinusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
-            <Setter Property="Content" Value="日周-" />
-        </Style>
-
-        <Style x:Key="LatitudePlusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
-            <Setter Property="Content" Value="緯度+" />
-        </Style>
-
-        <Style x:Key="LatitudeMinusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
-            <Setter Property="Content" Value="緯度-" />
-        </Style>
-
         <Style TargetType="ComboBox">
             <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
@@ -213,7 +179,7 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
+        <Style x:Key="ComboBoxEditableTextBox" TargetType="TextBox">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="AllowDrop" Value="true"/>
             <Setter Property="MinWidth" Value="0"/>
@@ -226,6 +192,52 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="ToggleButton" TargetType="ToggleButton">
+            <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
+            <Setter Property="Template" Value="{DynamicResource NormalToggleButton}" />
+        </Style>
+
+        <Style x:Key="ConnectButton" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButton}">
+            <Setter Property="Content" Value="コントローラと接続" />
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="true">
+                    <Setter Property="Content" Value="コントローラから切断" />
+                    <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
+                    <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+                    <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DiurnalPlusButton" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButton}">
+            <Setter Property="Content" Value="日周+" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+
+        <Style x:Key="DiurnalMinusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
+            <Setter Property="Content" Value="日周-" />
+        </Style>
+
+        <Style x:Key="LatitudePlusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
+            <Setter Property="Content" Value="緯度+" />
+        </Style>
+
+        <Style x:Key="LatitudeMinusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
+            <Setter Property="Content" Value="緯度-" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
+            <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
+        </Style>
+        
+        <Style TargetType="RadioButton">
+            <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
+            <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
+            <Setter Property="FontSize" Value="18" />
         </Style>
 
     </Application.Resources>

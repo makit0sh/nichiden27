@@ -1,5 +1,6 @@
 ﻿using Ogose.Properties;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
 namespace Ogose
@@ -24,15 +26,28 @@ namespace Ogose
             InitializeComponent();
            
         }
-
+        /// <summary> シリアルポートを使用するので宣言 </summary>
         SerialPort serialPort = null;
-
+        /// <summary> コントローラと通信するためのクラスNisshuidohenControllerのインスタンス </summary>
         NisshuidohenController nisshuidohenController = new NisshuidohenController();
-
-        const int SPEED_HIGH_DIURNAL = 1000;                   //4  deg/s
-        const int SPEED_HIGH_LATITUDE = 1000 * 8192 / 9000;    //1  deg/s
-        const int SPEED_LOW_DIURNAL = 250;                     //1  deg/s
-        const int SPEED_LOW_LATITUDE = 500 * 8192 / 9000;      //0.5deg/s
+        /// <summary> 日周運動で欲しいスピードのDictionary </summary>
+        private static readonly Dictionary<string, double> SPEED_DIURNAL = new Dictionary<string, double>() {
+            {"very_high", 6},
+            {"high", 4},
+            {"low", 2},
+            {"very_low", 1}
+        };
+        /// <summary> 緯度運動で欲しいスピードのDictionary </summary>
+        private static readonly Dictionary<string, double> SPEED_LATITUDE = new Dictionary<string, double>() {
+            {"very_high", 2},
+            {"high", 1.5},
+            {"low", 1},
+            {"very_low", 0.5}
+        };
+        /// <summary> 日周運動のスピード </summary>
+        private double diurnal_speed = SPEED_DIURNAL["high"];
+        /// <summary> 緯度運動のスピード </summary>
+        private double latitude_speed = SPEED_LATITUDE["high"];
 
         /// <summary>
         /// シリアルポート名Nameを取得し正規表現に合致するかを確認しシリアルポート名を表示する
@@ -166,57 +181,74 @@ namespace Ogose
 
         }
 
+        private void diurnalRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radioButton = (RadioButton)sender;
+            if (radioButton.Name == "diurnalRadioButton1") diurnal_speed = SPEED_DIURNAL["very_high"];
+            else if (radioButton.Name == "diurnalRadioButton2") diurnal_speed = SPEED_DIURNAL["high"];
+            else if (radioButton.Name == "diurnalRadioButton3") diurnal_speed = SPEED_DIURNAL["low"];
+            else if (radioButton.Name == "diurnalRadioButton4") diurnal_speed = SPEED_DIURNAL["very_low"];
+
+            if (diurnalPlusButton.IsChecked != null && (bool)diurnalPlusButton.IsChecked) diurnalPlusButton_Checked(new object(), new RoutedEventArgs());
+            if (diurnalMinusButton.IsChecked != null && (bool)diurnalMinusButton.IsChecked) diurnalMinusButton_Checked(new object(), new RoutedEventArgs());
+        }
+
+        private void latitudeRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            var radioButton = (RadioButton)sender;
+            if (radioButton.Name == "latitudeRadioButton1") latitude_speed = SPEED_LATITUDE["very_high"];
+            else if (radioButton.Name == "latitudeRadioButton2") latitude_speed = SPEED_LATITUDE["high"];
+            else if (radioButton.Name == "latitudeRadioButton3") latitude_speed = SPEED_LATITUDE["low"];
+            else if (radioButton.Name == "latitudeRadioButton4") latitude_speed = SPEED_LATITUDE["very_low"];
+
+            if (latitudePlusButton.IsChecked != null && (bool)latitudePlusButton.IsChecked) latitudePlusButton_Checked(new object(), new RoutedEventArgs());
+            if (latitudeMinusButton.IsChecked != null && (bool)latitudeMinusButton.IsChecked) latitudeMinusButton_Checked(new object(), new RoutedEventArgs());
+        }
+
         /// <summary>
-        /// 逆向きの回転を行うボタンを取得する
+        /// 逆向きの回転を行うボタンの有効/無効を切り替える
         /// </summary>
         /// <param name="button"></param>
-        private ToggleButton oppositeButton(ToggleButton button)
+        private void toggleOppositeButton(ToggleButton button)
         {
-            if (button.Name == "diurnalPlusButton") return (ToggleButton)FindName("diurnalMinusButton");
-            else if (button.Name == "diurnalMinusButton") return (ToggleButton)FindName("diurnalPlusButton");
-            else if (button.Name == "latitudePlusButton") return (ToggleButton)FindName("latitudeMinusButton");
-            else if (button.Name == "latitudeMinusButton") return (ToggleButton)FindName("latitudePlusButton");
-            else return null;
+            ToggleButton oppositeButton = null;
+            if (button.Name == "diurnalPlusButton") oppositeButton = (ToggleButton)FindName("diurnalMinusButton");
+            else if (button.Name == "diurnalMinusButton") oppositeButton = (ToggleButton)FindName("diurnalPlusButton");
+            else if (button.Name == "latitudePlusButton") oppositeButton = (ToggleButton)FindName("latitudeMinusButton");
+            else if (button.Name == "latitudeMinusButton") oppositeButton = (ToggleButton)FindName("latitudePlusButton");
+            oppositeButton.IsEnabled = !oppositeButton.IsEnabled;
+            (button).Focus();
         }
 
         private void diurnalPlusButton_Checked(object sender, RoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(SPEED_HIGH_DIURNAL));
-            oppositeButton((ToggleButton)sender).IsEnabled = false;
-            ((ToggleButton)sender).Focus();
-        }
-        
+            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(diurnal_speed));
+            if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
+        }        
         private void diurnalMinusButton_Checked(object sender, RoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-SPEED_HIGH_DIURNAL));
-            oppositeButton((ToggleButton)sender).IsEnabled = false;
-            ((ToggleButton)sender).Focus();
-        }
-        
+            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-diurnal_speed));
+            if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
+        }       
         private void diurnalButton_Unchecked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateDiurnalBySpeed(0));
-            oppositeButton((ToggleButton)sender).IsEnabled = true;
+            if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-
         private void latitudePlusButton_Checked(object sender, RoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(SPEED_HIGH_LATITUDE));
-            oppositeButton((ToggleButton)sender).IsEnabled = false;
-            ((ToggleButton)sender).Focus();
+            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(latitude_speed));
+            if(sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-
         private void latitudeMinusButton_Checked(object sender, RoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(-SPEED_HIGH_LATITUDE));
-            oppositeButton((ToggleButton)sender).IsEnabled = false;
-            ((ToggleButton)sender).Focus();
+            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(-latitude_speed));
+            if(sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-
         private void latitudeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateLatitudeBySpeed(0));
-            oppositeButton((ToggleButton)sender).IsEnabled = true;
+            if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
 
         private void checkBox1_Checked(object sender, RoutedEventArgs e)
@@ -224,14 +256,13 @@ namespace Ogose
             this.window1.WindowStyle = WindowStyle.None;
             this.window1.WindowState = WindowState.Maximized;
             this.window1.Topmost = true;
+            ((CheckBox)sender).Focus();
         }
-
         private void checkBox1_Unchecked(object sender, RoutedEventArgs e)
         {
             this.window1.WindowStyle = WindowStyle.SingleBorderWindow;
             this.window1.WindowState = WindowState.Normal;
             this.window1.Topmost = false;
         }
-
     }
 }
