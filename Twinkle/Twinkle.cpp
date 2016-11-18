@@ -8,6 +8,7 @@
 #define TWINKLE_SHIFT 100 // 乱数の周期性問題を解決するために、乱数とそれに対応する信号出力ビットをport_shift()で変更している。nを設定するとn回の乱数更新に1回の割合で出力がビットシフトする
 
 #define min(x, y) ((x)<(y)?(x):(y))
+#define SIZE_OF(array) (sizeof(array) / sizeof(array[0]))
 
 Twinkle::Twinkle():refresh_rate(TWINKLE_RATE), rr_count(TWINKLE_RATE), shift_rate(TWINKLE_SHIFT), sr_count(TWINKLE_SHIFT){};
 
@@ -17,7 +18,7 @@ void Twinkle::port_shift(void){ // 疑似周期性を目立たなくするため
 }
 
 void Twinkle::refresh(void){ // 乱数値を更新する。所要時間は12変数で1ms
-  for(int i=0;i<12;i++){
+  for(int i=0;i<SIZE_OF(on_duration);i++){
     chaos[i] = chaos_gen(chaos[i]);
     on_duration[i] = min((int)(chaos[i] / CHAOS_DIV + min_duration[i]), ON_DURATION_MAX);
   }
@@ -31,7 +32,7 @@ unsigned long Twinkle::chaos_gen(unsigned long y){ // Max == 32768までの整�
   return y;
 }
 
-void Twinkle::count(void){
+void Twinkle::generate(void){ // またたきをつかさどる部分
   rr_count--; //乱数更新時期の判定と実行をする
   if(!rr_count){
     sr_count--; //ビットシフト更新時期の判定と実行をする

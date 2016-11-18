@@ -8,14 +8,13 @@
 * K_Ito追記: Arduino IDEに以下のjsonを読み込ませるとボードマネージャからAVRが追加できる。
 *   http://drazzy.com/package_drazzy.com_index.json
 *****************************************************************************************/
-
+#define F_CPU 8000000UL
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "Twinkle.h"
 
-#define F_CPU 8000000UL
-#define TWINKLE_PATTERNS 12
+#define SIZE_OF(array) (sizeof(array) / sizeof(array[0]))
 
 Twinkle twinkle;
 
@@ -24,16 +23,16 @@ ISR(INT0_vect){ //またたきOFF（スイッチで切り替え）
   PORTB = 0xFF;
 }
 
-ISR(TIMER0_COMPA_vect){ //またたきをつかさどる部分。PORTAがまたたき強い、PORTBがまたたき弱い。
-  unsigned int c_up = 0;
-  unsigned int pattern_count = TWINKLE_PATTERNS;
+ISR(TIMER0_COMPA_vect){ // ON
   PORTA = 0xFF;
   PORTB = 0xFF;
-  twinkle.count();
-  while(pattern_count){ //on_durationの値とc_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。
+  twinkle.generate();
+  unsigned int c_up = 0;
+  unsigned int pattern_count = SIZE_OF(twinkle.on_duration);
+  while(pattern_count){ //twinkle.on_durationの値とtwinkle.c_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。
     c_up++;
-    for(int i=0;i<12;i++){
-      if(twinkle.on_duration[i] == c_up){
+    for(int i=0;i<SIZE_OF(twinkle.on_duration);i++){
+      if(twinkle.on[i] && twinkle.on_duration[i] == c_up){
         if(i < 6) PORTA ^= 1 << twinkle.bit_num[i];
         else PORTB ^= 1 << twinkle.bit_num[i-6];
         pattern_count--;
