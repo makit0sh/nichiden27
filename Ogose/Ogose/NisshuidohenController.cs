@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ogose
 {
 
     /// <summary> 日周緯度変コントローラへ送るコマンド文字列を生成する関数群をまとめたクラス。 </summary>
-public class NisshuidohenController
+    public class NisshuidohenController
 {
     /// <summary> 日周・緯度のモータのうち一方を選ぶための定数 </summary>
     public enum Motor

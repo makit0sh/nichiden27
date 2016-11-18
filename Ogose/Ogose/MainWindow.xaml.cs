@@ -1,22 +1,13 @@
 ﻿using Ogose.Properties;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace Ogose
 {
@@ -102,10 +93,9 @@ namespace Ogose
                 ConnectButton.Unchecked -= ConnectButton_IsCheckedChanged;
                 ConnectButton.IsChecked = null;
 
-                if (serialPort != null && serialPort.IsOpen) serialPort.Close();
-                if (serialPort != null && connecting)
+                if (serialPort.IsOpen) serialPort.Close();
+                if (connecting)
                 {
-
                     serialPort.PortName = item.Name;
                     try
                     {
@@ -171,45 +161,62 @@ namespace Ogose
 
             else
             {
-                MessageBox.Show(cmd, "cmd");
+                MessageBox.Show("Error: コントローラと接続して下さい\ncommand: "+ cmd, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
 
-        private void diurnalPlusButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 逆向きの回転を行うボタンを取得する
+        /// </summary>
+        /// <param name="button"></param>
+        private ToggleButton oppositeButton(ToggleButton button)
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-SPEED_HIGH_DIURNAL));
-            diurnalPlusButton.Focus();
+            if (button.Name == "diurnalPlusButton") return (ToggleButton)FindName("diurnalMinusButton");
+            else if (button.Name == "diurnalMinusButton") return (ToggleButton)FindName("diurnalPlusButton");
+            else if (button.Name == "latitudePlusButton") return (ToggleButton)FindName("latitudeMinusButton");
+            else if (button.Name == "latitudeMinusButton") return (ToggleButton)FindName("latitudePlusButton");
+            else return null;
         }
-        
-        private void diurnalMinusButton_Click(object sender, RoutedEventArgs e)
+
+        private void diurnalPlusButton_Checked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateDiurnalBySpeed(SPEED_HIGH_DIURNAL));
-            diurnalMinusButton.Focus();
+            oppositeButton((ToggleButton)sender).IsEnabled = false;
+            ((ToggleButton)sender).Focus();
         }
         
-        private void diurnalStopButton_Click(object sender, RoutedEventArgs e)
+        private void diurnalMinusButton_Checked(object sender, RoutedEventArgs e)
+        {
+            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-SPEED_HIGH_DIURNAL));
+            oppositeButton((ToggleButton)sender).IsEnabled = false;
+            ((ToggleButton)sender).Focus();
+        }
+        
+        private void diurnalButton_Unchecked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateDiurnalBySpeed(0));
-            diurnalStopButton.Focus();
+            oppositeButton((ToggleButton)sender).IsEnabled = true;
         }
 
-        private void latitudePlusButtonn_Click(object sender, RoutedEventArgs e)
+        private void latitudePlusButton_Checked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateLatitudeBySpeed(SPEED_HIGH_LATITUDE));
-            latitudePlusButton.Focus();
+            oppositeButton((ToggleButton)sender).IsEnabled = false;
+            ((ToggleButton)sender).Focus();
         }
 
-        private void latitudeMinusButton_Click(object sender, RoutedEventArgs e)
+        private void latitudeMinusButton_Checked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateLatitudeBySpeed(-SPEED_HIGH_LATITUDE));
-            latitudeMinusButton.Focus();
+            oppositeButton((ToggleButton)sender).IsEnabled = false;
+            ((ToggleButton)sender).Focus();
         }
 
-        private void latitudeStopButton_Click(object sender, RoutedEventArgs e)
+        private void latitudeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             emitCommand(nisshuidohenController.RotateLatitudeBySpeed(0));
-            latitudeStopButton.Focus();
+            oppositeButton((ToggleButton)sender).IsEnabled = true;
         }
 
         private void checkBox1_Checked(object sender, RoutedEventArgs e)
@@ -225,5 +232,6 @@ namespace Ogose
             this.window1.WindowState = WindowState.Normal;
             this.window1.Topmost = false;
         }
+
     }
 }
