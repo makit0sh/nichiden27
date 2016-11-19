@@ -32,10 +32,11 @@ ISR(TIMER0_COMPA_vect){ // ON
   while(pattern_count){ //twinkle.on_durationの値とtwinkle.c_up（カウントアップ）の値を比較し、一致するまではON、一致したらLEDをOFFにする。全部OFFになったらループを抜けてmainに戻る。
     c_up++;
     for(int i=0;i<SIZE_OF(twinkle.on_duration);i++){
-      if(twinkle.on[i] && twinkle.on_duration[i] == c_up){
+      if(twinkle.on_duration[i] == c_up){
+        pattern_count--;
+        if(!twinkle.on[i]) continue;
         if(i < 6) PORTA ^= 1 << twinkle.bit_num[i];
         else PORTB ^= 1 << twinkle.bit_num[i-6];
-        pattern_count--;
       }
     }
     _delay_us(7);
