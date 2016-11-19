@@ -27,10 +27,10 @@ class Twinkle {
 #endif
     /* 点灯時間の最小値を決定するパラメーター。小さいほどまたたきの度合いが強い */
 #ifdef NORTH_HEMISPHERE
-    unsigned int min_duration[12] = {30, 30, 30, 30, 30, 0, 70, 70, 70, 70, 70, 70};
+    unsigned int min_duration[12] = {70, 70, 70, 70, 70, 0, 30, 30, 30, 30, 30, 30};
 #endif
 #ifdef SOUTH_HEMISPHERE
-    unsigned int min_duration[12] = {30, 30, 30, 0, 0, 0, 70, 70, 70, 70, 30, 30};
+    unsigned int min_duration[12] = {70, 70, 70, 0, 0, 0, 30, 30, 30, 30, 70, 70};
 #endif
     unsigned int refresh_rate;
     unsigned int rr_count;

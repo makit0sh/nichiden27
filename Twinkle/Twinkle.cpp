@@ -37,7 +37,7 @@ void Twinkle::generate(void){ // またたきをつかさどる部分
   if(!rr_count){
     sr_count--; //ビットシフト更新時期の判定と実行をする
     if(!sr_count){
-      port_shift();
+      //port_shift();
       sr_count = shift_rate;
     }else _delay_us(100);
     refresh();
