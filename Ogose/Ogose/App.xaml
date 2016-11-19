@@ -7,10 +7,10 @@
     <Application.Resources>
 
         <!-- Brush -->
-        <SolidColorBrush x:Key="ButtonNormalBackground" Color="#FF333333"/>
+        <SolidColorBrush x:Key="ButtonNormalBackground" Color="#AA444444"/>
         <SolidColorBrush x:Key="ButtonHoverBackground" Color="#FF334433"/>
         <SolidColorBrush x:Key="ButtonNormalForeground" Color="White"/>
-        <SolidColorBrush x:Key="ButtonDisableBackground" Color="#FF222222"/>
+        <SolidColorBrush x:Key="ButtonDisableBackground" Color="#AA222222"/>
         <SolidColorBrush x:Key="ButtonDisableForeground" Color="SlateGray"/>
         <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
 
@@ -212,12 +212,12 @@
         </Style>
 
         <Style x:Key="DiurnalPlusButton" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButton}">
-            <Setter Property="Content" Value="日周+" />
+            <Setter Property="Content" Value="日周戻す" />
             <Setter Property="FontSize" Value="18" />
         </Style>
 
         <Style x:Key="DiurnalMinusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
-            <Setter Property="Content" Value="日周-" />
+            <Setter Property="Content" Value="日周進める" />
         </Style>
 
         <Style x:Key="LatitudePlusButton" TargetType="ToggleButton" BasedOn="{StaticResource DiurnalPlusButton}">
@@ -229,12 +229,12 @@
         </Style>
 
         <Style TargetType="Label">
-            <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}" />
+            <Setter Property="Background" Value="#55333333" />
             <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
             <Setter Property="BorderBrush" Value="{StaticResource ButtonNormalBorder}"/>
         </Style>
-        
-        <Style TargetType="RadioButton">
+
+        <Style TargetType="RadioButton" BasedOn="{StaticResource ToggleButton}">
             <Setter Property="FocusVisualStyle" Value="{DynamicResource NormalFocusVisual}"/>
             <Setter Property="Foreground" Value="{StaticResource ButtonNormalForeground}" />
             <Setter Property="FontSize" Value="18" />

@@ -68,14 +68,10 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label Content="日周速度" Grid.Row="0" />
-                <RadioButton x:Name="diurnalRadioButton1" Content="とても速い(6deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" GroupName="Diurnal" 
-                             Checked="diurnalRadioButton_Checked" />
-                <RadioButton x:Name="diurnalRadioButton2" Content="速い(4deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" GroupName="Diurnal" 
-                             Checked="diurnalRadioButton_Checked" Grid.RowSpan="2" />
-                <RadioButton x:Name="diurnalRadioButton3" Content="遅い(2deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3"  GroupName="Diurnal"
-                             Checked="diurnalRadioButton_Checked" />
-                <RadioButton x:Name="diurnalRadioButton4" Content="とても遅い(1deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4"  GroupName="Diurnal"
-                             Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton1" Content="とても速い(6deg/sec)"  GroupName="Diurnal" Grid.Row="1" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton2" Content="速い(4deg/sec)" GroupName="Diurnal" Grid.Row="2" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton3" Content="遅い(2deg/sec)" GroupName="Diurnal"  Grid.Row="3" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton4" Content="とても遅い(1deg/sec)" GroupName="Diurnal" Grid.Row="4" Checked="diurnalRadioButton_Checked" />
             </Grid>
             <Grid x:Name="latitudeSpeenGrid" Grid.Row="1" Grid.Column="3">
                 <Grid.RowDefinitions>
@@ -86,14 +82,10 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label Content="緯度速度" Grid.Row="0" />
-                <RadioButton x:Name="latitudeRadioButton1" Content="とても速い(2deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" GroupName="Latitude" 
-                             Checked="latitudeRadioButton_Checked" />
-                <RadioButton x:Name="latitudeRadioButton2" Content="速い(1.5deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" GroupName="Latitude" 
-                             Checked="latitudeRadioButton_Checked" Grid.RowSpan="2" />
-                <RadioButton x:Name="latitudeRadioButton3" Content="遅い(1deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3"  GroupName="Latitude"
-                             Checked="latitudeRadioButton_Checked" />
-                <RadioButton x:Name="latitudeRadioButton4" Content="とても遅い(0.5deg/sec)" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4"  GroupName="Latitude"
-                             Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton1" Content="とても速い(2deg/sec)" Grid.Row="1" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton2" Content="速い(1.5deg/sec)" Grid.Row="2" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton3" Content="遅い(1deg/sec)" Grid.Row="3"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton4" Content="とても遅い(0.5deg/sec)" Grid.Row="4"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
             </Grid>
             <Grid x:Name="StartButtonGrid" Grid.Column="2" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="0,1,0,67">
                 <Grid.RowDefinitions>
@@ -114,9 +106,9 @@
                               Checked="diurnalPlusButton_Checked" Unchecked="diurnalButton_Unchecked" />
                 <ToggleButton x:Name="diurnalMinusButton" Style="{StaticResource DiurnalMinusButton}" Grid.Row="2" Grid.Column="4"
                               Checked="diurnalMinusButton_Checked" Unchecked="diurnalButton_Unchecked" />
-                <ToggleButton x:Name="latitudePlusButton" Style="{StaticResource LatitudePlusButton}" Grid.Row="4" Grid.Column="2"
+                <ToggleButton x:Name="latitudePlusButton" Style="{StaticResource LatitudePlusButton}" Grid.Row="0" Grid.Column="2"
                               Checked="latitudePlusButton_Checked" Unchecked="latitudeButton_Unchecked" />
-                <ToggleButton x:Name="latitudeMinusButton" Style="{StaticResource LatitudeMinusButton}" Grid.Row="0" Grid.Column="2"
+                <ToggleButton x:Name="latitudeMinusButton" Style="{StaticResource LatitudeMinusButton}" Grid.Row="4" Grid.Column="2"
                               Checked="latitudeMinusButton_Checked" Unchecked="latitudeButton_Unchecked" />
             </Grid>
         </Grid>
