@@ -16,13 +16,15 @@ header img {
 #wifi-icons {
   position: relative;
   float: left;
-  top: 10px;
+  top: 26px;
   left: 20px;
   display: block;
   width: 225px;
 }
 
 #wifi-icons p {margin: 4px;}
+
+#wifi-icons a {box-shadow: 0 0 8px rgba(0, 0, 0, 0.75) inset;}
 
 #wifi-icons span {
   padding-left: 18px;
@@ -47,7 +49,7 @@ header img {
 
 .tab_area {
   position: relative;
-  top: 10px;
+  top: 18px;
   left: 20px;
   line-height: 100px;
 }
@@ -56,16 +58,20 @@ header img {
   display:block;
   float:left;
   background:#333;
+  background-size: contain;
   height: 100px;
   width: 100px;
   margin: 0;
   text-align:center;
   color:#aaa;
+  opacity: 0.75;
 }
-.tab_area li.active{background-color: #666;}
-.tab_area li:hover {
-  background:#555;
-}
+#main_tab{background-image:url("img/main_01.png")}
+#main_tab:hover{background-image:url("img/main_02.png")}
+#main_tab.active{background-image:url("img/main_03.png")}
+#scenario_tab{background-image:url("img/scenario_01.png")}
+#scenario_tab:hover{background-image:url("img/scenario_02.png")}
+#scenario_tab.active{background-image:url("img/scenario_03.png")}
 
 ul {
   display: table;
@@ -77,7 +83,7 @@ ul {
 hr {
   clear:both;
   margin: 0;
-  border-color: #333;
+  border:1px solid #999;
 }
 
 button {
@@ -101,7 +107,7 @@ button.main_button {
   clear: both;
   outline: solid;
   outline-color: #030;
-  outline-width: 2px;
+  outline-width: 3px;
   outline-offset: 2px;
   margin: 15px 12px;
   box-shadow: 0 0 10px 8px #111;
@@ -130,18 +136,47 @@ button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
 
 button.timer_button {
+  float: left;
   width: 100px;
-  height: 30px;
+  height: 40px;
   margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
-button.timer_button:hover {
-  font-size: 18px;
-  background-color: #666;
-}
-button.timer_button:active {background-color: #888;}
+button.timer_button:hover {background-color: #666;}
+button#timer_start {background-color: #600;}
+button#timer_start:hover {background-color: #800;}
+button#timer_stop {background-color: #660;}
+button#timer_stop:hover {background-color: #880;}
+button#timer_restart {background-color: #060;}
+button#timer_restart:hover {background-color: #080;}
 button.timer_button:disabled {
   background-color: #444;
   color: #666;
+}
+
+progress#progress_bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 400px;
+  height: 40px;
+}
+progress#progress_bar::-webkit-progress-bar {
+  background-image: -webkit-linear-gradient(left, #333, #555);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) inset;
+}
+progress#progress_bar::-webkit-progress-value {
+  background-color: transparent;
+  border-right: 2px #be1 solid;
+}
+progress#progress_bar:before {
+  content: attr(pass_time);
+  position: absolute;
+  padding: 9px;
+  color: #9a1;
+  text-shadow: 1px 1px 3px #000;
 }
 
 #scenario_select{
@@ -149,6 +184,8 @@ button.timer_button:disabled {
   width: 500px;
   margin: 0px;
 }
+#scenario_number{font-size: 40px;}
+
 #select-group{
   z-index: 0;
   position: relative;
@@ -158,6 +195,7 @@ button.timer_button:disabled {
   height: 40px;
   vertical-align: middle;
   background-color: #777;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
 #select{
   z-index: 1;
@@ -236,7 +274,7 @@ button.timer_button:disabled {
 
 #scenario_constellation{
   float:right;
-  margin: 0px 20px;
+  margin: 10px 20px;
   border: 1px solid #888;
 }
 
@@ -255,6 +293,7 @@ button.timer_button:disabled {
   margin: 2px;
   padding: 2px;
   transition: .5s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
 
 #scenario_constellation p.on{background-color: #422;}

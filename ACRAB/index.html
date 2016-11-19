@@ -17,8 +17,8 @@
       <p>南天BOX: <span id="south">正常受信中</span>  <a id="refresh_south">更新</a></p>
     </div>
     <ul class="tab_area">
-      <li>メイン</li>
-      <li>公演用画面</li>
+      <li id="main_tab" class="active"></li>
+      <li id="scenario_tab"></li>
     </ul>
   </header>
   <hr>
@@ -65,7 +65,8 @@
       <button class="big main_button group" id="Smt">Smt</button>
       <button class="big main_button group" id="Wnt">Wnt</button>
       <button class="big main_button group" id="Twv">Twv</button>
-      <button class="big main_button all" id="Set">Set</button>
+      <button class="big main_button group" id="All">All</button>
+      <!--<button class="big main_button all" id="Set">Set</button> 電源に過負荷がかかるので当面使用禁止-->
       <button class="big main_button all" id="Cle">Cle</button>
     </ul>
     <ul>
@@ -85,14 +86,14 @@
           </select>
         </label>
       </p>
-      <p style="float: left; font-size:20px ;margin: 1px 10px;">
-        <span id="scenario_number">1/1</span>
-        経過時間 <span id="scenario_timecount">00:00:00</span>
-      </p>
       <button id="timer_start" class="timer_button" onclick="timer_button.start()">開始</button>
       <button id="timer_stop" class="timer_button" onclick="timer_button.stop()" style="display:none">停止</button>
       <button id="timer_restart" class="timer_button" onclick="timer_button.restart()" style="display:none">再開</button>
       <button id="timer_reset" class="timer_button" onclick="timer_button.reset()" disabled>リセット</button>
+      <p style="float: left; font-size:20px ;margin: 0px 10px;">
+        <progress id="progress_bar"></progress>
+        <span id="scenario_number">1/1</span>
+      </p>
     </div>
     <p id="scenario_now"></p>
     <div id="scenario_constellation">
