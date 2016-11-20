@@ -6,20 +6,23 @@ body {
 
 .debug{display: none;}
 
+header {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 header img {
   display: block;
-  float: left;
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
 #wifi-icons {
   position: relative;
-  float: left;
   top: 26px;
   left: 20px;
-  display: block;
-  width: 225px;
+  flex: 0.5;
+  min-width: 225px;
 }
 
 #wifi-icons p {margin: 4px;}
@@ -45,6 +48,13 @@ header img {
   padding: 4px;
   transition: .5s;
   transform: scaleX(1.001); /* for windows antialias */
+}
+
+ul {
+  display: table;
+  overflow : hidden;
+  padding: 0;
+  margin: 0;
 }
 
 .tab_area {
@@ -73,12 +83,43 @@ header img {
 #scenario_tab:hover{background-image:url("img/scenario_02.png")}
 #scenario_tab.active{background-image:url("img/scenario_03.png")}
 
-ul {
-  display: table;
-  overflow : hidden;
-  padding: 0;
-  margin: 0;
+#header_right_wrapper {
+  margin-left: 40px;
+  display:flex;
+  flex-flow: column nowrap;
+  align-self: flex-end;
 }
+#header_right_wrapper input {
+  min-width: 150px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  background: none;
+}
+#header_right_wrapper input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  background: #999999;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 0 1px black inset;
+}
+#header_right_wrapper input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor:ew-resize;
+  position: relative;
+  top: -5px;
+  width: 16px;
+  height: 16px;
+  background-color: #566;
+  border-radius: 50%;
+  box-shadow: 0 0 2px black inset;
+}
+#header_right_wrapper input::-webkit-slider-thumb {
+}
+
+#header_right_wrapper p{margin: 4px 0px;;}
 
 hr {
   clear:both;
