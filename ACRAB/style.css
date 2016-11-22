@@ -4,6 +4,8 @@ body {
   font-family: Arial,“ヒラギノ角ゴ ProN W3″,“Hiragino Kaku Gothic ProN”,“メイリオ”,Meiryo,sans-serif;
 }
 
+p {margin: 0;}
+
 .debug{display: none;}
 
 header {
@@ -176,8 +178,13 @@ button.on {
 button.on:hover {outline-color: #611;}
 button.on:active {background-color: #655;}
 
+.flex_container {
+  display: flex;
+  justify-content: space-around;
+}
+
 button.timer_button {
-  float: left;
+  flex: 0.25;
   width: 100px;
   height: 40px;
   margin-left: 10px;
@@ -196,43 +203,47 @@ button.timer_button:disabled {
   color: #666;
 }
 
-progress#progress_bar {
+#progress_bar {
+  flex: 1;
+  font-size: 20px;
+}
+
+
+#progress_bar progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 400px;
   height: 40px;
 }
-progress#progress_bar::-webkit-progress-bar {
+#progress_bar progress::-webkit-progress-bar {
   background-image: -webkit-linear-gradient(left, #333, #555);
   border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) inset;
 }
-progress#progress_bar::-webkit-progress-value {
+#progress_bar progress::-webkit-progress-value {
   background-color: transparent;
   border-right: 2px #be1 solid;
 }
-progress#progress_bar:before {
+#progress_bar progress:before {
   content: attr(pass_time);
   position: absolute;
   padding: 9px;
   color: #9a1;
+  font-size:20px;
   text-shadow: 1px 1px 3px #000;
 }
 
-#scenario_select{
-  float: left;
-  width: 500px;
-  margin: 0px;
-}
 #scenario_number{font-size: 40px;}
 
 #select-group{
   z-index: 0;
+  flex: 1;
   position: relative;
   display: inline-block;
   overflow: hidden;
-  width: 100%;
+  width: 500px;
+  margin: 0px;
   height: 40px;
   vertical-align: middle;
   background-color: #777;
@@ -241,7 +252,6 @@ progress#progress_bar:before {
 #select{
   z-index: 1;
   line-height: 1.8;
-  display: block;
   width: 120%;
   height: 100%;
   font-size: 22px;
@@ -278,56 +288,38 @@ progress#progress_bar:before {
   border-top: 8px solid #333;
 }
 
-#prev_next_link {
-  display: flex;
-  clear: both;
+#now_box {
+  flex: 1 1 50%;
+  flex-flow: column wrap;
+  box-sizing: border-box;
 }
 
-#prev_next_link button {
-  border-bottom: 1px #ddd;
-  display: block;
-  height: 100px;
-  background-color: #222;
-  flex: 1;
-  outline: none;
-  padding: 14px 40px;
-  transition: .5s;
-}
-#prev_next_link button:hover {background-color: #555;}
-#prev_next_link button:disabled {
-  background-color: #222;
-  color: #555;
-}
-
-#scenario_now{
+#scenario_now {
   display: flex;
-  clear: both;
-  float: left;
-  height: 200px;
-  width: 600px;
-  margin: 2px 0px;
-  font-size: 180%;
+  height: 300px;
+  font-size: 200%;
   text-align: center;
   align-items: center;
   justify-content: center;
 }
-#scenario_next{text-align: right;}
 
-#scenario_constellation{
-  float:right;
-  margin: 10px 20px;
-  border: 1px solid #888;
+
+#scenario_constellation {
+  flex: 1 1 50%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: inherit;
+  box-sizing: border-box;
+  padding: 3px;
 }
 
-#scenario_constellation p{
-  display: block;
-  float: left;
+#scenario_constellation p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 90px;
-  height: 25px;
   font-size: 14px;
-  text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
   overflow: hidden;
   color: #aaa;
   background-color: #222;
@@ -339,3 +331,35 @@ progress#progress_bar:before {
 
 #scenario_constellation p.on{background-color: #422;}
 
+#prev_next_link button {
+  border-bottom: 1px #ddd;
+  outline: none;
+  padding: 14px 40px;
+  font-size: 24px;
+  transition: .5s;
+}
+
+#prev_next_link p {padding: 3px 10px;}
+
+#prev_link, #next_link {
+  flex: 1;
+  flex-flow: column wrap;
+  box-sizing: border-box;
+  border: 1px solid #555;
+}
+
+#scenario_prev {
+  flex: 1;
+  background-color: #301;
+}
+#scenario_prev:hover {background-color: #412;}
+#scenario_next {
+  flex: 1;
+  background-color: #141;
+  text-align: right;
+}
+#scenario_next:hover {background-color: #252;}
+#scenario_prev:disabled, #prev_next_link #scenario_next:disabled {
+  background-color: #222;
+  color: #555;
+}

@@ -4,5 +4,47 @@
     "title": "とてもわかりやすい星座解説",
     "name": "星見太郎"
   },
-  "scenario": [{"timing": "", "word": "", "projector": {"Fst": 1, "Gxy": 1}}, {"timing": "post", "word": "プラネタリウムはいかがでしょう", "projector": {"St1": 1, "St2": 1}}, {"timing": "pre", "word": "どんな時も決して消えることのない", "projector": {"And": 1}}, {"timing": "post", "word": "美しい無窮のきらめき", "projector": {"And": 0}}, {"timing": "「星々」と同時", "word": "満天の星々が、", "projector": {"And": 1, "Aur": 1}}, {"timing": "post", "word": "みなさまをお待ちしています", "projector": {"And": 0, "Aur": 0}}]
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+        "Fst": 1,
+        "Gxy": 1
+      }
+    }, {
+      "timing": "post",
+      "word": "プラネタリウムはいかがでしょう",
+      "projector": {
+        "St1": 1,
+        "St2": 1
+      }
+    }, {
+      "timing": "pre",
+      "word": "どんな時も決して消えることのない",
+      "projector": {
+        "And": 1
+      }
+    }, {
+      "timing": "post",
+      "word": "美しい無窮のきらめき",
+      "projector": {
+        "And": 0
+      }
+    }, {
+      "timing": "「星々」と同時",
+      "word": "満天の星々が、",
+      "projector": {
+        "And": 1,
+        "Aur": 1
+      }
+    }, {
+      "timing": "post",
+      "word": "みなさまをお待ちしています",
+      "projector": {
+        "And": 0,
+        "Aur": 0
+      }
+    }
+  ]
 }
