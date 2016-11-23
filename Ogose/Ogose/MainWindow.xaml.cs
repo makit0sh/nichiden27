@@ -10,6 +10,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace Ogose
 {
@@ -24,12 +25,20 @@ namespace Ogose
         public MainWindow()
         {
             InitializeComponent();
+            initCommandBindings();
 
         }
         /// <summary> シリアルポートを使用するので宣言 </summary>
         SerialPort serialPort = null;
         /// <summary> コントローラと通信するためのクラスNisshuidohenControllerのインスタンス </summary>
         NisshuidohenController nisshuidohenController = new NisshuidohenController();
+
+        /// <summary> RoutedCommand </summary>
+        public readonly static RoutedCommand diurnalPlusButtonCommand = new RoutedCommand("diurnalPlusButtonCommand", typeof(MainWindow));
+        public readonly static RoutedCommand diurnalMinusButtonCommand = new RoutedCommand("diurnalMinusButtonCommand", typeof(MainWindow));
+        public readonly static RoutedCommand latitudePlusButtonCommand = new RoutedCommand("latitudePlusButtonCommand", typeof(MainWindow));
+        public readonly static RoutedCommand latitudeMinusButtonCommand = new RoutedCommand("latitudeMinusButtonCommand", typeof(MainWindow));
+
         /// <summary> 日周運動で欲しいスピードのDictionary </summary>
         private static readonly Dictionary<string, double> SPEED_DIURNAL = new Dictionary<string, double>() {
             {"very_high", 6},
@@ -48,6 +57,18 @@ namespace Ogose
         private double diurnal_speed = SPEED_DIURNAL["high"];
         /// <summary> 緯度運動のスピード </summary>
         private double latitude_speed = SPEED_LATITUDE["high"];
+
+        /// <summary> 各ボタンが操作できるかどうかを記憶 </summary>
+        private Dictionary<string, bool> isEnabled = new Dictionary<string, bool>()
+        {
+            {"diurnalPlusButton", true},
+            {"diurnalMinusButton", true},
+            {"latitudePlusButton", true},
+            {"latitudeMinusButton", true}
+        };
+        /// <summary> 公演モードの管理 </summary>
+        private bool isPerfMode = false;
+
 
         /// <summary>
         /// シリアルポート名Nameを取得し正規表現に合致するかを確認しシリアルポート名を表示する
@@ -183,10 +204,11 @@ namespace Ogose
 
         private void selectRadioButton(string gridName, int direction)
         {
-            var buttons = (Grid)FindName(gridName).Children.Where(x =>
+            var buttons = ((Grid)FindName(gridName)).Children;
+            foreach(RadioButton item in buttons)
             {
-                return x is RadioButton;
-            });
+                MessageBox.Show(item.Content.ToString());
+            }
         }
 
         private void diurnalRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -197,12 +219,10 @@ namespace Ogose
             else if (radioButton.Name == "diurnalRadioButton3") diurnal_speed = SPEED_DIURNAL["low"];
             else if (radioButton.Name == "diurnalRadioButton4") diurnal_speed = SPEED_DIURNAL["very_low"];
 
-            if (diurnalPlusButton.IsChecked != null && (bool)diurnalPlusButton.IsChecked)
-              // diurnalPlusButton_Checked(new object(), new RoutedEventArgs());
-              diurnalPlusButton.RaiseEvent(new RoutedEventArgs(ToggleButton.CheckedEvent));
-            if (diurnalMinusButton.IsChecked != null && (bool)diurnalMinusButton.IsChecked)
-              // diurnalMinusButton_Checked(new object(), new RoutedEventArgs());
-              diurnalMinusButton.RaiseEvent(new RoutedEventArgs(ToggleButton.CheckedEvent));
+            if (diurnalPlusButton.IsChecked == true)
+                diurnalPlusButtonCommand.Execute(null, diurnalPlusButton);
+            if (diurnalMinusButton.IsChecked == true)
+                diurnalMinusButtonCommand.Execute(null, diurnalMinusButton);
         }
 
         private void latitudeRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -213,12 +233,10 @@ namespace Ogose
             else if (radioButton.Name == "latitudeRadioButton3") latitude_speed = SPEED_LATITUDE["low"];
             else if (radioButton.Name == "latitudeRadioButton4") latitude_speed = SPEED_LATITUDE["very_low"];
 
-            if (latitudePlusButton.IsChecked != null && (bool)latitudePlusButton.IsChecked)
-              //latitudePlusButton_Checked(new object(), new RoutedEventArgs());
-              latitudePlusButton.RaiseEvent(new RoutedEventArgs(ToggleButton.CheckedEvent));
-            if (latitudeMinusButton.IsChecked != null && (bool)latitudeMinusButton.IsChecked)
-              //latitudeMinusButton_Checked(new object(), new RoutedEventArgs());
-              latitudeMinusButton.RaiseEvent(new RoutedEventArgs(ToggleButton.CheckedEvent));
+            if (latitudePlusButton.IsChecked == true)
+                latitudePlusButtonCommand.Execute(null, latitudePlusButton);
+            if (latitudeMinusButton.IsChecked == true)
+                latitudeMinusButtonCommand.Execute(null, latitudeMinusButton);
         }
 
         /// <summary>
@@ -227,43 +245,97 @@ namespace Ogose
         /// <param name="button"></param>
         private void toggleOppositeButton(ToggleButton button)
         {
-            ToggleButton oppositeButton = null;
-            if (button.Name == "diurnalPlusButton") oppositeButton = (ToggleButton)FindName("diurnalMinusButton");
-            else if (button.Name == "diurnalMinusButton") oppositeButton = (ToggleButton)FindName("diurnalPlusButton");
-            else if (button.Name == "latitudePlusButton") oppositeButton = (ToggleButton)FindName("latitudeMinusButton");
-            else if (button.Name == "latitudeMinusButton") oppositeButton = (ToggleButton)FindName("latitudePlusButton");
-            oppositeButton.IsEnabled = !oppositeButton.IsEnabled;
+            String oppositeButton = "";
+            if (button.Name == "diurnalPlusButton") oppositeButton = "diurnalMinusButton";
+            else if (button.Name == "diurnalMinusButton") oppositeButton = "diurnalPlusButton";
+            else if (button.Name == "latitudePlusButton") oppositeButton = "latitudeMinusButton";
+            else if (button.Name == "latitudeMinusButton") oppositeButton = "latitudePlusButton";
+            isEnabled[oppositeButton] = !isEnabled[oppositeButton] ^ !(isPerfMode && oppositeButton != "diurnalMinusButton");
+            
             (button).Focus();
         }
 
-        private void diurnalPlusButton_Checked(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// MainWindowに必要なコマンドを追加する。コンストラクタで呼び出して下さい
+        /// </summary>
+        private void initCommandBindings()
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(diurnal_speed));
+            diurnalPlusButton.CommandBindings.Add(new CommandBinding(diurnalPlusButtonCommand, diurnalPlusButtonCommand_Executed, toggleButton_CanExecuted));
+            diurnalMinusButton.CommandBindings.Add(new CommandBinding(diurnalMinusButtonCommand, diurnalMinusButtonCommand_Executed, toggleButton_CanExecuted));
+            latitudePlusButton.CommandBindings.Add(new CommandBinding(latitudePlusButtonCommand, latitudePlusButtonCommand_Executed, toggleButton_CanExecuted));
+            latitudeMinusButton.CommandBindings.Add(new CommandBinding(latitudeMinusButtonCommand, latitudeMinusButtonCommand_Executed, toggleButton_CanExecuted));
+        }
+
+        private void toggleButton_CanExecuted(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isEnabled[((ToggleButton)sender).Name];
+        }
+
+        private void diurnalPlusButtonCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Parameter != null && e.Parameter.ToString() == "KeyDown")
+            {
+                ((ToggleButton)sender).IsChecked = !((ToggleButton)sender).IsChecked;
+            }
+            if (sender as ToggleButton != null && ((ToggleButton)sender).IsChecked == false)
+            {
+                emitCommand(nisshuidohenController.RotateDiurnalBySpeed(0));
+            }
+            else
+            {
+                emitCommand(nisshuidohenController.RotateDiurnalBySpeed(diurnal_speed));
+            }
             if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-        private void diurnalMinusButton_Checked(object sender, RoutedEventArgs e)
+
+        private void diurnalMinusButtonCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-diurnal_speed));
+            if (e.Parameter != null && e.Parameter.ToString() == "KeyDown")
+            {
+                ((ToggleButton)sender).IsChecked = !((ToggleButton)sender).IsChecked;
+            }
+            if (sender as ToggleButton != null && ((ToggleButton)sender).IsChecked == false)
+            {
+                emitCommand(nisshuidohenController.RotateDiurnalBySpeed(0));
+            }
+            else
+            {
+                emitCommand(nisshuidohenController.RotateDiurnalBySpeed(-diurnal_speed));
+            }
             if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-        private void diurnalButton_Unchecked(object sender, RoutedEventArgs e)
+
+        private void latitudePlusButtonCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateDiurnalBySpeed(0));
+            if (e.Parameter != null && e.Parameter.ToString() == "KeyDown")
+            {
+                ((ToggleButton)sender).IsChecked = !((ToggleButton)sender).IsChecked;
+            }
+            if (sender as ToggleButton != null && ((ToggleButton)sender).IsChecked == false)
+            {
+                emitCommand(nisshuidohenController.RotateLatitudeBySpeed(0));
+            }
+            else
+            {
+                emitCommand(nisshuidohenController.RotateLatitudeBySpeed(latitude_speed));
+            }
             if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
-        private void latitudePlusButton_Checked(object sender, RoutedEventArgs e)
+
+        private void latitudeMinusButtonCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(latitude_speed));
-            if(sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
-        }
-        private void latitudeMinusButton_Checked(object sender, RoutedEventArgs e)
-        {
-            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(-latitude_speed));
-            if(sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
-        }
-        private void latitudeButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            emitCommand(nisshuidohenController.RotateLatitudeBySpeed(0));
+            if (e.Parameter != null && e.Parameter.ToString() == "KeyDown")
+            {
+                ((ToggleButton)sender).IsChecked = !((ToggleButton)sender).IsChecked;
+            }
+            if (sender as ToggleButton != null && ((ToggleButton)sender).IsChecked == false)
+            {
+                emitCommand(nisshuidohenController.RotateLatitudeBySpeed(0));
+            }
+            else
+            {
+                emitCommand(nisshuidohenController.RotateLatitudeBySpeed(-latitude_speed));
+            }
             if (sender as ToggleButton != null) toggleOppositeButton((ToggleButton)sender);
         }
 
@@ -283,42 +355,43 @@ namespace Ogose
 
         private void checkBox2_Changed(object sender, RoutedEventArgs e)
         {
-            if(!((CheckBox)sender).IsChecked)
+            var result = new MessageBoxResult();
+            isPerfMode = !(bool)(((CheckBox)sender).IsChecked);
+            if(!isPerfMode)
             {
-              var result = MessageBox.Show("公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
+              result = MessageBox.Show("公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
             }
             else
             {
-              var result = MessageBox.Show("公演モードを解除します。\nよろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
+              result = MessageBox.Show("公演モードを解除します。\nよろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
             }
-            if(result == MessageBoxResult.NO)
-            {return;}
-            diurnalMinusButton.IsEnabled = !diurnalMinusButton.IsEnabled;
-            latitudePlusButton.IsEnabled = !latitudePlusButton.IsEnabled;
-            latitudeMinusButton.IsEnabled = !latitudeMinusButton.IsEnabled;
-            latitudeRadioButton1.IsEnabled = !latitudeRadioButton1.IsEnabled;
-            latitudeRadioButton2.IsEnabled = !latitudeRadioButton2.IsEnabled;
-            latitudeRadioButton3.IsEnabled = !latitudeRadioButton3.IsEnabled;
-            latitudeRadioButton4.IsEnabled = !latitudeRadioButton4.IsEnabled;
+            if(result == MessageBoxResult.No) return;
+            List<string> keyList = new List<string>(isEnabled.Keys); // isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる
+            foreach (string key in keyList)
+            {
+                if(key != "diurnalMinusButton") isEnabled[key] = isPerfMode;
+            }
+            latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = isPerfMode;
         }
-        private void Window_KeyUp(object sender, KeyEventArgs e)
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            var target = new ToggleButton();
             switch (e.Key)
             {
                 case Key.W:
-                    latitudePlusButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    latitudePlusButtonCommand.Execute("KeyDown", latitudePlusButton);
                     break;
                 case Key.A:
-                    diurnalMinusButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    diurnalPlusButtonCommand.Execute("KeyDown", diurnalPlusButton);
                     break;
                 case Key.S:
-                    latitudeMinusButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    latitudeMinusButtonCommand.Execute("KeyDown", latitudeMinusButton);
                     break;
                 case Key.D:
-                    diurnalPlusButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    diurnalMinusButtonCommand.Execute("KeyDown", diurnalMinusButton);
                     break;
             }
         }
-
     }
 }
