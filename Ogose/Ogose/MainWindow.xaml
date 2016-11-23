@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="97*"/>
             </Grid.ColumnDefinitions>
             <ComboBox x:Name="portComboBox" SelectedValuePath="DisplayString" DropDownOpened="portComboBox_DropDownOpened" IsSynchronizedWithCurrentItem="False" IsReadOnly="True" />
-            <ToggleButton x:Name="ConnectButton" Grid.Column="2" Style="{StaticResource ConnectButton}" 
+            <ToggleButton x:Name="ConnectButton" Grid.Column="2" Style="{StaticResource ConnectButton}"
                           Checked="ConnectButton_IsCheckedChanged" Unchecked="ConnectButton_IsCheckedChanged" FontWeight="Bold" />
         </Grid>
         <Grid x:Name="ControllerGrid" Grid.Column="1" Grid.Row="2">
@@ -54,38 +54,40 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Image x:Name="main_projector_27" Source="main_projector_27_w.png"
-                   Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="4"  
+                   Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="4"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.6"/>
             <Grid x:Name="TitleGrid" Grid.Row="1" Grid.ColumnSpan="2">
                 <Label Content="日周緯度変コントローラー &#xD;&#xA;Ogose Ver0.15&#xD;&#xA;2016/11/18 nichiden_27" FontSize="22" Background="#7F333332"/>
             </Grid>
-            <Grid x:Name="DiurnalSpeenGrid" Grid.Row="3">
+            <Grid x:Name="DiurnalSpeedGrid" Grid.Row="3">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
                 <Label Content="日周速度" Grid.Row="0" />
-                <RadioButton x:Name="diurnalRadioButton1" Content="とても速い(6deg/sec)"  GroupName="Diurnal" Grid.Row="1" Checked="diurnalRadioButton_Checked" />
-                <RadioButton x:Name="diurnalRadioButton2" Content="速い(4deg/sec)" GroupName="Diurnal" Grid.Row="2" Checked="diurnalRadioButton_Checked" />
-                <RadioButton x:Name="diurnalRadioButton3" Content="遅い(2deg/sec)" GroupName="Diurnal"  Grid.Row="3" Checked="diurnalRadioButton_Checked" />
-                <RadioButton x:Name="diurnalRadioButton4" Content="とても遅い(1deg/sec)" GroupName="Diurnal" Grid.Row="4" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton1" Content="とても速い(6deg/sec)"  GroupName="Diurnal" Grid.Row="2" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton2" Content="速い(4deg/sec)" GroupName="Diurnal" Grid.Row="3" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton3" Content="遅い(2deg/sec)" GroupName="Diurnal"  Grid.Row="4" Checked="diurnalRadioButton_Checked" />
+                <RadioButton x:Name="diurnalRadioButton4" Content="とても遅い(1deg/sec)" GroupName="Diurnal" Grid.Row="5" Checked="diurnalRadioButton_Checked" />
             </Grid>
-            <Grid x:Name="latitudeSpeenGrid" Grid.Row="1" Grid.Column="3">
+            <Grid x:Name="latitudeSpeedGrid" Grid.Row="1" Grid.Column="3">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
                 <Label Content="緯度速度" Grid.Row="0" />
-                <RadioButton x:Name="latitudeRadioButton1" Content="とても速い(2deg/sec)" Grid.Row="1" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
-                <RadioButton x:Name="latitudeRadioButton2" Content="速い(1.5deg/sec)" Grid.Row="2" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
-                <RadioButton x:Name="latitudeRadioButton3" Content="遅い(1deg/sec)" Grid.Row="3"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
-                <RadioButton x:Name="latitudeRadioButton4" Content="とても遅い(0.5deg/sec)" Grid.Row="4"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton1" Content="とても速い(2deg/sec)" Grid.Row="2" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton2" Content="速い(1.5deg/sec)" Grid.Row="3" GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton3" Content="遅い(1deg/sec)" Grid.Row="4"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
+                <RadioButton x:Name="latitudeRadioButton4" Content="とても遅い(0.5deg/sec)" Grid.Row="5"  GroupName="Latitude" Checked="latitudeRadioButton_Checked" />
             </Grid>
             <Grid x:Name="StartButtonGrid" Grid.Column="2" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="0,1,0,67">
                 <Grid.RowDefinitions>
