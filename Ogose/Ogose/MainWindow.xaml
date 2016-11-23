@@ -55,7 +55,7 @@
                    Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="4"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.6"/>
             <Grid x:Name="TitleGrid" Grid.Row="1" Grid.ColumnSpan="2">
-                <Label Content="日周緯度変コントローラー &#xD;&#xA;Ogose Ver0.15&#xD;&#xA;2016/11/18 nichiden_27" FontSize="22" Background="#7F333332"/>
+                <Label Content="日周緯度変コントローラー &#xA;Ogose Ver1.00&#xA;2016/11/24 nichiden_27" FontSize="22" Background="#7F333332"/>
             </Grid>
             <Grid x:Name="DiurnalSpeedGrid" Grid.Row="3">
                 <Grid.RowDefinitions>
