@@ -250,8 +250,7 @@ namespace Ogose
             else if (button.Name == "diurnalMinusButton") oppositeButton = "diurnalPlusButton";
             else if (button.Name == "latitudePlusButton") oppositeButton = "latitudeMinusButton";
             else if (button.Name == "latitudeMinusButton") oppositeButton = "latitudePlusButton";
-            isEnabled[oppositeButton] = !isEnabled[oppositeButton] ^ !(isPerfMode && oppositeButton != "diurnalMinusButton");
-            
+            isEnabled[oppositeButton] = !isEnabled[oppositeButton] && !isPerfMode;
             (button).Focus();
         }
 
@@ -356,8 +355,8 @@ namespace Ogose
         private void checkBox2_Changed(object sender, RoutedEventArgs e)
         {
             var result = new MessageBoxResult();
-            isPerfMode = !(bool)(((CheckBox)sender).IsChecked);
-            if(!isPerfMode)
+            isPerfMode = (bool)(((CheckBox)sender).IsChecked);
+            if(isPerfMode)
             {
               result = MessageBox.Show("公演モードに切り替えます。\n日周を進める以外の動作はロックされます。よろしいですか？", "Changing Mode", MessageBoxButton.YesNo);
             }
@@ -369,9 +368,9 @@ namespace Ogose
             List<string> keyList = new List<string>(isEnabled.Keys); // isEnabled.Keysを直接見に行くとループで書き換えてるので実行時エラーになる
             foreach (string key in keyList)
             {
-                if(key != "diurnalMinusButton") isEnabled[key] = isPerfMode;
+                if(key != "diurnalMinusButton") isEnabled[key] = !isPerfMode;
             }
-            latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = isPerfMode;
+            latitudeRadioButton1.IsEnabled = latitudeRadioButton2.IsEnabled = latitudeRadioButton3.IsEnabled = latitudeRadioButton4.IsEnabled = !isPerfMode;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
