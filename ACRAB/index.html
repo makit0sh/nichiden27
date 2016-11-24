@@ -20,6 +20,10 @@
       <li id="main_tab" class="active"></li>
       <li id="scenario_tab"></li>
     </ul>
+    <div id="header_right_wrapper">
+      <label>画面を暗くする <input id="light_range" type="range" value="100"></label>
+      <p><span style="font-size: small">※ボタンが反応しない・表示がおかしい<br>場合はページを更新してください</span></p>
+    </div>
   </header>
   <hr>
   <div class="content" style="display:block"><!-- Tab 1(default) -->
@@ -78,54 +82,54 @@
     </ul>
   </div>
   <div class="content" style="display:none"><!-- Tab 2 -->
-    <div style="margin: 10px 0px;">
-      <p id="scenario_select">
-        <label id="select-group">
-          <select id="select">
-            <option value="default">(公演を選択)</option>
-          </select>
-        </label>
-      </p>
+    <div class="flex_container" style="margin: 10px 0px;">
+      <div id="select-group">
+        <select id="select">
+          <option value="default">(公演を選択)</option>
+        </select>
+      </div>
       <button id="timer_start" class="timer_button" onclick="timer_button.start()">開始</button>
       <button id="timer_stop" class="timer_button" onclick="timer_button.stop()" style="display:none">停止</button>
       <button id="timer_restart" class="timer_button" onclick="timer_button.restart()" style="display:none">再開</button>
       <button id="timer_reset" class="timer_button" onclick="timer_button.reset()" disabled>リセット</button>
-      <p style="float: left; font-size:20px ;margin: 0px 10px;">
-        <progress id="progress_bar"></progress>
-        <span id="scenario_number">1/1</span>
-      </p>
+      <div id="progress_bar" style="margin: 0px 5px;">
+        <progress></progress>
+      </div>
     </div>
-    <p id="scenario_now"></p>
-    <div id="scenario_constellation">
-      <ul>
+    <div class="flex_container">
+      <div class="flex_container" id="now_box">
+        <p>現在 <span id="scenario_number">1/1</span></p>
+        <p id="scenario_now"></p>
+      </div>
+      <div id="scenario_constellation">
         <p id="And">And</p><p id="Aql">Aql</p><p id="Aqr">Aqr</p>
         <p id="Ari">Ari</p><p id="Aur">Aur</p><p id="Boo">Boo</p>
-      </ul>
-      <ul>
         <p id="Cap">Cap</p><p id="Cas">Cas</p><p id="Cep">Cep</p>
         <p id="Cet">Cet</p><p id="CMa">CMa</p><p id="CMi">CMi</p>
-      </ul>
-      <ul>
         <p id="Cnc">Cnc</p><p id="Cyg">Cyg</p><p id="Gem">Gem</p>
         <p id="Leo">Leo</p><p id="Lep">Lep</p><p id="Lyr">Lyr</p>
-      </ul>
-      <ul>
         <p id="Ori">Ori</p><p id="Peg">Peg</p><p id="Per">Per</p>
         <p id="Psc">Psc</p><p id="Sco">Sco</p><p id="Sgr">Sgr</p>
-      </ul>
-      <ul>
         <p id="Tau">Tau</p><p id="UMa">UMa</p><p id="Vir">Vir</p>
         <p id="Lib">Lib</p><p id="Sta">Sta</p><p id="Fst">Fst</p>
-      </ul>
-      <ul>
         <p id="Gxy">Gxy</p>
-      </ul>
+      </div>
     </div>
-    <div id="prev_next_link">
-      <button id="scenario_prev"></button><hr>
-      <button id="scenario_next"></button>
+    <div class="flex_container" id="prev_next_link">
+      <div class="flex_container" id="prev_link">
+        <p style="text-align: right;">&lt;&lt;&lt;前へ</p>
+        <button id="scenario_prev"></button>
+      </div>
+      <div class="flex_container" id="next_link">
+        <p>次へ&gt;&gt;&gt;</p>
+        <button id="scenario_next"></button>
+      </div>
     </div>
   </div>
+  <footer>
+    <br>
+    <small>27代日電作成 / 最新のGoogle Chrome以外での動作は保証しません / 解像度1280px × 800px以上での運用を想定しています</small>
+  </footer>
 </body>
 </html>
 
