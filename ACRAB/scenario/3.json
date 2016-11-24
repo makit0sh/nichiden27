@@ -1,126 +1,128 @@
 {
-	"info": {
-		"day": "一日目",
-		"title": "\"誕生日の星座\"と惑星",
-		"name": "伊東宇野"
-	},
-	"scenario": [{
-		"timing": "",
-		"word": "",
-		"projector": {
-			"Fst": 1,
-			"Gxy": 1
-		}
-	}, {
-		"timing": "post",
-		"word": "3…2…1…はい。",
-		"projector": {
-			"St1": 1,
-			"St2": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "星座絵でその姿を確認してみましょう。",
-		"projector": {
-			"Cap": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "やぎ座の次の十二星座は、みずがめ座です。",
-		"projector": {
-			"Cap": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "ペガスス座の星座絵を重ねると、このようになります。",
-		"projector": {
-			"Peg": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "四辺形が分かれば、一気に秋の星座が見つけやすくなります。",
-		"projector": {
-			"Peg": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "星座絵を重ねてみましょう。",
-		"projector": {
-			"Aqr": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "次の星座はうお座です。",
-		"projector": {
-			"Aqr": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "星座絵では、このように、尻尾を紐で結ばれた二匹の魚の形になっています。",
-		"projector": {
-			"Psc": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "では、これまで登場した星座を眺めながら、<続く>",
-		"projector": {
-			"Cap": 1,
-			"Aqr": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "明るい二つの星が目印のおひつじ座、<続く>",
-		"projector": {
-			"Ari": 1,
-			"Cap": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "有名なすばるのあるおうし座、<続く>",
-		"projector": {
-			"Tau": 1,
-			"Aqr": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "カストルとポルックスが仲良く輝くふたご座。",
-		"projector": {
-			"Gem": 1,
-			"Psc": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "かに座や、<続く>",
-		"projector": {
-			"Cnc": 1,
-			"Ari": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "しし座、",
-		"projector": {
-			"Leo": 1,
-			"Tau": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "東から昇ってきたひときわ明るい星は、木星です。",
-		"projector": {
-			"Gem": 0,
-			"Cnc": 0,
-			"Leo": 0
-		}
-	}, {
-		"timing": "pre",
-		"word": "おとめ座の姿を確認してみましょう。",
-		"projector": {
-			"Vir": 1
-		}
-	}, {
-		"timing": "pre",
-		"word": "では、木星の詳しい姿を見てみましょう。",
-		"projector": {
-			"Vir": 0
-		}
-	}]
+  "info": {
+    "day": "一日目",
+    "title": "\"誕生日の星座\"と惑星",
+    "name": "伊東宇野"
+  },
+  "scenario": [
+  {
+    "timing": "",
+    "word": "",
+    "projector": {
+      "Fst": 1,
+      "Gxy": 1
+    }
+  }, {
+    "timing": "post",
+    "word": "3…2…1…はい。",
+    "projector": {
+      "St1": 1,
+      "St2": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "星座絵でその姿を確認してみましょう。",
+    "projector": {
+      "Cap": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "やぎ座の次の十二星座は、みずがめ座です。",
+    "projector": {
+      "Cap": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "ペガスス座の星座絵を重ねると、このようになります。",
+    "projector": {
+      "Peg": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "四辺形が分かれば、一気に秋の星座が見つけやすくなります。",
+    "projector": {
+      "Peg": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "星座絵を重ねてみましょう。",
+    "projector": {
+      "Aqr": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "次の星座はうお座です。",
+    "projector": {
+      "Aqr": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "星座絵では、このように、尻尾を紐で結ばれた二匹の魚の形になっています。",
+    "projector": {
+      "Psc": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "では、これまで登場した星座を眺めながら、<続く>",
+    "projector": {
+      "Cap": 1,
+      "Aqr": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "明るい二つの星が目印のおひつじ座、<続く>",
+    "projector": {
+      "Ari": 1,
+      "Cap": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "有名なすばるのあるおうし座、<続く>",
+    "projector": {
+      "Tau": 1,
+      "Aqr": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "カストルとポルックスが仲良く輝くふたご座。",
+    "projector": {
+      "Gem": 1,
+      "Psc": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "かに座や、<続く>",
+    "projector": {
+      "Cnc": 1,
+      "Ari": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "しし座、",
+    "projector": {
+      "Leo": 1,
+      "Tau": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "東から昇ってきたひときわ明るい星は、木星です。",
+    "projector": {
+      "Gem": 0,
+      "Cnc": 0,
+      "Leo": 0
+    }
+  }, {
+    "timing": "pre",
+    "word": "おとめ座の姿を確認してみましょう。",
+    "projector": {
+      "Vir": 1
+    }
+  }, {
+    "timing": "pre",
+    "word": "では、木星の詳しい姿を見てみましょう。",
+    "projector": {
+      "Vir": 0
+    }
+  }
+  ]
 }

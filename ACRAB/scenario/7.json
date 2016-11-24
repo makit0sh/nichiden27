@@ -1,0 +1,76 @@
+{
+  "info": {
+    "day": "三日目",
+    "title": "天空の大三角",
+    "name": "佐伯宗像"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        },
+        "word": ""
+    }, {
+      "timing": "post",
+      "projector": {
+          "CMa": 1
+        },
+        "word": "おおいぬ座の首元にあたる星で"
+    }, {
+      "timing": "post",
+      "projector": {
+          "CMi": 1
+        },
+        "word": "こいぬ座の胴体にあたる星です。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Ori": 1
+        },
+        "word": "〜赤い星、ベテルギウスです。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Lep": 1
+        },
+        "word": "〜結んでできる星座、うさぎ座です。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "CMa": 0,
+          "CMi": 0,
+          "Ori": 0,
+          "Lep": 0
+        },
+        "word": "〜話しているうちに8月の星空が見えてきました。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Lyr": 1
+        },
+        "word": "〜このひし形を結んでできる星座です。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Aql": 1
+        },
+        "word": "〜わし座の頭にあたる星です。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Cyg": 1
+        },
+        "word": "〜はくちょうの尾の部分に当たります。"
+    }, {
+      "timing": "post",
+      "projector": {
+          "Aqr": 1
+        },
+        "word": "〜先にあるこの星座の星座絵を出してみましょう。"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "info": {
+    "day": "二日目",
+    "title": "特集 誕生日星座",
+    "name": "村上山岸"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「…胴体です。ちょっと星座絵を出してみましょう。」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "〜「…天体もたくさんあるんですよ。」",
+      "projector": {
+          "Tau": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「おとめ座の星座絵も見てみましょう。」",
+      "projector": {
+          "Vir": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "〜「さて、」",
+      "projector": {
+          "Vir": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「お互いをリボンで結んだ姿がうお座になったといわれています。」",
+      "projector": {
+          "Psc": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "〜「やぎ座はどんな神話なんですか？」",
+      "projector": {
+          "Psc": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「パーンはうまく変身することができず、」",
+      "projector": {
+          "Cap": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "〜「星座と一緒に楽しんだことがなかったので新鮮でした。」",
+      "projector": {
+          "Cap": 0
+        }
+    }
+  ]
+}

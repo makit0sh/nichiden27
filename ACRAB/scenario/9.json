@@ -1,0 +1,116 @@
+{
+  "info": {
+    "day": "三日目",
+    "title": "瞬く星の下~星座たちが織り成す物語~",
+    "name": "横川番場"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "白鳥座のデネブ",
+      "projector": {
+          "Cyg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "わし座のアルタイル",
+      "projector": {
+          "Aql": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "琴座のベガ",
+      "projector": {
+          "Lyr": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "琴座の神話をご紹介しましょう",
+      "projector": {
+          "Cyg": 0,
+          "Aql": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "さて、いつの間にか時が進み",
+      "projector": {
+          "Lyr": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "これがオリオン座です",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "これがふたご座です",
+      "projector": {
+          "Ori": 0,
+          "Gem": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "そういえば、夏と違って",
+      "projector": {
+          "Gem": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "先ほどはオリオン座の",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ふたご座の〜",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "シリウスはおおいぬ座の一部です。",
+      "projector": {
+          "CMa": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "こいぬ座の一部となっています",
+      "projector": {
+          "CMi": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "五角形の形をした星座をぎょしゃ座〜",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "おうし座の一等星です",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "こんなにきれいで大きい宝石が隠れていたんです",
+      "projector": {
+          "Ori": 0,
+          "CMa": 0,
+          "CMi": 0,
+          "Gem": 0,
+          "Aur": 0,
+          "Tau": 0
+        }
+    }
+  ]
+}

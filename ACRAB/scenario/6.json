@@ -1,0 +1,88 @@
+{
+  "info": {
+    "day": "二日目",
+    "title": "Japanesque",
+    "name": "窪田名本"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「おうし座のお話です。」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「そのときの牛の姿が星となったと言われているのです。」",
+      "projector": {
+          "Tau": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「おうし座がありますね。」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「いくつの星が見えますか？」",
+      "projector": {
+          "Tau": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「ぎょしゃ座という星座です。」",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「あるそうです。」",
+      "projector": {
+          "Aur": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「ふたご座なんですが」",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「和名があります。」",
+      "projector": {
+          "Gem": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「オリオン座なのですが、」",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「結ぶ感じですよね。」",
+      "projector": {
+          "Ori": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「出てこさせようとしています」",
+      "projector": {
+          "Tau": 1,
+          "Aur": 1,
+          "Gem": 1,
+          "Ori": 1
+      }
+    }
+  ]
+}

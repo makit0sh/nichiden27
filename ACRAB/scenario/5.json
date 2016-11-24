@@ -1,0 +1,192 @@
+{
+  "info": {
+    "day": "一日目",
+    "title": "秋夜の王家の物語",
+    "name": "小渕増田"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+          "Gxy": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "さあ話している間に",
+      "projector": {
+          "Fst": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "3、2、1",
+      "projector": {
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "星座絵をつけてみましょうか",
+      "projector": {
+          "Peg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "見つかりましたよ。これが秋の空でただひとつの",
+      "projector": {
+          "Peg": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "星座絵をつけてみましょうか",
+      "projector": {
+          "Aqr": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "次の星座探しに移りましょう。",
+      "projector": {
+          "Aqr": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "カシオペア座と共に、ふたつの星座絵をつけてみましょうか。",
+      "projector": {
+          "Cas": 1,
+          "Cep": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "では、そのアンドロメダ座も見つけてみましょうか。",
+      "projector": {
+          "Cas": 0,
+          "Cep": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "星座絵をつけてみましょう",
+      "projector": {
+          "And": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "その前に、神話の中で重要な役割を果たす…",
+      "projector": {
+          "And": 0,
+          "Peg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "早速星座絵をつけてみましょうか。",
+      "projector": {
+          "Peg": 0,
+          "Cet": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "実は、秋の星座には、",
+      "projector": {
+          "Cet": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "星座絵をつけてみましょう",
+      "projector": {
+          "Per": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "では、星座を見つけるのはここまでにして…",
+      "projector": {
+          "Per": 0
+        }
+    }, {
+      "timing": "言い終わった後",
+      "word": "どの星が変光星か説明する前に、この星座の位置を確認しましょうか。",
+      "projector": {
+          "And": 1
+        }
+    }, {
+      "timing": "言い終わった後",
+      "word": "少し明るい星にぶつかりますね",
+      "projector": {
+          "And": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ケフェウスという名の王様がいて、",
+      "projector": {
+          "Cep": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "そのお妃であるカシオペア王妃は、",
+      "projector": {
+          "Cas": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "自分の娘であるアンドロメダの美しさを自慢していました。",
+      "projector": {
+          "And": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "凶暴な怪物である巨大な化けくじらを",
+      "projector": {
+          "Cet": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "このお話はこのあとがとても素敵ですよね。",
+      "projector": {
+          "Cas": 0,
+          "Cep": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "化けくじらの餌食になろうかというそのとき",
+      "projector": {
+          "Peg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "勇者ペルセウスが現れました",
+      "projector": {
+          "Per": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "海に沈んでいきました",
+      "projector": {
+          "Cet": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "何度聞いてもロマンチックなハッピーエンドですね",
+      "projector": {
+          "And": 0,
+          "Peg": 0,
+          "Per": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "もう一度現れてもらいましょう。",
+      "projector": {
+          "Cas": 1,
+          "Cep": 1,
+          "And": 1,
+          "Per": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "輝きは派手ではないけれど",
+      "projector": {
+          "Cas": 0,
+          "Cep": 0,
+          "And": 0,
+          "Per": 0
+        }
+    }
+  ]
+}

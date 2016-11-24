@@ -1,0 +1,219 @@
+{
+  "info": {
+    "day": "ソフト",
+    "title": "一度きりの星空",
+    "name": "ソフト"
+  },
+  "scenario":[
+    {
+      "timing": "",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ6「5・4・3・2・1」",
+      "projector": {
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "母9「〜ななこは初めて聞く名前よね。」",
+      "projector": {
+          "Cas": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "母10「〜他にも王様や王女さまもいるのよ。」",
+      "projector": {
+          "Cas": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ20「〜あれがさそり座か〜」",
+      "projector": {
+          "Sco": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "母15「ななこ！ななこ！」",
+      "projector": {
+          "Sco": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ26「〜はくちょう座のデネブ」",
+      "projector": {
+          "Cyg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ26「〜わし座のアルタイル」",
+      "projector": {
+          "Aql": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ26「〜こと座のベガだよね！」",
+      "projector": {
+          "Lyr": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "父17「パパも…」",
+      "projector": {
+          "Cyg": 0,
+          "Aql": 0,
+          "Lyr": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ30「カシオペアさん！！」",
+      "projector": {
+          "Cas": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "父22「〜羽の生えた白いお馬さん、ペガスス座があるんだ」",
+      "projector": {
+          "Peg": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ36「〜アンドロメダさんがいるんだね」",
+      "projector": {
+          "And": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "母30「〜ママ、こういうお話大好きなの。」",
+      "projector": {
+          "Cas": 0,
+          "Peg": 0,
+          "And": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ46「ほんとだぁ！砂時計みたいだね！」",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ48「ありがとう。スワニー」",
+      "projector": {
+          "Ori": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ50「…あっ、あった！！」",
+      "projector": {
+          "CMa": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "スワニー8「〜北東に明るい星があるのが分かりますか？」 ",
+      "projector": {
+          "CMa": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "スワニー9「〜こいぬ座のプロキオンです」",
+      "projector": {
+          "CMi": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "父28「〜この３つを合わせて、冬の大三角と言うんだよ」",
+      "projector": {
+          "CMi": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "父30「〜兄弟が星座になったものなんだ」",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ54「へー！いいお話だね！！」",
+      "projector": {
+          "Gem": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "スワニー15「〜ぎょしゃ座という星座です。」",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "ななこ57「うん！あの人をぎょしゃさんっていうんだね！」 ",
+      "projector": {
+          "Aur": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "父32「〜おうしには立派な角があるからV字型なんだね」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "父33「すごいね、ななこ。じゃあ最後にパパから1ついいこと教えてあげるね」",
+      "projector": {
+          "Tau": 0
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 オリオン⇒おおいぬ⇒こいぬ⇒ふたご⇒ぎょしゃ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 ⇒おおいぬ⇒こいぬ⇒ふたご⇒ぎょしゃ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "CMa": 1
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 ⇒こいぬ⇒ふたご⇒ぎょしゃ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "CMi": 1
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 ⇒ふたご⇒ぎょしゃ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 ⇒ぎょしゃ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "セリフに合わせて星座絵点灯 ⇒おうし",
+      "word": "父34「今から、パパが言う星を繋げてごらん…。」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "スワニー19「〜本日はありがとうございました」",
+      "projector": {
+          "Ori": 0,
+          "CMa": 0,
+          "CMi": 0,
+          "Gem": 0,
+          "Aur": 0,
+          "Tau": 0
+        }
+    }
+  ]
+}

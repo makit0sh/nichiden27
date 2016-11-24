@@ -1,39 +1,90 @@
 {
   "info": {
-    "day": "一日目",
-    "title": "なんらかの解説",
-    "name": "星見太郎"
+    "day": "三日目",
+    "title": "冬の星空に瞬くダイヤモンド",
+    "name": "青木経澤"
   },
-  "scenario": [
+  "scenario":[
     {
-      "word": "",
       "timing": "",
-      "projector":{"Fst": 1, "Gxy": 1}
-    },
-    {
-      "word": "Lorem ipsum dolor sit amet,",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
       "timing": "post",
-      "projector":{"St1": 1, "St2": 1}
-    },
-    {
-      "word": "consectetur adipiscing elit,",
-      "timing": "pre",
-      "projector":{"And": 1}
-    },
-    {
-      "word": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "word": "経澤「三ツ星の上側の２つの星から星を結んで腕を伸ばしたのがオリオン座です。」",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
       "timing": "post",
-      "projector":{"And": 0}
-    },
-    {
-      "word": "Ut enim ad minim veniam, ",
-      "timing": "「minim」と同時",
-      "projector":{"And": 1, "Aur": 1}
-    },
-    {
-      "word": "nisi ut aliquip ex ea commodo consequat.",
+      "word": "経澤「はい。星の名前の由来まで考えると、奥深くておもしろいですよね。",
+      "projector": {
+          "Ori": 0
+        }
+    }, {
       "timing": "post",
-      "projector":{"And": 0, "Aur": 0}
+      "word": "経澤「これが、ぎょしゃ座です。」",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "青木「へぇー、すぐにでも観測に行きたいです！」",
+      "projector": {
+          "Aur": 0
+        }
+    }, {
+      "timing": "「シリウス」と同時",
+      "word": "青木「はい！まずは、南の空の明るい星、シリウス」",
+      "projector": {
+          "CMa": 1
+        }
+    }, {
+      "timing": "「プロキオン」と同時",
+      "word": "青木「ここから時計回りに、まずはプロキオン」",
+      "projector": {
+          "CMi": 1
+        }
+    }, {
+      "timing": "「ポルックス」と同時",
+      "word": "青木「次に、ポルックス」",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "「カペラ」と同時",
+      "word": "青木「天頂のカペラ、あ、これはぎょしゃ座、でしたね」",
+      "projector": {
+          "Aur": 1
+        }
+    }, {
+      "timing": "「アルデバラン」と同時",
+      "word": "経澤「はい。そして、アルデバラン、これはおうし座の星。<続く>」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
+      "timing": "「リゲル」と同時",
+      "word": "経澤「最後に、オリオン座の星の、リゲルです」",
+      "projector": {
+          "Ori": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "青木「あ、そろそろ朝が近づいてきたようです。」",
+      "projector": {
+          "CMa": 0,
+          "CMi": 0,
+          "Gem": 0,
+          "Aur": 0,
+          "Tau": 0,
+          "Ori": 0
+        }
     }
   ]
 }

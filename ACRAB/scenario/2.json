@@ -1,39 +1,153 @@
 {
   "info": {
-    "day": "ソフト",
-    "title": "それっぽい物語",
-    "name": "星見太郎"
+    "day": "二日目",
+    "title": "お誕生日の星座たち",
+    "name": "石阪中川"
   },
-  "scenario": [
+  "scenario":[
     {
-      "word": "",
       "timing": "",
-      "projector":{"Fst": 1, "Gxy": 1}
-    },
-    {
-      "word": "プラネタリウムはいかがでしょう",
+      "word": "",
+      "projector": {
+          "Fst": 1,
+          "Gxy": 1,
+          "St1": 1,
+          "St2": 1
+        }
+    }, {
       "timing": "post",
-      "projector":{"St1": 1, "St2": 1}
-    },
-    {
-      "word": "どんな時も決して消えることのない",
-      "timing": "pre",
-      "projector":{"And": 1}
-    },
-    {
-      "word": "美しい無窮のきらめき",
+      "word": "「ご本人に登場してもらいましょう」",
+      "projector": {
+          "Ari": 1
+        }
+    }, {
       "timing": "post",
-      "projector":{"And": 0}
-    },
-    {
-      "word": "満天の星々が、",
-      "timing": "「星々」と同時",
-      "projector":{"And": 1, "Aur": 1}
-    },
-    {
-      "word": "みなさまをお待ちしています",
+      "word": "「船の冒険の話も面白くて」",
+      "projector": {
+          "Tau": 1
+        }
+    }, {
       "timing": "post",
-      "projector":{"And": 0, "Aur": 0}
+      "word": "「次の牡羊座に移ろうか」",
+      "projector": {
+          "Ari": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「ごちゃごちゃ星は初耳だな」",
+      "projector": {
+          "Tau": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「ふたご座には一等星の〜」",
+      "projector": {
+          "Gem": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「話をしていたところだよ」",
+      "projector": {
+          "Gem": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「突然ですがここで〜」",
+      "projector": {
+          "Cnc": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「実在する星雲なんですよ」",
+      "projector": {
+          "Cnc": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「だからもう一問追加ね」",
+      "projector": {
+          "Leo": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「知ってる、獅子の頭のあたり」の所で",
+      "projector": {
+          "Leo": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「次は名前がかわいいおとめ座だよ」",
+      "projector": {
+          "Vir": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「乙女のイメージとだいぶ違うね」",
+      "projector": {
+          "Vir": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「何かを測っているの」「そうだよ」",
+      "projector": {
+          "Lib": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「少しずつ変化しているんだよ」",
+      "projector": {
+          "Lib": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「あ、あった！あれだね」",
+      "projector": {
+          "Sco": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「お次のお誕生日の星座の射手座だよ」",
+      "projector": {
+          "Sgr": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「なるほど、これで安心だね」",
+      "projector": {
+          "Sco": 0,
+          "Sgr": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「トレードマークのやぎ座です」",
+      "projector": {
+          "Cap": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「夜空を回っているんだよ」",
+      "projector": {
+          "Cap": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「昔、太陽が〜」",
+      "projector": {
+          "Aqr": 1
+        }
+    }, {
+      "timing": "post",
+      "word": "「次のうお座も水に関する星座だね」",
+      "projector": {
+          "Aqr": 0
+        }
+    }, {
+      "timing": "post",
+      "word": "「星座絵に出てきてもらおうか」",
+      "projector": {
+          "Psc": 1
+        }
     }
   ]
 }
+
