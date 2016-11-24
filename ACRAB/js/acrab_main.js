@@ -13,7 +13,9 @@ var ip, port, group = {};
   });
 }());
 
-$(function() { // ボタンにclickイベントを追加
+
+$(function() {
+  /* ボタンにclickイベントを追加 */
   $.each($('.main_button'), function(){
       $(this).click(this, function(e){
         if($(e.data).hasClass('constellation')) button.constellation(e.data);
@@ -27,6 +29,15 @@ $(function() { // ボタンにclickイベントを追加
   });
   $('#refresh_south').click(this, function(){
     getRequest(ip.S + 'refresh_confirm/status.json').done(function(res){checkStatus(res)});
+  });
+  /* 明るさ変更スライダー */
+  $('#light_range').on('input', function(){
+    var val = Math.max($(this).val() / 100.0, 0.1);
+    $('body').css('opacity', val);
+  });
+  $('#light_range').change(function(){
+    var val = Math.max($(this).val() / 100.0, 0.1);
+    $('body').css('opacity', val);
   });
 });
 
