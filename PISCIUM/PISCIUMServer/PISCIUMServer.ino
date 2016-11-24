@@ -30,7 +30,7 @@ IPAddress ip(192, 168, 0, 100);
 IPAddress ip(192, 168, 0, 101);
 #endif
 
-IPAddress gateway(192, 168, 11, 1);
+IPAddress gateway(192, 168, 0, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 /**
