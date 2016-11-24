@@ -7,3 +7,6 @@
 *.swp
 
 personal_wifi_setting.h
+
+*FileListAbsolute.txt
+*lref
