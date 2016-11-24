@@ -1,5 +1,5 @@
 var info, scenario = {};
-const SCENARIO_COUNT = 4; // ファイルの数はブラウザからじゃわからないので必ずここで指定!!!
+const SCENARIO_COUNT = 13; // ファイルの数はブラウザからじゃわからないので必ずここで指定!!!
 
 (function(){
   var scenario_file = [];
@@ -74,6 +74,15 @@ var timer_button = new function(){
     $('#timer_restart').hide();
     $('#timer_start').show();
     $('#timer_reset').prop('disabled', true);
+    $('#scenario_prev').removeClass(function(index, className) {
+          return (className.match(/\bscenario\S+/g) || []).join(' ');
+    });
+    $('#scenario_now').removeClass(function(index, className) {
+          return (className.match(/\bscenario\S+/g) || []).join(' ');
+    });
+    $('#scenario_next').removeClass(function(index, className) {
+          return (className.match(/\bscenario\S+/g) || []).join(' ');
+    });
   };
   var pass_time = 0;
   var readTime = function(){
@@ -133,17 +142,18 @@ function viewScript(id, index){
   if($(id).is(':disabled'))$(id).prop('disabled', false);
   $(id).html(function(){
     var res = ''
-    if(!scenario[index].word) res += '開始直後'
+    if(!scenario[index].word) res += '開始前'
     else {
       res += '「'+scenario[index].word+'」の';
       switch(scenario[index].timing){
-        case 'pre': res += '前'; break;
-        case 'post': res += '後'; break;
+        case 'pre': res += '言い始め'; break;
+        case 'post': res += '言い終り'; break;
         default: res +=  scenario[index].timing; break;
       }
     }
-    $.each(scenario[index].projector, function(key){
-      res += '<br>' + port[key].name + 'を' + (this == 1 ? '点灯' : '消灯');
+    res += '<br>';
+    $.each(scenario[index].projector, function(key,index){
+      res += '[' +port[key].name + (this == 1 ? '点灯' : '消灯') + '] ';
     });
     return res;
   });

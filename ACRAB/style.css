@@ -296,7 +296,7 @@ button.timer_button:disabled {
 
 #scenario_now {
   display: flex;
-  height: 300px;
+  min-height: 300px;
   font-size: 200%;
   text-align: center;
   align-items: center;
@@ -335,7 +335,6 @@ button.timer_button:disabled {
   border-bottom: 1px #ddd;
   outline: none;
   padding: 14px 40px;
-  font-size: 24px;
   transition: .5s;
 }
 
@@ -348,16 +347,16 @@ button.timer_button:disabled {
   border: 1px solid #555;
 }
 
-#scenario_prev {
+#scenario_prev, #scenario_next {
   flex: 1;
+  font-size: 20px;
   background-color: #301;
+  white-space: normal;
+}
+#scenario_next {
+  background-color: #141;
 }
 #scenario_prev:hover {background-color: #412;}
-#scenario_next {
-  flex: 1;
-  background-color: #141;
-  text-align: right;
-}
 #scenario_next:hover {background-color: #252;}
 #scenario_prev:disabled, #prev_next_link #scenario_next:disabled {
   background-color: #222;
