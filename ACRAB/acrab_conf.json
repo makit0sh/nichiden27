@@ -9,7 +9,7 @@
     "Aqr": {"name": "みずがめ", "box": "S", "pin": "p02"},
     "Ari": {"name": "おひつじ", "box": "N", "pin": "p02"},
     "Aur": {"name": "ぎょしゃ", "box": "N", "pin": "p04"},
-    "Boo": {"name": "うしかい", "box": "N", "pin": "p09"},
+    "Boo": {"name": "うしかい", "box": "N", "pin": "p15"},
     "Cap": {"name": "やぎ", "box": "S", "pin": "p03"},
     "Cas": {"name": "カシオペア", "box": "N", "pin": "p01"},
     "Cep": {"name": "ケフェウス", "box": "N", "pin": "p12"},
